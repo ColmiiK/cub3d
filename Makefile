@@ -4,6 +4,7 @@ USERNAME = $(shell whoami)
 NAME = cub3d
 INCLUDE = include
 LIBFT = lib/libft
+MLX42 = lib/MLX42
 SRC_DIR = src/
 OBJ_DIR = obj/
 CC = gcc
@@ -24,7 +25,8 @@ WHITE = $(shell tput setaf 7)
 
 #Sources
 	
-SRC_FILES = main
+SRC_FILES = main \
+			parse/parse_map \
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -36,7 +38,8 @@ all:		$(NAME)
 
 $(NAME):	$(OBJ)
 			@make -C $(LIBFT)
-			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -L$(LIBFT) -lft -o $(NAME)
+			@make -C $(MLX42)
+			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -L$(LIBFT) -lft lib/MLX42/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
 			@echo "$(GREEN)$(NAME) compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
@@ -50,6 +53,7 @@ $(OBJF):
 clean:
 			@rm -rf $(OBJ_DIR)
 			@make clean -C $(LIBFT)
+			@make clean -C $(MLX42)
 			@echo "$(BLUE)$(NAME) object files cleaned!$(DEF_COLOR)"
 
 fclean:		
@@ -57,6 +61,7 @@ fclean:
 			@rm -f $(NAME)
 			@rm -rf $(NAME).dSYM
 			@make fclean -C $(LIBFT)
+			@make fclean -C $(MLX42)
 			@echo "$(BLUE)$(NAME) executable cleaned!$(DEF_COLOR)"
 
 re:			fclean all

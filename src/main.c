@@ -2,9 +2,12 @@
 
 int main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
+	t_data data;
+	if (ac != 2)
+		return (ft_error("Invalid number of arguments"));
 
-	printf("ey muy buenas a todos\n");
-	return (0);
+	if (ft_parse_map(&data, av[1]))
+		return (1);
+	
+
 }
