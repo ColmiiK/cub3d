@@ -16,7 +16,7 @@ typedef struct s_tex
 
 typedef struct s_data
 {
-	// mlx_t *mlx;
+	mlx_t *mlx;
 	t_tex *texture;
 	
 	char	**map;

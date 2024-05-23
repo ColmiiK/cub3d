@@ -7,7 +7,7 @@ LIBFT = lib/libft
 MLX42 = lib/MLX42
 SRC_DIR = src/
 OBJ_DIR = obj/
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Werror -Wextra -g
 AR = ar rcs
 
@@ -69,5 +69,8 @@ re:			fclean all
 
 norm:
 			@norminette $(SRC) $(INCLUDE) $(LIBFT)
+
+valgrind:
+			@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./cub3d maps/subject.cub
 
 .PHONY: all clean fclean re norm

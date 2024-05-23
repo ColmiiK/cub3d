@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO /home/alvega-g/projects/cub3d/textures/north.png
+SO /home/alvega-g/projects/cub3d/textures/south.png
+EA /home/alvega-g/projects/cub3d/textures/east.png
+WE /home/alvega-g/projects/cub3d/textures/west.png
 
 F 220,100,0
 C 225,30,0

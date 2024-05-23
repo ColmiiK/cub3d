@@ -85,15 +85,51 @@ int ft_extract_info(t_data *data, char **cub)
 	return (0);
 }
 
+int ft_extract_map(t_data *data, char **cub)
+{
+	int	i;
+
+	while (*cub && !(*cub[0] == ' ' || *cub[0] == '1'))
+		cub++;
+	data->map = malloc(sizeof(char *) * ft_double_ptr_amount(cub));
+	if (!data->map)
+		return (1);
+	i = -1;
+	while (*cub)
+	{
+		data->map[++i] = ft_strdup(*cub);
+		if (!data->map[i])
+			return (1);
+		cub++;
+	}
+	return (0);
+}
+
+int ft_check_map(char **map)
+{
+
+	/* 
+		TODO:
+
+		Check if all chars of map are correct (1 or 0; only one of N,S,E,W)
+		Floodfill from the outside in to check if all chars on edges are 1s
+		
+	 */
+	return (0);
+}
+
 int ft_parse_map(t_data *data, char *str)
 {
 	if (ft_read_cub_file(data, str))
 		return (ft_error("Unable to read .cub file"));
 	if (ft_extract_info(data, data->cub))
 		return (ft_error("Unable to extract information from .cub file"));
-	
+	if (ft_extract_map(data, data->cub))
+		return (ft_error("Unable to extract map information from .cub file"));
+	if (ft_check_map(data->map))
+		return (1);
 
-	// for (int i = 0; data->cub[i]; i++)
-	// 	printf("-> %s\n", data->cub[i]);
+	for (int i = 0; data->map[i]; i++)
+		printf("%s\n", data->map[i]);
 	return (0);
 }

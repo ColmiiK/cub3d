@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile_WindowsNT.mk                              :+:    :+:             #
-#                                                      +:+                     #
-#    By: W2Wizard <w2.wizzard@gmail.com>              +#+                      #
-#                                                    +#+                       #
-#    Created: 2022/02/26 21:32:00 by W2Wizard      #+#    #+#                  #
-#    Updated: 2022/07/05 14:55:05 by jobvan-d      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile_WindowsNT.mk                              :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/26 21:32:00 by W2Wizard          #+#    #+#              #
+#    Updated: 2024/05/23 16:30:32 by alvega-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 #//= Colors =//#
 # Nope :(
 
-CC		:= gcc # We need to explicitly mention GCC/CC here.
+CC		:= clang # We need to explicitly mention GCC/CC here.
 WINSTFU	:= > NUL 2>&1 # In some cases we want windows to just stfu
 
 # Switch file paths to windows \ delimiter
