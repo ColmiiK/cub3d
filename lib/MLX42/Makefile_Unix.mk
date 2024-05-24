@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile_Unix.mk                                   :+:    :+:             #
-#                                                      +:+                     #
-#    By: W2Wizard <w2.wizzard@gmail.com>              +#+                      #
-#                                                    +#+                       #
-#    Created: 2022/02/26 21:36:38 by W2Wizard      #+#    #+#                  #
-#    Updated: 2022/07/05 14:53:23 by jobvan-d      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile_Unix.mk                                   :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/26 21:36:38 by W2Wizard          #+#    #+#              #
+#    Updated: 2024/05/23 16:31:15 by alvega-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(NAME): $(OBJS)
 
 %.o: %.c $(HDRS)
 	@echo "$(GREEN)$(BOLD)Compiling:$(RESET) $(notdir $<)"
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+	@clang $(CFLAGS) -o $@ -c $< $(HEADERS)
 
 # Convert shaders to .c files
 $(SRC_DIR)/mlx_%_shader.c: $(SHADER_DIR)/default.%

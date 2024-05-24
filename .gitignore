@@ -2,3 +2,4 @@
 *.a
 obj/
 *.dSYM
+settings.json

@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:56:19 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/05/11 13:05:04 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:35:46 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -615,4 +615,6 @@ char				*ft_pop(char *str, char c, bool del);
 bool				ft_all_same(char *str, char c);
 int					ft_strcmp(char *s1, char *s2);
 int					ft_isalpha_loop(char *str);
+int					ft_error(char *str);
+void				ft_clean_double_ptr(char **temp);
 #endif
