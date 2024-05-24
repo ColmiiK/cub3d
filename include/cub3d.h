@@ -30,5 +30,8 @@ typedef struct s_data
 }	t_data;
 
 int ft_parse_map(t_data *data, char *str);
+int ft_extract_info(t_data *data, char **cub);
+int ft_read_cub_file(t_data *data, char *str);
+int ft_check_map(char **map);
 
 #endif

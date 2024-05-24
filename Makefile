@@ -27,6 +27,8 @@ WHITE = $(shell tput setaf 7)
 	
 SRC_FILES = main \
 			parse/parse_map \
+			parse/extract_info \
+			parse/check_map \
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
