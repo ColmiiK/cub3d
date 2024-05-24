@@ -1,9 +1,9 @@
-SO /home/alvega-g/projects/cub3d/textures/south.png
-C 225,30,0
-NO /home/alvega-g/projects/cub3d/textures/north.png
-EA /home/alvega-g/projects/cub3d/textures/east.png
 F 220,100,0
-WE /home/alvega-g/projects/cub3d/textures/west.png
+C 225,30,0
+SO ./textures/south.png
+NO ./textures/north.png
+EA ./textures/east.png
+WE ./textures/west.png
 
         1111111111111111111111111
         1000000000110000000000001
@@ -12,7 +12,7 @@ WE /home/alvega-g/projects/cub3d/textures/west.png
 111111111011000001110000000000111
 100000000011000001110111111111111
 11110111111111011100000010001
-11110111111111011101010010001
+1111011111111101110101001001
 11000000110101011100000010001
 10000000000000001100000010001
 10000000000000001101010010001

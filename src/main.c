@@ -1,6 +1,6 @@
 #include <cub3d.h>
 
-void ft_debug_print(t_data data)
+static void ft_debug_print(t_data data)
 {
 	printf("\n\t---> .cub file <---\n");
 	for (int i = 0; data.cub[i]; i++)
@@ -10,15 +10,16 @@ void ft_debug_print(t_data data)
 	printf("South texture: \t%p\n", data.texture->south);
 	printf("East texture: \t%p\n", data.texture->east);
 	printf("West texture: \t%p\n", data.texture->west);
-
+	printf("\nPlayer x: \t%d\n", data.p_x);
+	printf("Player y: \t%d\n", data.p_y);
+	printf("Player angle: \t%d\n", data.p_a);
 	printf("\n\t---> map <---\n");
 	for (int i = 0; data.map[i]; i++)
 		printf("%s\n", data.map[i]);
 }
 
-int ft_setup_struct(t_data *data)
+static int ft_setup_struct(t_data *data)
 {
-	data->mlx = malloc(sizeof(mlx_t));
 	data->texture = malloc(sizeof(t_tex));
 	if (!data->texture)
 		return (1);
@@ -33,9 +34,9 @@ int main(int ac, char **av)
 	if (ft_setup_struct(&data))
 		return (ft_error("unable to set up main structure"));
 	if (ft_parse_map(&data, av[1]))
-		return (1);
+		return (ft_cleanup(data));
 	
 	ft_debug_print(data);
 	
-
+	ft_cleanup(data);
 }

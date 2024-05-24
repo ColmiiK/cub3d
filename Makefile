@@ -25,10 +25,11 @@ WHITE = $(shell tput setaf 7)
 
 #Sources
 	
-SRC_FILES = main \
+SRC_FILES = main cleanup \
 			parse/parse_map \
 			parse/extract_info \
 			parse/check_map \
+			parse/floodfill_map \
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -73,6 +74,6 @@ norm:
 			@norminette $(SRC) $(INCLUDE) $(LIBFT)
 
 valgrind:
-			@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./cub3d maps/subject.cub
+			@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./cub3d maps/1.cub
 
 .PHONY: all clean fclean re norm
