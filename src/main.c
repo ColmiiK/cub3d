@@ -10,9 +10,9 @@ static void ft_debug_print(t_data data)
 	printf("South texture: \t%p\n", data.texture->south);
 	printf("East texture: \t%p\n", data.texture->east);
 	printf("West texture: \t%p\n", data.texture->west);
-	printf("\nPlayer x: \t%d\n", data.p_x);
-	printf("Player y: \t%d\n", data.p_y);
-	printf("Player angle: \t%d\n", data.p_a);
+	printf("\nPlayer x: \t%f\n", data.p_x);
+	printf("Player y: \t%f\n", data.p_y);
+	printf("Player angle: \t%f\n", data.p_a);
 	printf("\n\t---> map <---\n");
 	for (int i = 0; data.map[i]; i++)
 		printf("%s\n", data.map[i]);
@@ -20,7 +20,7 @@ static void ft_debug_print(t_data data)
 
 static int ft_setup_struct(t_data *data)
 {
-	data->texture = malloc(sizeof(t_tex));
+	data->texture = ft_calloc(1, sizeof(t_tex));
 	if (!data->texture)
 		return (1);
 	return (0);

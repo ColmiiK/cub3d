@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:56:19 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/05/23 13:35:46 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:21:17 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -617,4 +617,5 @@ int					ft_strcmp(char *s1, char *s2);
 int					ft_isalpha_loop(char *str);
 int					ft_error(char *str);
 void				ft_clean_double_ptr(char **temp);
+int					ft_ends_with(char *str, char *to_find);
 #endif

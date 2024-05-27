@@ -51,36 +51,14 @@ int ft_extract_info(t_data *data, char **cub)
 		if (!ft_strncmp(cub[i], "EA", 2))
 			data->texture->east = ft_save_texture(cub[i] + 2);
 		if (!ft_strncmp(cub[i], "F", 1))
-			data->texture->floor = ft_save_c_f(cub[i] + 1);
+			data->texture->floor = ft_save_c_f(cub[i] + 2);
 		if (!ft_strncmp(cub[i], "C", 1))
-			data->texture->ceiling = ft_save_c_f(cub[i] + 1);
+			data->texture->ceiling = ft_save_c_f(cub[i] + 2);
 	}
-	if (ft_check_textures(data->texture))
-		return (1);
-	if (data->texture->floor == 0 || data->texture->ceiling == 0)
-		return (1);
-	return (0);
-}
-
-int ft_read_cub_file(t_data *data, char *str)
-{
-	int		fd;
-	char	*line;
-	char	*temp;
-
-	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		return (1);
-	line = get_next_line(fd);
-	temp = ft_strdup("");
-	if (!temp)
-		return (1);
-	while (line)
+	if (ft_check_textures(data->texture) || data->texture->floor == 0 || data->texture->ceiling == 0)
 	{
-		temp = ft_strjoin_ex(temp, line, 3);
-		line = get_next_line(fd);
+		data->map = ft_split(" ", ' ');
+		return (1);
 	}
-	data->cub = ft_split(temp, '\n');
-	free(temp);
 	return (0);
 }

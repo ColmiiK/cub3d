@@ -21,9 +21,9 @@ typedef struct s_data
 	
 	char	**map;
 	char	**cub;
-	int		p_x;
-	int		p_y;
-	int		p_a;
+	float		p_x;
+	float		p_y;
+	float		p_a;
 	int		width;
 	int		height;
 

@@ -27,7 +27,8 @@ WHITE = $(shell tput setaf 7)
 	
 SRC_FILES = main cleanup \
 			parse/parse_map \
-			parse/extract_info \
+			parse/read_cub \
+			parse/extract_legend \
 			parse/check_map \
 			parse/floodfill_map \
 
@@ -74,6 +75,6 @@ norm:
 			@norminette $(SRC) $(INCLUDE) $(LIBFT)
 
 valgrind:
-			@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./cub3d maps/1.cub
+			@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./cub3d maps/invalid_maps/no_floor.cub
 
 .PHONY: all clean fclean re norm
