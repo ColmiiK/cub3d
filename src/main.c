@@ -13,6 +13,8 @@ static void ft_debug_print(t_data data)
 	printf("\nPlayer x: \t%f\n", data.p_x);
 	printf("Player y: \t%f\n", data.p_y);
 	printf("Player angle: \t%f\n", data.p_a);
+	printf("\nWidth: \t\t%d\n", data.width);
+	printf("Height: \t%d\n", data.height);
 	printf("\n\t---> map <---\n");
 	for (int i = 0; data.map[i]; i++)
 		printf("%s\n", data.map[i]);
@@ -35,8 +37,11 @@ int main(int ac, char **av)
 		return (ft_error("unable to set up main structure"));
 	if (ft_parse_map(&data, av[1]))
 		return (ft_cleanup(data));
-	
 	ft_debug_print(data);
+	
+	ft_initialize_mlx(&data);
+	
+
 	
 	ft_cleanup(data);
 }

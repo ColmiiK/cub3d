@@ -67,6 +67,8 @@ int ft_parse_map(t_data *data, char *str)
 	if (ft_extract_map(data, data->cub))
 		return (ft_error("unable to extract map information from .cub file"));
 	ft_obtain_ppos(data, data->map);
+	data->height = ft_double_ptr_amount(data->map);
+	data->width = ft_check_longest_line(data->map);
 	if (ft_check_map(data->map))
 		return (1);
 

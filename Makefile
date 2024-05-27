@@ -25,7 +25,7 @@ WHITE = $(shell tput setaf 7)
 
 #Sources
 	
-SRC_FILES = main cleanup \
+SRC_FILES = main cleanup game_loop \
 			parse/parse_map \
 			parse/read_cub \
 			parse/extract_legend \
