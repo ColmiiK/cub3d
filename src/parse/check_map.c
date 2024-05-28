@@ -30,9 +30,9 @@ static int	ft_check_for_letters(char **map)
 int ft_check_map(char **map)
 {
 	if (ft_check_for_letters(map))
-		return (ft_error("map contains invalid character(s)"));
+		return (ft_error("Map contains invalid character(s)"));
 	if (ft_inject_space(map))
-		return (ft_error("unable to validate map"));
+		return (ft_error("Unable to validate map"));
 	
 	return (0);
 }

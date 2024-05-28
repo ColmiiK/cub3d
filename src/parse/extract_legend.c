@@ -25,9 +25,14 @@ static int ft_save_c_f(char *colors)
 	char	**temp;
 	int		rgb[3];
 
+	while (*colors == ' ')
+		colors++;
 	temp = ft_split(colors, ',');
 	if (ft_double_ptr_amount(temp) != 3)
+	{
+		ft_clean_double_ptr(temp);
 		return (0);
+	}
 	rgb[0] = ft_atoi(temp[0]);
 	rgb[1] = ft_atoi(temp[1]);
 	rgb[2] = ft_atoi(temp[2]);
@@ -51,11 +56,12 @@ int ft_extract_info(t_data *data, char **cub)
 		if (!ft_strncmp(cub[i], "EA", 2))
 			data->texture->east = ft_save_texture(cub[i] + 2);
 		if (!ft_strncmp(cub[i], "F", 1))
-			data->texture->floor = ft_save_c_f(cub[i] + 2);
+			data->texture->floor = ft_save_c_f(cub[i] + 1);
 		if (!ft_strncmp(cub[i], "C", 1))
-			data->texture->ceiling = ft_save_c_f(cub[i] + 2);
+			data->texture->ceiling = ft_save_c_f(cub[i] + 1);
 	}
-	if (ft_check_textures(data->texture) || data->texture->floor == 0 || data->texture->ceiling == 0)
+	if (ft_check_textures(data->texture)
+		|| data->texture->floor == 0 || data->texture->ceiling == 0)
 	{
 		data->map = ft_split(" ", ' ');
 		return (1);
