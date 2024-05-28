@@ -1,9 +1,9 @@
 #include <cub3d.h>
 
-int ft_check_longest_line(char **map)
+int	ft_check_longest_line(char **map)
 {
-	int biggest;
-	int new;
+	int	biggest;
+	int	new;
 
 	biggest = 0;
 	while (*map)
@@ -16,7 +16,7 @@ int ft_check_longest_line(char **map)
 	return (biggest);
 }
 
-static char **ft_create_map(int size, int longest)
+static char	**ft_create_map(int size, int longest)
 {
 	char **temp;
 	int i;

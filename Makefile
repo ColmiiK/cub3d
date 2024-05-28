@@ -35,6 +35,7 @@ SRC_FILES = main cleanup \
 			game/game_loop \
 			game/hook \
 			game/minimap \
+			game/draw \
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
