@@ -3,6 +3,7 @@
 USERNAME = $(shell whoami)
 NAME = cub3d
 INCLUDE = include
+HEADER = $(INCLUDE)/$(NAME).h
 LIBFT = lib/libft
 MLX42 = lib/MLX42
 SRC_DIR = src/
@@ -25,12 +26,15 @@ WHITE = $(shell tput setaf 7)
 
 #Sources
 	
-SRC_FILES = main cleanup game_loop \
+SRC_FILES = main cleanup \
 			parse/parse_map \
 			parse/read_cub \
 			parse/extract_legend \
 			parse/check_map \
 			parse/floodfill_map \
+			game/game_loop \
+			game/hook \
+			game/minimap \
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -46,7 +50,7 @@ $(NAME):	$(OBJ)
 			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -L$(LIBFT) -lft lib/MLX42/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
 			@echo "$(GREEN)$(NAME) compiled!$(DEF_COLOR)"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER) | $(OBJF)
 			@mkdir -p $(dir $@)
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) -I./$(INCLUDE) $(CFLAGS) -c $< -o $@ 
@@ -73,8 +77,5 @@ re:			fclean all
 
 norm:
 			@norminette $(SRC) $(INCLUDE) $(LIBFT)
-
-valgrind:
-			@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./cub3d maps/invalid_maps/no_floor.cub
 
 .PHONY: all clean fclean re norm

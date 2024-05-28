@@ -4,11 +4,11 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <libft.h>
 
-# define W_WIDTH 1080
-# define W_HEIGHT 1080
+# define W_WIDTH 1200
+# define W_HEIGHT 1200
 
-# define R_WIDTH 1080 / 50
-# define R_HEIGHT 1080 / 50
+# define R_WIDTH 1200 / 50
+# define R_HEIGHT 1200 / 50
 
 # define BLACK 0x000000ff
 # define WHITE 0xffffffff
@@ -28,21 +28,20 @@ typedef struct s_tex
 
 typedef struct s_data
 {
-	mlx_t *mlx;
-	t_tex *texture;
-	mlx_image_t *minimap;
-	mlx_image_t *player;
+	mlx_t		*mlx;
+	t_tex		*texture;
+	mlx_image_t	*minimap;
+	mlx_image_t	*player;
 	
-	char	**map;
-	char	**cub;
+	char		**map;
+	char		**cub;
 	float		p_x;
 	float		p_y;
 	float		p_a;
-	int		width;
-	int		height;
-
-
-
+	int			m_x;
+	int			m_y;
+	int			width;
+	int			height;
 
 }	t_data;
 
@@ -54,6 +53,9 @@ int ft_check_longest_line(char **map);
 int ft_inject_space(char **map);
 
 int ft_initialize_mlx(t_data *data);
+void ft_keyhook(void *param);
+void ft_move_minimap(t_data *data, int x, int y);
+void ft_draw_minimap(t_data *data);
 
 int ft_cleanup(t_data data);
 

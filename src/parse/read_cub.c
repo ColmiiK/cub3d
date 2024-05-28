@@ -1,15 +1,19 @@
 #include <cub3d.h>
 
-static int ft_check_empty_lines(t_data *data, char *temp)
+static int ft_check_empty_lines(t_data *data, char **str)
 {
 	int i;
+	char *temp;
+
+	temp = *str;
 	i = ft_strlen(temp);
-	while (temp[--i])
+	while (--i >= 2)
 	{
 		if (temp[i] == '\n' && temp[i - 1] == '\n' && temp[i - 2] == '1')
 		{
 			data->cub = ft_split(" ", ' ');
 			data->map = ft_split(" ", ' ');
+			free(*str);
 			return (1);
 		}
 	}
@@ -38,7 +42,7 @@ int ft_read_cub_file(t_data *data, char *str)
 		temp = ft_strjoin_ex(temp, line, 3);
 		line = get_next_line(fd);
 	}
-	if (ft_check_empty_lines(data, temp))
+	if (ft_check_empty_lines(data, &temp))
 		return (1);
 	data->cub = ft_split(temp, '\n');
 	free(temp);

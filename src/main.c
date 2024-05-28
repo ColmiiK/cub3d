@@ -15,14 +15,13 @@ static void ft_debug_print(t_data data)
 	printf("Player angle: \t%f\n", data.p_a);
 	printf("\nWidth: \t\t%d\n", data.width);
 	printf("Height: \t%d\n", data.height);
-	printf("\n\t---> map <---\n");
-	for (int i = 0; data.map[i]; i++)
-		printf("%s\n", data.map[i]);
 }
 
 static int ft_setup_struct(t_data *data)
 {
 	data->texture = ft_calloc(1, sizeof(t_tex));
+	data->m_x = 0;
+	data->m_y = 0;
 	if (!data->texture)
 		return (1);
 	return (0);
@@ -32,9 +31,9 @@ int main(int ac, char **av)
 {
 	t_data data;
 	if (ac != 2)
-		return (ft_error("invalid number of arguments"));
+		return (ft_error("Invalid number of arguments"));
 	if (ft_setup_struct(&data))
-		return (ft_error("unable to set up main structure"));
+		return (ft_error("Unable to set up main structure"));
 	if (ft_parse_map(&data, av[1]))
 		return (ft_cleanup(data));
 	ft_debug_print(data);
