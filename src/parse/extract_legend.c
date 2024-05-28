@@ -1,13 +1,13 @@
 #include <cub3d.h>
 
-static mlx_texture_t *ft_save_texture(char *route)
+static mlx_texture_t	*ft_save_texture(char *route)
 {
 	while (*route == ' ')
 		route++;
 	return (mlx_load_png(route));
 }
 
-static int ft_check_textures(t_tex *textures)
+static int	ft_check_textures(t_tex *textures)
 {
 	if (!textures->north)
 		return (1);
@@ -20,7 +20,7 @@ static int ft_check_textures(t_tex *textures)
 	return (0);
 }
 
-static int ft_save_c_f(char *colors)
+static int	ft_save_c_f(char *colors)
 {
 	char	**temp;
 	int		rgb[3];
@@ -40,9 +40,9 @@ static int ft_save_c_f(char *colors)
 	return (rgb[0] << 24 | rgb[1] << 16 | rgb[2] << 8 | 255);
 }
 
-int ft_extract_info(t_data *data, char **cub)
+int	ft_extract_info(t_data *data, char **cub)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (cub[++i])

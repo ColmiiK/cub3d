@@ -1,9 +1,9 @@
 #include <cub3d.h>
 
-static void ft_fill_square(int color, mlx_image_t *minimap, int x, int y)
+static void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y)
 {
-	int len_x;
-	int len_y;
+	int	len_x;
+	int	len_y;
 
 	len_x = x + R_WIDTH;
 	len_y = y + R_HEIGHT;
@@ -15,10 +15,10 @@ static void ft_fill_square(int color, mlx_image_t *minimap, int x, int y)
 	}
 }
 
-static void ft_fill_minimap(t_data *data, mlx_image_t *minimap)
+static void	ft_fill_minimap(t_data *data, mlx_image_t *minimap)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (data->map[++i])
@@ -34,10 +34,10 @@ static void ft_fill_minimap(t_data *data, mlx_image_t *minimap)
 	}
 }
 
-static void ft_center_minimap(mlx_image_t *minimap, mlx_image_t *player)
+static void	ft_center_minimap(mlx_image_t *minimap, mlx_image_t *player)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -55,7 +55,7 @@ static void ft_center_minimap(mlx_image_t *minimap, mlx_image_t *player)
 	minimap->instances[0].x += x;
 }
 
-void ft_draw_minimap(t_data *data)
+void	ft_draw_minimap(t_data *data)
 {
 	data->player = mlx_new_image(data->mlx, R_WIDTH * 2, R_HEIGHT * 2);
 	data->minimap = mlx_new_image(data->mlx, data->width * R_WIDTH, data->height * R_HEIGHT);
@@ -66,7 +66,7 @@ void ft_draw_minimap(t_data *data)
 	ft_center_minimap(data->minimap, data->player);
 }
 
-void ft_move_minimap(t_data *data, int x, int y)
+void	ft_move_minimap(t_data *data, int x, int y)
 {
 	data->p_x += (x / (R_WIDTH + 0.0));
 	data->p_y += (y / (R_HEIGHT + 0.0));
