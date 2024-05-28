@@ -1,8 +1,7 @@
 #include <cub3d.h>
 
-int ft_cleanup(t_data data)
+int	ft_cleanup(t_data data)
 {
-
 	if (data.texture->north)
 		mlx_delete_texture(data.texture->north);
 	if (data.texture->south)

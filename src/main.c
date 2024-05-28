@@ -17,7 +17,7 @@ static void ft_debug_print(t_data data)
 	printf("Height: \t%d\n", data.height);
 }
 
-static int ft_setup_struct(t_data *data)
+static int	ft_setup_struct(t_data *data)
 {
 	data->texture = ft_calloc(1, sizeof(t_tex));
 	data->m_x = 0;
@@ -27,9 +27,10 @@ static int ft_setup_struct(t_data *data)
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_data data;
+	t_data	data;
+
 	if (ac != 2)
 		return (ft_error("Invalid number of arguments"));
 	if (ft_setup_struct(&data))
@@ -37,10 +38,6 @@ int main(int ac, char **av)
 	if (ft_parse_map(&data, av[1]))
 		return (ft_cleanup(data));
 	ft_debug_print(data);
-	
 	ft_initialize_mlx(&data);
-	
-
-	
 	ft_cleanup(data);
 }

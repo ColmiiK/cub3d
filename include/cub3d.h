@@ -32,7 +32,6 @@ typedef struct s_data
 	t_tex		*texture;
 	mlx_image_t	*minimap;
 	mlx_image_t	*player;
-	
 	char		**map;
 	char		**cub;
 	float		p_x;
