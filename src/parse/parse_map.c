@@ -26,8 +26,8 @@ static int ft_copy_ppos(t_data *data, int i, int j)
 	if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
 		|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
 	{
-		data->p_x = j;
-		data->p_y = i;
+		data->p_x = j + 0.5;
+		data->p_y = i + 0.5;
 		if (data->map[i][j] == 'N')
 			data->p_a = 0;
 		if (data->map[i][j] == 'S')
