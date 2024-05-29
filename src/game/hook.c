@@ -31,6 +31,10 @@ void	ft_keyhook(void *param)
 		data->p_a += 1.0;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
 		data->p_a -= 1.0;
+	if (data->p_a < 0)
+		data->p_a += 360;
+	if (data->p_a >= 360)
+		data->p_a -= 360;
 	mlx_get_mouse_pos(data->mlx, &data->m_x, &data->m_y);
 	debug_print_mlx(data); // Debug print of player data
 }

@@ -10,6 +10,8 @@
 # define R_WIDTH 1200 / 50
 # define R_HEIGHT 1200 / 50
 
+# define VISION 90
+
 # define BLACK 0x000000ff
 # define WHITE 0xffffffff
 # define RED 0xff0000ff
@@ -47,6 +49,8 @@ typedef struct s_data
 
 typedef struct s_rcast
 {
+	int		x_cross;
+	int		y_cross;
 	float	ray_angle;
 	float	plyer_angle;
 }	t_rcast;
