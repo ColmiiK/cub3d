@@ -12,9 +12,11 @@ void	ft_draw_background(t_data *data)
 		while (coord_y < W_HEIGHT)
 		{
 			if (coord_y < W_HEIGHT / 2)
-				mlx_put_pixel(data->game_img, coord_x, coord_y, data->texture->ceiling);
+				mlx_put_pixel(data->game_img, coord_x, coord_y,
+					data->texture->ceiling);
 			else
-				mlx_put_pixel(data->game_img, coord_x, coord_y, data->texture->floor);
+				mlx_put_pixel(data->game_img, coord_x, coord_y,
+					data->texture->floor);
 			coord_y++;
 		}
 		coord_x++;
@@ -26,5 +28,6 @@ void	ft_draw_game(t_data *data)
 
 	ft_draw_background(data);
 	mlx_image_to_window(data->mlx, data->game_img, 0, 0);
-	// ft_draw_minimap(data);
+	
+	ft_draw_minimap(data);
 }
