@@ -56,8 +56,6 @@ static void	ft_center_minimap(mlx_image_t *minimap, mlx_image_t *player)
 
 	x = 0;
 	y = 0;
-	printf("-> %d\n", player->instances[0].x);
-	printf("-> %d\n", player->instances[0].y);
 	while (player->instances[0].x + x < W_WIDTH / 20)
 		x++;
 	while (player->instances[0].x + x > W_WIDTH / 20)
@@ -70,8 +68,6 @@ static void	ft_center_minimap(mlx_image_t *minimap, mlx_image_t *player)
 	player->instances[0].y += y + R_HEIGHT;
 	minimap->instances[0].x += x + R_WIDTH;
 	minimap->instances[0].y += y + R_HEIGHT;
-	printf("-> %d\n", player->instances[0].x);
-	printf("-> %d\n", player->instances[0].y);
 }
 
 void	ft_draw_minimap(t_data *data)

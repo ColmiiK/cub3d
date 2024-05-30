@@ -4,11 +4,11 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <libft.h>
 
-# define W_WIDTH 1000
-# define W_HEIGHT 1000
+# define W_WIDTH 2000
+# define W_HEIGHT 2000
 
-# define R_WIDTH 1000 / 50
-# define R_HEIGHT 1000 / 50
+# define R_WIDTH 2000 / 50
+# define R_HEIGHT 2000 / 50
 
 # define VISION 90
 
