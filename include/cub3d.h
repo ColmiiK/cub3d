@@ -47,13 +47,17 @@ typedef struct s_data
 
 }	t_data;
 
-typedef struct s_rcast
+typedef struct s_tools
 {
+	int		vector_x;
+	int		vector_y;
 	int		x_cross;
 	int		y_cross;
+	float	distance_x;
+	float	distance_y;
 	float	ray_angle;
 	float	plyer_angle;
-}	t_rcast;
+}	t_tools;
 
 int		ft_parse_map(t_data *data, char *str);
 int		ft_extract_info(t_data *data, char **cub);
