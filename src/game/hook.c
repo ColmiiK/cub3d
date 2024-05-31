@@ -5,11 +5,11 @@ static void	debug_print_mlx(t_data *data)
 	char				buffer[250];
 	static mlx_image_t	*img;
 
-	sprintf(buffer, "p_x: %g\np_y: %g\np_a: %g\nm_x: %d\nm_y: %d\n",
-		data->p_x, data->p_y, data->p_a, data->m_x, data->m_y);
+	sprintf(buffer, "p_x: %.1f\np_y: %.1f\np_a: %03.0f\nm_x: %04d\nm_y: %04d\nfps: %.1f\n",
+		data->p_x, data->p_y, data->p_a, data->m_x, data->m_y, 1 / data->mlx->delta_time);
 	if (img)
 		mlx_delete_image(data->mlx, img);
-	img = mlx_put_string(data->mlx, buffer, 5, W_HEIGHT - 20);
+	img = mlx_put_string(data->mlx, buffer, 5, 5);
 }
 
 void	ft_keyhook(void *param)

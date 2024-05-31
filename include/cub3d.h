@@ -4,11 +4,11 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <libft.h>
 
-# define W_WIDTH 1200
-# define W_HEIGHT 1200
+# define W_WIDTH 2000
+# define W_HEIGHT 2000
 
-# define R_WIDTH 1200 / 50
-# define R_HEIGHT 1200 / 50
+# define R_WIDTH 2000 / 50
+# define R_HEIGHT 2000 / 50
 
 # define VISION 90
 
@@ -17,6 +17,7 @@
 # define RED 0xff0000ff
 # define GRAY 0x808080ff
 # define BLUE 0x0000ffff
+# define PINK 0xF8A4A7ff
 
 typedef struct s_tex
 {
