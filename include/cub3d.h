@@ -21,6 +21,8 @@
 
 typedef struct s_tex
 {
+	mlx_texture_t	*sprite[12];
+	mlx_image_t		*i_sprite[12];
 	mlx_texture_t	*north;
 	mlx_texture_t	*south;
 	mlx_texture_t	*east;
@@ -64,7 +66,7 @@ int		ft_check_longest_line(char **map);
 int		ft_inject_space(char **map);
 
 int		ft_initialize_mlx(t_data *data);
-void	ft_keyhook(void *param);
+void	ft_hook(void *param);
 void	ft_move_minimap(t_data *data, int x, int y);
 void	ft_draw_minimap(t_data *data);
 
