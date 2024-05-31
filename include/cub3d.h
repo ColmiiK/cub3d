@@ -3,6 +3,7 @@
 
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <libft.h>
+# include <math.h>
 
 # define W_WIDTH 2000
 # define W_HEIGHT 2000
@@ -52,8 +53,8 @@ typedef struct s_tools
 {
 	int		vector_x;
 	int		vector_y;
-	int		x_cross;
-	int		y_cross;
+	double	x_cross;
+	double	y_cross;
 	float	distance_x;
 	float	distance_y;
 	float	ray_angle;
@@ -76,5 +77,8 @@ int		ft_cleanup(t_data data);
 
 void	ft_draw_background(t_data *data);
 void	ft_draw_game(t_data *data);
+
+t_tools	*vector_define(t_data *data);
+t_tools	*wall_finder(t_data *data);
 
 #endif
