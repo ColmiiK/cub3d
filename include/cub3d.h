@@ -49,12 +49,18 @@ typedef struct s_data
 
 }	t_data;
 
+typedef struct s_coord
+{
+	double	x;
+	double	y;
+}	t_coord;
+
 typedef struct s_tools
 {
 	int		vector_x;
 	int		vector_y;
-	double	x_cross;
-	double	y_cross;
+	t_coord	*x_cross;
+	t_coord	*y_cross;
 	float	distance_x;
 	float	distance_y;
 	float	ray_angle;
@@ -79,6 +85,8 @@ void	ft_draw_background(t_data *data);
 void	ft_draw_game(t_data *data);
 
 t_tools	*vector_define(t_data *data);
-t_tools	*wall_finder(t_data *data);
+void	x_wall_finder(t_data *data, t_tools **tools);
+void	y_wall_finder(t_data *data, t_tools **tools);
+void	igomeow(t_data *data);
 
 #endif
