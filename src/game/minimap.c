@@ -1,6 +1,6 @@
 #include <cub3d.h>
 
-static void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y)
+void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y)
 {
 	int	len_x;
 	int	len_y;
@@ -43,6 +43,10 @@ static void	ft_fill_minimap(t_data *data, mlx_image_t *minimap)
 		{
 			if (data->map[i][j] == '1')
 				ft_fill_square(BLACK, minimap, j * R_WIDTH, i * R_HEIGHT);
+			else if (data->map[i][j] == 'L')
+				ft_fill_square(LOCKED, minimap, j * R_WIDTH, i * R_HEIGHT);
+			else if (data->map[i][j] == 'U')
+				ft_fill_square(UNLOCKED, minimap, j * R_WIDTH, i * R_HEIGHT);	
 			else if (data->map[i][j] != ' ')
 				ft_fill_square(WHITE, minimap, j * R_WIDTH, i * R_HEIGHT);
 		}

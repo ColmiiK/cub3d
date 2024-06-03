@@ -18,6 +18,8 @@
 # define GRAY 0x808080ff
 # define BLUE 0x0000ffff
 # define PINK 0xF8A4A7ff
+# define LOCKED 0x3B3B3Bff
+# define UNLOCKED 0xA7A7A7ff
 
 typedef struct s_tex
 {
@@ -69,9 +71,12 @@ int		ft_inject_space(char **map);
 
 int		ft_initialize_mlx(t_data *data);
 void	ft_hook(void *param);
-void	ft_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, void* param);
+void	ft_mousehook(mouse_key_t button, action_t action,
+	modifier_key_t mods, void* param);
+void	ft_keyhook(mlx_key_data_t keydata, void *param);
 void	ft_move_minimap(t_data *data, int x, int y);
 void	ft_draw_minimap(t_data *data);
+void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y);
 
 int		ft_cleanup(t_data data);
 

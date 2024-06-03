@@ -42,6 +42,7 @@ int	ft_initialize_mlx(t_data *data)
 	printf("p_a == %f\n", data->p_a);
 	mlx_loop_hook(data->mlx, &ft_hook, data);
 	mlx_mouse_hook(data->mlx, &ft_mousehook, data);
+	mlx_key_hook(data->mlx, &ft_keyhook, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
 	return (0);
