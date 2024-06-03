@@ -19,29 +19,36 @@ void ft_reload_gun(t_tex *t, int anim_counter)
 	t->i_sprite[anim_counter]->enabled = true;
 }
 
-void ft_shoot_the_gun(t_data *data, int *anim_counter)
+void ft_shoot_the_gun(t_data *data)
 {
-	if (*anim_counter == 12)
+	static int anim_counter = 0;
+
+	if (data->frame % 10 == 0)
 	{
-		data->texture->i_sprite[*anim_counter - 1]->enabled = false;
-		data->texture->i_sprite[0]->enabled = true;
-		*anim_counter = -1;
+		if (anim_counter == 5)
+		{
+			data->texture->i_sprite[anim_counter - 1]->enabled = false;
+			data->texture->i_sprite[0]->enabled = true;
+			anim_counter = -1;
+			data->reloading_gun = false;
+		}
+		else
+		{
+			data->texture->i_sprite[anim_counter - 1]->enabled = false;
+			data->texture->i_sprite[anim_counter]->enabled = true;
+		}
+		anim_counter = anim_counter + 1;
 	}
-	else
-	{
-		data->texture->i_sprite[*anim_counter - 1]->enabled = false;
-		data->texture->i_sprite[*anim_counter]->enabled = true;
-	}
-	usleep(150000);
-	*anim_counter = *anim_counter + 1;
 }
 
 void	ft_hook(void *param)
 {
 	t_data	*data;
-	static int anim_counter = 0;
 
 	data = param;
+	data->frame++;
+	if (data->reloading_gun == true)
+		ft_shoot_the_gun(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
@@ -56,8 +63,6 @@ void	ft_hook(void *param)
 		data->p_a += 1.0;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
 		data->p_a -= 1.0;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_SPACE))
-		ft_shoot_the_gun(data, &anim_counter);
 	if (data->p_a < 0)
 		data->p_a += 360;
 	if (data->p_a >= 360)
@@ -66,3 +71,11 @@ void	ft_hook(void *param)
 	debug_print_mlx(data); // Debug print of player data
 }
 
+void ft_keyhook(mlx_key_data_t keydata, void *param)
+{
+	t_data *data;
+
+	data = param;
+	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
+		data->reloading_gun = true;
+}
