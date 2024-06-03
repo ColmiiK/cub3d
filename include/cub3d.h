@@ -4,11 +4,11 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <libft.h>
 
-# define W_WIDTH 2000
-# define W_HEIGHT 2000
+# define W_WIDTH 1500
+# define W_HEIGHT 1500
 
-# define R_WIDTH 2000 / 50
-# define R_HEIGHT 2000 / 50
+# define R_WIDTH 1500 / 50
+# define R_HEIGHT 1500 / 50
 
 # define VISION 90
 
@@ -48,7 +48,7 @@ typedef struct s_data
 	int			width;
 	int			height;
 	int			frame;
-	bool		reloading_gun;
+	bool		shooting_gun;
 
 }	t_data;
 
@@ -69,7 +69,7 @@ int		ft_inject_space(char **map);
 
 int		ft_initialize_mlx(t_data *data);
 void	ft_hook(void *param);
-void	ft_keyhook(mlx_key_data_t keydata, void *param);
+void	ft_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, void* param);
 void	ft_move_minimap(t_data *data, int x, int y);
 void	ft_draw_minimap(t_data *data);
 

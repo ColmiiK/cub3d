@@ -12,25 +12,18 @@ static void	debug_print_mlx(t_data *data)
 	img = mlx_put_string(data->mlx, buffer, 5, 5);
 }
 
-void ft_reload_gun(t_tex *t, int anim_counter)
-{
-	printf("anim_counter: %d\n", anim_counter);
-	t->i_sprite[anim_counter - 1]->enabled = false;
-	t->i_sprite[anim_counter]->enabled = true;
-}
-
 void ft_shoot_the_gun(t_data *data)
 {
 	static int anim_counter = 0;
 
-	if (data->frame % 10 == 0)
+	if (data->frame % 5 == 0)
 	{
 		if (anim_counter == 5)
 		{
 			data->texture->i_sprite[anim_counter - 1]->enabled = false;
 			data->texture->i_sprite[0]->enabled = true;
 			anim_counter = -1;
-			data->reloading_gun = false;
+			data->shooting_gun = false;
 		}
 		else
 		{
@@ -47,7 +40,7 @@ void	ft_hook(void *param)
 
 	data = param;
 	data->frame++;
-	if (data->reloading_gun == true)
+	if (data->shooting_gun == true)
 		ft_shoot_the_gun(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
@@ -71,11 +64,13 @@ void	ft_hook(void *param)
 	debug_print_mlx(data); // Debug print of player data
 }
 
-void ft_keyhook(mlx_key_data_t keydata, void *param)
+void ft_mousehook(mouse_key_t button, action_t action,
+	modifier_key_t mods, void* param)
 {
 	t_data *data;
 
+	(void)mods;
 	data = param;
-	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
-		data->reloading_gun = true;
+	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
+		data->shooting_gun = true;
 }
