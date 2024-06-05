@@ -1,25 +1,9 @@
 #include <cub3d.h>
 
-int	ft_check_longest_line(char **map)
-{
-	int	biggest;
-	int	new;
-
-	biggest = 0;
-	while (*map)
-	{
-		new = ft_strlen(*map);
-		if (new > biggest)
-			biggest = new;
-		map++;
-	}
-	return (biggest);
-}
-
 static char	**ft_create_map(int size, int longest)
 {
-	char **temp;
-	int i;
+	char	**temp;
+	int		i;
 
 	temp = ft_calloc(sizeof(char *), size + 1);
 	if (!temp)
@@ -35,13 +19,14 @@ static char	**ft_create_map(int size, int longest)
 	return (temp);
 }
 
-static char **ft_populate_new_map(char **new, char **old, int longest, int size)
+static char	**ft_populate_new_map(char **new, char **old, int longest, int size)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
+
 	ft_memset(new[0], ' ', longest);
 	i = 0;
-	while(++i < size - 1)
+	while (++i < size - 1)
 	{
 		new[i][0] = ' ';
 		ft_strlcpy(new[i] + 1, old[i - 1], longest);
@@ -53,7 +38,7 @@ static char **ft_populate_new_map(char **new, char **old, int longest, int size)
 	return (new);
 }
 
-static int ft_check_neighbours(char **map, int i, int j)
+static int	ft_check_neighbours(char **map, int i, int j)
 {
 	if (map[i - 1][j] == ' ')
 		return (1);
@@ -66,10 +51,10 @@ static int ft_check_neighbours(char **map, int i, int j)
 	return (0);
 }
 
-static int ft_is_map_closed(char **map)
+static int	ft_is_map_closed(char **map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (map[++i])
@@ -89,11 +74,11 @@ static int ft_is_map_closed(char **map)
 	return (0);
 }
 
-int ft_inject_space(char **map)
+int	ft_inject_space(char **map)
 {
-	int size;
-	int longest;
-	char **new_map;
+	int		size;
+	int		longest;
+	char	**new_map;
 
 	size = ft_double_ptr_amount(map) + 2;
 	longest = ft_check_longest_line(map) + 2;

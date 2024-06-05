@@ -3,6 +3,7 @@
 
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <libft.h>
+# include <math.h>
 
 # define W_WIDTH 1500
 # define W_HEIGHT 1500
@@ -70,11 +71,12 @@ int		ft_check_longest_line(char **map);
 int		ft_inject_space(char **map);
 
 int		ft_initialize_mlx(t_data *data);
+void	ft_load_sprites(t_data *data);
 void	ft_hook(void *param);
 void	ft_mousehook(mouse_key_t button, action_t action,
-	modifier_key_t mods, void* param);
+			modifier_key_t mods, void *param);
 void	ft_keyhook(mlx_key_data_t keydata, void *param);
-void	ft_move_minimap(t_data *data, int x, int y);
+void	ft_move_minimap(t_data *data, double x, double y);
 void	ft_draw_minimap(t_data *data);
 void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y);
 

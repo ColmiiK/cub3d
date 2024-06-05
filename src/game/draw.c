@@ -26,7 +26,7 @@ void	ft_draw_background(t_data *data)
 	}
 }
 
-static void ft_draw_border(t_data *data)
+static void	ft_draw_border(t_data *data)
 {
 	int	coord_x;
 	int	coord_y;

@@ -26,14 +26,17 @@ WHITE = $(shell tput setaf 7)
 
 #Sources
 	
-SRC_FILES = main cleanup \
+SRC_FILES = main cleanup utils \
 			parse/parse_map \
 			parse/read_cub \
 			parse/extract_legend \
 			parse/check_map \
 			parse/floodfill_map \
 			game/game_loop \
-			game/hook \
+			game/load_sprites \
+			game/generic_hook \
+			game/mouse_hook \
+			game/key_hook \
 			game/minimap \
 			game/draw \
 
