@@ -39,9 +39,9 @@ typedef struct s_data
 	mlx_image_t	*game_img;
 	char		**map;
 	char		**cub;
-	float		p_x;
-	float		p_y;
-	float		p_a;
+	double		p_x;
+	double		p_y;
+	double		p_a;
 	int			m_x;
 	int			m_y;
 	int			width;
@@ -61,10 +61,10 @@ typedef struct s_tools
 	int		vector_y;
 	t_coord	*x_cross;
 	t_coord	*y_cross;
-	float	distance_x;
-	float	distance_y;
-	float	ray_angle;
-	float	plyer_angle;
+	double	distance_x;
+	double	distance_y;
+	double	ray_angle;
+	double	plyer_angle;
 }	t_tools;
 
 int		ft_parse_map(t_data *data, char *str);

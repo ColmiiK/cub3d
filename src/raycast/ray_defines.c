@@ -31,6 +31,7 @@ t_coord	*first_step_x(t_data *data, t_tools *tools)
 		first_x->y += 1;
 	distance = (fabs)(first_x->y - data->p_y);
 	first_x->x = distance / tan(data->p_a);
+	printf("distance == %f\ndata->p_a == %f\ndist/tan(data->p_a) == %f", distance, data->p_a, distance / tan(data->p_a));
 	first_x->x = data->p_x + (first_x->x * tools->vector_x);
 	printf("\n\t\tsaliendo del first_step_x:\n");
 	printf("\t\tfirst_x->x = %f\n\t\tfirst_x->y = %f\n\n", first_x->x, first_x->y);
