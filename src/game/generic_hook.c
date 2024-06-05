@@ -27,6 +27,8 @@ static void	ft_shoot_the_gun(t_data *data)
 		}
 		else
 		{
+			if (anim_counter == -1 || anim_counter == 0)
+				anim_counter = 1;
 			data->texture->i_sprite[anim_counter - 1]->enabled = false;
 			data->texture->i_sprite[anim_counter]->enabled = true;
 		}
