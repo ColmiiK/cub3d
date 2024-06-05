@@ -40,9 +40,9 @@ typedef struct s_data
 	mlx_image_t	*game_img;
 	char		**map;
 	char		**cub;
-	float		p_x;
-	float		p_y;
-	float		p_a;
+	double		p_x;
+	double		p_y;
+	double		p_a;
 	int			m_x;
 	int			m_y;
 	int			width;
@@ -56,8 +56,8 @@ typedef struct s_rcast
 {
 	int		x_cross;
 	int		y_cross;
-	float	ray_angle;
-	float	plyer_angle;
+	double	ray_angle;
+	double	plyer_angle;
 }	t_rcast;
 
 int		ft_parse_map(t_data *data, char *str);
