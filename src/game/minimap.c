@@ -5,11 +5,11 @@ static void	ft_draw_player(int color, mlx_image_t *player, int x, int y)
 	int	len_x;
 	int	len_y;
 
-	len_x = x + (R_WIDTH / 2);
-	len_y = y + (R_HEIGHT / 2);
+	len_x = x + (W_WIDTH / 50 / 2);
+	len_y = y + (W_HEIGHT / 50 / 2);
 	while (++y < len_y)
 	{
-		x = len_x - (R_WIDTH / 2);
+		x = len_x - (W_WIDTH / 50 / 2);
 		while (++x < len_x)
 			mlx_put_pixel(player, x, y, color);
 	}
@@ -27,13 +27,17 @@ static void	ft_fill_minimap(t_data *data, mlx_image_t *minimap)
 		while (data->map[i][++j])
 		{
 			if (data->map[i][j] == '1')
-				ft_fill_square(BLACK, minimap, j * R_WIDTH, i * R_HEIGHT);
+				ft_fill_square(BLACK, minimap,
+					j * W_WIDTH / 50, i * W_HEIGHT / 50);
 			else if (data->map[i][j] == 'L')
-				ft_fill_square(LOCKED, minimap, j * R_WIDTH, i * R_HEIGHT);
+				ft_fill_square(LOCKED, minimap,
+					j * W_WIDTH / 50, i * W_HEIGHT / 50);
 			else if (data->map[i][j] == 'U')
-				ft_fill_square(UNLOCKED, minimap, j * R_WIDTH, i * R_HEIGHT);
+				ft_fill_square(UNLOCKED, minimap,
+					j * W_WIDTH / 50, i * W_HEIGHT / 50);
 			else if (data->map[i][j] != ' ')
-				ft_fill_square(WHITE, minimap, j * R_WIDTH, i * R_HEIGHT);
+				ft_fill_square(WHITE, minimap,
+					j * W_WIDTH / 50, i * W_HEIGHT / 50);
 		}
 	}
 }
@@ -53,23 +57,24 @@ static void	ft_center_minimap(mlx_image_t *minimap, mlx_image_t *player)
 		y++;
 	while (player->instances[0].y + y > W_HEIGHT / 20)
 		y--;
-	player->instances[0].x += x + R_WIDTH;
-	player->instances[0].y += y + R_HEIGHT;
-	minimap->instances[0].x += x + R_WIDTH;
-	minimap->instances[0].y += y + R_HEIGHT;
+	player->instances[0].x += x + W_WIDTH / 50;
+	player->instances[0].y += y + W_HEIGHT / 50;
+	minimap->instances[0].x += x + W_WIDTH / 50;
+	minimap->instances[0].y += y + W_HEIGHT / 50;
 }
 
 void	ft_draw_minimap(t_data *data)
 {
-	data->player = mlx_new_image(data->mlx, R_WIDTH * 2, R_HEIGHT * 2);
-	data->minimap = mlx_new_image(data->mlx, data->width * R_WIDTH,
-			data->height * R_HEIGHT);
+	data->player = mlx_new_image(data->mlx,
+			W_WIDTH / 50 * 2, W_HEIGHT / 50 * 2);
+	data->minimap = mlx_new_image(data->mlx,
+			data->width * W_WIDTH / 50, data->height * W_HEIGHT / 50);
 	ft_fill_minimap(data, data->minimap);
-	ft_draw_player(RED, data->player, R_WIDTH - (R_WIDTH / 4),
-		R_HEIGHT - (R_HEIGHT / 4));
+	ft_draw_player(RED, data->player, W_WIDTH / 50 - (W_WIDTH / 50 / 4),
+		W_HEIGHT / 50 - (W_HEIGHT / 50 / 4));
 	mlx_image_to_window(data->mlx, data->minimap, 0, 0);
-	mlx_image_to_window(data->mlx, data->player, (data->p_x - 1) * R_WIDTH,
-		(data->p_y - 1) * R_HEIGHT);
+	mlx_image_to_window(data->mlx, data->player, (data->p_x - 1) * W_WIDTH / 50,
+		(data->p_y - 1) * W_HEIGHT / 50);
 	ft_center_minimap(data->minimap, data->player);
 }
 
@@ -86,13 +91,13 @@ void	ft_move_minimap(t_data *data, double dx, double dy)
 	iy = (int)fy;
 	if (ix != 0)
 	{
-		data->p_x += ix / (R_WIDTH + 0.0);
+		data->p_x += ix / (W_WIDTH / 50 + 0.0);
 		data->minimap->instances[0].x -= ix;
 		fx -= ix;
 	}
 	if (iy != 0)
 	{
-		data->p_y += iy / (R_HEIGHT + 0.0);
+		data->p_y += iy / (W_HEIGHT / 50 + 0.0);
 		data->minimap->instances[0].y -= iy;
 		fy -= iy;
 	}

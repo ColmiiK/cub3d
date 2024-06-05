@@ -6,12 +6,14 @@ static void	ft_open_door(t_data *data, int y, int x)
 	if (data->map[y][x] == 'L')
 	{
 		data->map[y][x] = 'U';
-		ft_fill_square(UNLOCKED, data->minimap, x * R_WIDTH, y * R_HEIGHT);
+		ft_fill_square(UNLOCKED, data->minimap,
+			x * W_WIDTH / 50, y * W_HEIGHT / 50);
 	}
 	else if (data->map[y][x] == 'U')
 	{
 		data->map[y][x] = 'L';
-		ft_fill_square(LOCKED, data->minimap, x * R_WIDTH, y * R_HEIGHT);
+		ft_fill_square(LOCKED, data->minimap,
+			x * W_WIDTH / 50, y * W_HEIGHT / 50);
 	}
 }
 

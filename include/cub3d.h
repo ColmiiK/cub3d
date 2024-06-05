@@ -8,9 +8,6 @@
 # define W_WIDTH 1500
 # define W_HEIGHT 1500
 
-# define R_WIDTH 1500 / 50
-# define R_HEIGHT 1500 / 50
-
 # define VISION 90
 
 # define BLACK 0x000000ff
