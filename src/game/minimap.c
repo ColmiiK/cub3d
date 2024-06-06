@@ -1,6 +1,6 @@
 #include <cub3d.h>
 
-static void	ft_draw_player(int color, mlx_image_t *player, int x, int y)
+static void	ft_draw_player(t_data *data, int x, int y)
 {
 	int	len_x;
 	int	len_y;
@@ -11,7 +11,7 @@ static void	ft_draw_player(int color, mlx_image_t *player, int x, int y)
 	{
 		x = len_x - (W_WIDTH / 50 / 2);
 		while (++x < len_x)
-			mlx_put_pixel(player, x, y, color);
+			mlx_put_pixel(data->player, x, y, RED);
 	}
 }
 
@@ -70,7 +70,7 @@ void	ft_draw_minimap(t_data *data)
 	data->minimap = mlx_new_image(data->mlx,
 			data->width * W_WIDTH / 50, data->height * W_HEIGHT / 50);
 	ft_fill_minimap(data, data->minimap);
-	ft_draw_player(RED, data->player, W_WIDTH / 50 - (W_WIDTH / 50 / 4),
+	ft_draw_player(data, W_WIDTH / 50 - (W_WIDTH / 50 / 4),
 		W_HEIGHT / 50 - (W_HEIGHT / 50 / 4));
 	mlx_image_to_window(data->mlx, data->minimap, 0, 0);
 	mlx_image_to_window(data->mlx, data->player, (data->p_x - 1) * W_WIDTH / 50,

@@ -59,6 +59,13 @@ static void	ft_player_movement(t_data *data)
 		data->p_a -= 360;
 }
 
+static void ft_move_camera(t_data *data)
+{
+	mlx_get_mouse_pos(data->mlx, &data->m_x, &data->m_y);
+	data->p_a += (data->m_x - (W_WIDTH / 2)) / 50;
+	mlx_set_mouse_pos(data->mlx, W_WIDTH / 2, W_HEIGHT / 2);
+}
+
 void	ft_hook(void *param)
 {
 	t_data	*data;
@@ -70,6 +77,6 @@ void	ft_hook(void *param)
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
 	ft_player_movement(data);
-	mlx_get_mouse_pos(data->mlx, &data->m_x, &data->m_y);
+	ft_move_camera(data);
 	debug_print_mlx(data); // Debug print of player data
 }
