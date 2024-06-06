@@ -64,10 +64,10 @@ typedef struct s_tools
 	int		vector_y;
 	t_coord	*x_cross;
 	t_coord	*y_cross;
-	float	distance_x;
-	float	distance_y;
-	float	ray_angle;
-	float	plyer_angle;
+	double	distance_x;
+	double	distance_y;
+	double	ray_angle;
+	double	plyer_angle;
 }	t_tools;
 
 int		ft_parse_map(t_data *data, char *str);
@@ -92,7 +92,11 @@ int		ft_cleanup(t_data data);
 void	ft_draw_background(t_data *data);
 void	ft_draw_game(t_data *data);
 
+//ray_defines
 t_tools	*vector_define(t_data *data);
+t_coord	*first_step_x(t_data *data, t_tools *tools);
+t_coord	*first_step_y(t_data *data, t_tools *tools);
+//init_raycast
 void	x_wall_finder(t_data *data, t_tools **tools);
 void	y_wall_finder(t_data *data, t_tools **tools);
 void	igomeow(t_data *data);
