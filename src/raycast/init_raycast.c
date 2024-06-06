@@ -1,47 +1,61 @@
 #include <cub3d.h>
 
-void	x_wall_finder(t_data *data, t_tools **tools)
+int	ft_delimiter(t_data *data, t_coord *cross)
+{
+	if (cross->x <= 0 || cross->x >= data->width
+		|| cross->y <= 0 || cross->y >= data->height)
+		return (1);
+	return (0);
+}
+
+t_coord	*x_wall_finder(t_data *data, t_tools *tools)
 {
 	t_coord	*x_cross;
 
-	x_cross = first_step_x(data, *tools);
-	(*tools)->distance_x = (1 / tan(data->p_a)) * (*tools)->vector_x;
-	while (data->map[(int)(x_cross->x)][(int)(x_cross->y)] != '1'
-		&& x_cross->x <= data->width && x_cross->y <= data->height)
+	x_cross = first_step_x(data, tools);
+	tools->distance_x = (fabs)(1 / tan(data->p_a));
+	printf("\t\tX_WALL_FINDER\n");
+	printf("\t\tdistance_x = %f\n", tools->distance_x);
+	printf("\t\tinitial coord: [%f][%f]\n", x_cross->x, x_cross->y);
+	while (data->map[(int)x_cross->x][(int)x_cross->y] != '1'
+		&& ft_delimiter(data, x_cross) != 1)
 	{
-		if (data->p_a != 0 && data->p_a != 180)
+		if (data->p_a != 0 && data->p_a != M_PI)
 		{
-			x_cross->x += (*tools)->distance_x;
-			x_cross->y -= 1 * (*tools)->vector_y;
+			x_cross->y += tools->vector_y;
+			x_cross->x += (tools->distance_x * tools->vector_x);
+			printf("\t\tcoord loop: [%f][%f]\n", x_cross->x, x_cross->y);
+			printf("\t\tmap valor == %c\n", data->map[(int)x_cross->x][(int)x_cross->y]);
 		}
 		else
-			x_cross->x += 1 * (*tools)->vector_x;
-		// printf("calc coords == [%d][%d]\n", (int)(x_cross->x), (int)(x_cross->y));
-		// printf("x_cross->x = [%f] && x_cross->y = [%f]\n", x_cross->x, x_cross->y);
+			x_cross->x += tools->vector_x;
 	}
-	(*tools)->x_cross = x_cross;
+	return (x_cross);
 }
 
-void	y_wall_finder(t_data *data, t_tools **tools)
+t_coord	*y_wall_finder(t_data *data, t_tools *tools)
 {
 	t_coord	*y_cross;
 
-	y_cross = first_step_y(data, *tools);
-	(*tools)->distance_y = tan(data->p_a) * (*tools)->vector_y;
+	y_cross = first_step_y(data, tools);
+	tools->distance_y = (fabs)(tan(data->p_a));
+	printf("\t\tY_WALL_FINDER\n");
+	printf("\t\tdistance_x = %f\n", tools->distance_y);
+	printf("\t\tinitial coord: [%f][%f]\n", y_cross->x, y_cross->y);
 	while (data->map[(int)y_cross->x][(int)y_cross->y] != '1'
-		&& y_cross->x <= data->width && y_cross->y <= data->height)
+		&& ft_delimiter(data, y_cross) != 1)
 	{
-		if (data->p_a != 90 && data->p_a != 270)
+		if (data->p_a != rad_convertor(90) && data->p_a != rad_convertor(270))
 		{
-			y_cross->y -= (*tools)->distance_y;
-			y_cross->x += 1 * (*tools)->vector_x;
+			y_cross->y += (tools->distance_y * tools->vector_y);
+			y_cross->x += tools->vector_x;
+			printf("\t\tcoord loop: [%f][%f]\n", y_cross->x, y_cross->y);
+			printf("\t\tmap valor == %c\n", data->map[(int)y_cross->x][(int)y_cross->y]);
 		}
 		else
-			y_cross->y -= 1 * (*tools)->vector_y;
-		// printf("calc coords == [%d][%d]\n", (int)(y_cross->x), (int)(y_cross->y));
-		// printf("y_cross->x = [%f] && y_cross->y = [%f]\n", y_cross->x, y_cross->y);
+			y_cross->y += tools->vector_y;
 	}
-	(*tools)->y_cross = y_cross;
+	return (y_cross);
 }
 
 void	igomeow(t_data *data)
@@ -50,14 +64,14 @@ void	igomeow(t_data *data)
 
 	tools = vector_define(data);
 	printf("Entering first wall_finder\n\n\n");
-	if (data->p_a != 90 && data->p_a != 270)
+	if (data->p_a != rad_convertor(90) && data->p_a != rad_convertor(270))
 	{
-		x_wall_finder(data, &tools);
+		tools->x_cross = x_wall_finder(data, tools);
 		printf("x_cross == [%f][%f]\n\n\n", tools->x_cross->x, tools->x_cross->y);
 	}
-	if (data->p_a != 0 && data->p_a != 180)
+	if (data->p_a != 0 && data->p_a != M_PI)
 	{
-		y_wall_finder(data, &tools);
+		tools->y_cross = y_wall_finder(data, tools);
 		printf("y_cross == [%f][%f]\n\n\n", tools->y_cross->x, tools->y_cross->y);
 	}
 }
