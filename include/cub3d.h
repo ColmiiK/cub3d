@@ -52,13 +52,23 @@ typedef struct s_data
 
 }	t_data;
 
-typedef struct s_rcast
+typedef struct s_coord
 {
-	int		x_cross;
-	int		y_cross;
-	double	ray_angle;
-	double	plyer_angle;
-}	t_rcast;
+	double	x;
+	double	y;
+}	t_coord;
+
+typedef struct s_tools
+{
+	int		vector_x;
+	int		vector_y;
+	t_coord	*x_cross;
+	t_coord	*y_cross;
+	float	distance_x;
+	float	distance_y;
+	float	ray_angle;
+	float	plyer_angle;
+}	t_tools;
 
 int		ft_parse_map(t_data *data, char *str);
 int		ft_extract_info(t_data *data, char **cub);
@@ -81,5 +91,10 @@ int		ft_cleanup(t_data data);
 
 void	ft_draw_background(t_data *data);
 void	ft_draw_game(t_data *data);
+
+t_tools	*vector_define(t_data *data);
+void	x_wall_finder(t_data *data, t_tools **tools);
+void	y_wall_finder(t_data *data, t_tools **tools);
+void	igomeow(t_data *data);
 
 #endif

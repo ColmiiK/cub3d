@@ -56,8 +56,11 @@ static void	ft_draw_border(t_data *data)
 
 void	ft_draw_game(t_data *data)
 {
+
 	ft_draw_background(data);
 	ft_draw_border(data);
 	ft_draw_minimap(data);
 	mlx_image_to_window(data->mlx, data->game_img, 0, 0);
+	data->p_a = 45;
+	igomeow(data);	
 }
