@@ -30,32 +30,38 @@ t_tools	*vector_define(t_data *data)
 t_coord	*first_step_x(t_data *data, t_tools *tools)
 {
 	t_coord	*first_x;
+	t_coord	*init;
 	double	distance;
 
 	first_x = malloc(sizeof(t_coord));
-	if (!first_x)
+	init = malloc(sizeof(t_coord));
+	if (!init || !first_x)
 		return (NULL);
+	init->x = data->p_x;
+	init->y = data->p_y;
 	first_x->y = (int)(data->p_y);
 	if (data->p_a > 0 && data->p_a < M_PI)
 		first_x->y += 1;
 	distance = (fabs)(first_x->y - data->p_y);
 	first_x->x = distance / tan(data->p_a);
 	first_x->x = data->p_x + (first_x->x * tools->vector_y);
-	printf("\n\t\tsaliendo del first_step_x:\n");
-	printf("\t\tdistance == %f\n\t\tdata->p_a == %f\n\t\tdist/tan(data->p_a) == %f", distance, data->p_a, distance / tan(data->p_a));
-	printf("\t\tvector_x == %d\n", tools->vector_x);
-	printf("\t\tfirst_x->x = %f\n\t\tfirst_x->y = %f\n\n", first_x->x, first_x->y);
+	if (ft_delimiter(data, first_x) == 1)
+		return(init);
 	return (first_x);
 }
 
 t_coord	*first_step_y(t_data *data, t_tools *tools)
 {
 	t_coord	*first_y;
+	t_coord	*init;
 	double	distance;
 
 	first_y = malloc(sizeof(t_coord));
-	if (!first_y)
+	init = malloc(sizeof(t_coord));
+	if (!first_y || !init)
 		return (NULL);
+	init->x = data->p_x;
+	init->y = data->p_y;
 	first_y->x = (int)(data->p_x);
 	if (!(data->p_a > rad_convertor(90)
 			&& data->p_a < rad_convertor(270)))
@@ -63,8 +69,7 @@ t_coord	*first_step_y(t_data *data, t_tools *tools)
 	distance = (fabs)(first_y->x - data->p_x);
 	first_y->y = distance * tan(data->p_a);
 	first_y->y = data->p_y + (first_y->y * tools->vector_x);
-	printf("\n\t\tsaliendo del first_step_y:\n");
-	printf("\t\tvector_y == %d\n", tools->vector_y);
-	printf("\t\tfirst_y->x = %f\n\t\tfirst_y->y = %f\n\n", first_y->x, first_y->y);
+	if (ft_delimiter(data, first_y) == 1)
+		return (init);
 	return (first_y);
 }
