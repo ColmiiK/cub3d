@@ -93,6 +93,7 @@ void	ft_draw_background(t_data *data);
 void	ft_draw_game(t_data *data);
 
 //ray_defines
+double	rad_convertor(double deg);
 t_tools	*vector_define(t_data *data);
 t_coord	*first_step_x(t_data *data, t_tools *tools);
 t_coord	*first_step_y(t_data *data, t_tools *tools);
