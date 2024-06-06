@@ -7,7 +7,7 @@ static int	ft_check_for_letters(char **map)
 	int		count;
 	char	*allowed;
 
-	allowed = " 10NSEW";
+	allowed = " 10NSEWLU";
 	i = -1;
 	count = 0;
 	while (map[++i])

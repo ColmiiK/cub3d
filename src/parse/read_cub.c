@@ -1,9 +1,9 @@
 #include <cub3d.h>
 
-static int ft_check_empty_lines(t_data *data, char **str)
+static int	ft_check_empty_lines(t_data *data, char **str)
 {
-	int i;
-	char *temp;
+	int		i;
+	char	*temp;
 
 	temp = *str;
 	i = ft_strlen(temp);
@@ -20,7 +20,7 @@ static int ft_check_empty_lines(t_data *data, char **str)
 	return (0);
 }
 
-int ft_read_cub_file(t_data *data, char *str)
+int	ft_read_cub_file(t_data *data, char *str)
 {
 	int		fd;
 	char	*line;

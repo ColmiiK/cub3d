@@ -22,6 +22,8 @@ static int	ft_setup_struct(t_data *data)
 	data->texture = ft_calloc(1, sizeof(t_tex));
 	data->m_x = 0;
 	data->m_y = 0;
+	data->frame = 0;
+	data->shooting_gun = false;
 	if (!data->texture)
 		return (1);
 	return (0);

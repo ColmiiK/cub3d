@@ -6,9 +6,11 @@ int	ft_initialize_mlx(t_data *data)
 	data->game_img = mlx_new_image(data->mlx, W_WIDTH, W_HEIGHT);
 	if (!data->mlx)
 		return (1);
-	mlx_loop_hook(data->mlx, &ft_keyhook, data);
 	ft_draw_game(data);
-	printf("p_a == %f\n", data->p_a);
+	ft_load_sprites(data);
+	mlx_loop_hook(data->mlx, &ft_hook, data);
+	mlx_mouse_hook(data->mlx, &ft_mousehook, data);
+	mlx_key_hook(data->mlx, &ft_keyhook, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
 	return (0);

@@ -1,6 +1,6 @@
 #include <cub3d.h>
 
-static int ft_extract_map(t_data *data, char **cub)
+static int	ft_extract_map(t_data *data, char **cub)
 {
 	int	i;
 
@@ -21,7 +21,7 @@ static int ft_extract_map(t_data *data, char **cub)
 	return (0);
 }
 
-static int ft_copy_ppos(t_data *data, int i, int j)
+static int	ft_copy_ppos(t_data *data, int i, int j)
 {
 	if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
 		|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
@@ -41,10 +41,10 @@ static int ft_copy_ppos(t_data *data, int i, int j)
 	return (1);
 }
 
-static void ft_obtain_ppos(t_data *data, char **map)
+static void	ft_obtain_ppos(t_data *data, char **map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (map[++i])
@@ -58,12 +58,34 @@ static void ft_obtain_ppos(t_data *data, char **map)
 	}
 }
 
-int ft_parse_map(t_data *data, char *str)
+static int	ft_extract_sprites(t_data *data)
+{
+	data->texture->sprite[0] = mlx_load_png("./textures/gun/f0.png");
+	if (!data->texture->sprite[0])
+		return (1);
+	data->texture->sprite[1] = mlx_load_png("./textures/gun/f1.png");
+	if (!data->texture->sprite[1])
+		return (1);
+	data->texture->sprite[2] = mlx_load_png("./textures/gun/f2.png");
+	if (!data->texture->sprite[2])
+		return (1);
+	data->texture->sprite[3] = mlx_load_png("./textures/gun/f3.png");
+	if (!data->texture->sprite[3])
+		return (1);
+	data->texture->sprite[4] = mlx_load_png("./textures/gun/f4.png");
+	if (!data->texture->sprite[4])
+		return (1);
+	return (0);
+}
+
+int	ft_parse_map(t_data *data, char *str)
 {
 	if (ft_read_cub_file(data, str))
 		return (ft_error("Unable to read .cub file"));
 	if (ft_extract_info(data, data->cub))
 		return (ft_error("Unable to extract information from .cub file"));
+	if (ft_extract_sprites(data))
+		return (ft_error("Unable to load sprites"));
 	if (ft_extract_map(data, data->cub))
 		return (ft_error("Unable to extract map information from .cub file"));
 	ft_obtain_ppos(data, data->map);

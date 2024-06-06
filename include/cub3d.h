@@ -5,11 +5,8 @@
 # include <libft.h>
 # include <math.h>
 
-# define W_WIDTH 2000
-# define W_HEIGHT 2000
-
-# define R_WIDTH 2000 / 50
-# define R_HEIGHT 2000 / 50
+# define W_WIDTH 1500
+# define W_HEIGHT 1500
 
 # define VISION 90
 
@@ -19,9 +16,13 @@
 # define GRAY 0x808080ff
 # define BLUE 0x0000ffff
 # define PINK 0xF8A4A7ff
+# define LOCKED 0x3B3B3Bff
+# define UNLOCKED 0xA7A7A7ff
 
 typedef struct s_tex
 {
+	mlx_texture_t	*sprite[5];
+	mlx_image_t		*i_sprite[5];
 	mlx_texture_t	*north;
 	mlx_texture_t	*south;
 	mlx_texture_t	*east;
@@ -39,13 +40,15 @@ typedef struct s_data
 	mlx_image_t	*game_img;
 	char		**map;
 	char		**cub;
-	float		p_x;
-	float		p_y;
-	float		p_a;
+	double		p_x;
+	double		p_y;
+	double		p_a;
 	int			m_x;
 	int			m_y;
 	int			width;
 	int			height;
+	int			frame;
+	bool		shooting_gun;
 
 }	t_data;
 
@@ -75,9 +78,14 @@ int		ft_check_longest_line(char **map);
 int		ft_inject_space(char **map);
 
 int		ft_initialize_mlx(t_data *data);
-void	ft_keyhook(void *param);
-void	ft_move_minimap(t_data *data, int x, int y);
+void	ft_load_sprites(t_data *data);
+void	ft_hook(void *param);
+void	ft_mousehook(mouse_key_t button, action_t action,
+			modifier_key_t mods, void *param);
+void	ft_keyhook(mlx_key_data_t keydata, void *param);
+void	ft_move_minimap(t_data *data, double x, double y);
 void	ft_draw_minimap(t_data *data);
+void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y);
 
 int		ft_cleanup(t_data data);
 
