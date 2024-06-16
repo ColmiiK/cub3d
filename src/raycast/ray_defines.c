@@ -1,5 +1,29 @@
 #include <cub3d.h>
 
+double	x_distance(t_data *data)
+{
+	double	distance_x;
+
+	if ((fabs)(1 / tan(data->p_a)) == 0
+		|| (fabs)(1 / tan(data->p_a)) >= INT32_MAX)
+		distance_x = 1;
+	else
+		distance_x = (fabs)(1 / tan(data->p_a));
+	return (distance_x);
+}
+
+double	y_distance(t_data *data)
+{
+	double	distance_y;
+
+	if ((fabs)(tan(data->p_a)) == 0
+		|| (fabs)(tan(data->p_a)) >= INT32_MAX)
+		distance_y = 1;
+	else
+		distance_y = (fabs)(tan(data->p_a));
+	return (distance_y);
+}
+
 double	rad_convertor(double deg)
 {
 	double	rad;

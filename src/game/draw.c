@@ -61,6 +61,6 @@ void	ft_draw_game(t_data *data)
 	ft_draw_border(data);
 	ft_draw_minimap(data);
 	mlx_image_to_window(data->mlx, data->game_img, 0, 0);
-	data->p_a = 195 * (M_PI / 180);
+	data->p_a = 210 * (M_PI / 180);
 	igomeow(data);	
 }
