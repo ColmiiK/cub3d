@@ -91,19 +91,27 @@ int		ft_cleanup(t_data data);
 
 void	ft_draw_background(t_data *data);
 void	ft_draw_game(t_data *data);
-void	ray_loop(t_data *data);
+
+//				RAYCASTING
+//first_step
+t_coord	*first_step_x(t_data *data, t_tools *tools);
+t_coord	*first_step_y(t_data *data, t_tools *tools);
+
+//init_raycast
+t_coord	*x_wall_finder(t_data *data, t_tools *tools);
+t_coord	*y_wall_finder(t_data *data, t_tools *tools);
+double	wall_distance(t_data *data);
 
 //ray_defines
 double	x_distance(t_data *data);
 double	y_distance(t_data *data);
-double	rad_convertor(double deg);
 t_tools	*vector_define(t_data *data);
-t_coord	*first_step_x(t_data *data, t_tools *tools);
-t_coord	*first_step_y(t_data *data, t_tools *tools);
-//init_raycast
+
+//ray_utils
+double	rad_convertor(double deg);
 int		ft_delimiter(t_data *data, t_coord *cross);
-t_coord	*x_wall_finder(t_data *data, t_tools *tools);
-t_coord	*y_wall_finder(t_data *data, t_tools *tools);
-double	igomeow(t_data *data);
+
+//raycast_loop
+void	ray_loop(t_data *data);
 
 #endif

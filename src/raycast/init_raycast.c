@@ -1,13 +1,7 @@
 #include <cub3d.h>
 
-int	ft_delimiter(t_data *data, t_coord *cross)
-{
-	if (cross->x <= 0 || cross->x >= data->width
-		|| cross->y <= 0 || cross->y >= data->height)
-		return (1);
-	return (0);
-}
-
+// We're starting a loop in which we'll check, based in x, if the matrix 
+// square where we are is a wall, returning the coordinates
 t_coord	*x_wall_finder(t_data *data, t_tools *tools)
 {
 	t_coord	*x_cross;
@@ -28,6 +22,8 @@ t_coord	*x_wall_finder(t_data *data, t_tools *tools)
 	return (x_cross);
 }
 
+// We're starting a loop in which we'll check, based in y, if the matrix 
+// square where we are is a wall, returning the coordinates
 t_coord	*y_wall_finder(t_data *data, t_tools *tools)
 {
 	t_coord	*y_cross;
@@ -48,18 +44,19 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools)
 	return (y_cross);
 }
 
-double	igomeow(t_data *data)
+// This function will return the shortest distance to the closest
+// wall checking both collision coords from the wall_finders functions
+double	wall_distance(t_data *data)
 {
 	t_tools	*tools;
 
-	// printf("data->p_a == %f\n", data->p_a);
 	tools = vector_define(data);
 	tools->x_cross = x_wall_finder(data, tools);
-	// printf("x_cross->x == %f && x_cross_y == %f\n", tools->x_cross->x, tools->x_cross->y);
 	tools->y_cross = y_wall_finder(data, tools);
-	// printf("y_cross->x == %f && y_cross_y == %f\n", tools->y_cross->x, tools->y_cross->y);
-	tools->distance_x = sqrt(pow(tools->x_cross->x - data->p_x, 2) + pow(tools->x_cross->y - data->p_y, 2));
-	tools->distance_y = sqrt(pow(tools->y_cross->x - data->p_x, 2) + pow(tools->y_cross->y - data->p_y, 2));
+	tools->distance_x = sqrt(pow(tools->x_cross->x - data->p_x, 2)
+			+ pow(tools->x_cross->y - data->p_y, 2));
+	tools->distance_y = sqrt(pow(tools->y_cross->x - data->p_x, 2)
+			+ pow(tools->y_cross->y - data->p_y, 2));
 	if (tools->distance_x > tools->distance_y)
 		return (tools->distance_y);
 	return (tools->distance_x);
