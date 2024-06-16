@@ -5,7 +5,7 @@ double	x_distance(t_data *data)
 	double	distance_x;
 
 	if ((fabs)(1 / tan(data->p_a)) == 0
-		|| (fabs)(1 / tan(data->p_a)) >= INT32_MAX)
+		|| (fabs)(1 / tan(data->p_a)) >= data->width)
 		distance_x = 1;
 	else
 		distance_x = (fabs)(1 / tan(data->p_a));
@@ -17,7 +17,7 @@ double	y_distance(t_data *data)
 	double	distance_y;
 
 	if ((fabs)(tan(data->p_a)) == 0
-		|| (fabs)(tan(data->p_a)) >= INT32_MAX)
+		|| (fabs)(tan(data->p_a)) >= data->height)
 		distance_y = 1;
 	else
 		distance_y = (fabs)(tan(data->p_a));
@@ -70,7 +70,7 @@ t_coord	*first_step_x(t_data *data, t_tools *tools)
 	first_x->x = distance / tan(data->p_a);
 	first_x->x = data->p_x + (first_x->x * tools->vector_y);
 	if (ft_delimiter(data, first_x) == 1)
-		return(init);
+		return (init);
 	return (first_x);
 }
 

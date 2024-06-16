@@ -91,6 +91,7 @@ int		ft_cleanup(t_data data);
 
 void	ft_draw_background(t_data *data);
 void	ft_draw_game(t_data *data);
+void	ray_loop(t_data *data);
 
 //ray_defines
 double	x_distance(t_data *data);
@@ -103,6 +104,6 @@ t_coord	*first_step_y(t_data *data, t_tools *tools);
 int		ft_delimiter(t_data *data, t_coord *cross);
 t_coord	*x_wall_finder(t_data *data, t_tools *tools);
 t_coord	*y_wall_finder(t_data *data, t_tools *tools);
-void	igomeow(t_data *data);
+double	igomeow(t_data *data);
 
 #endif
