@@ -4,9 +4,9 @@ void ft_draw_walls(t_data *data, int x, int size)
 {
 	int y;
 
-	y = -1;
-	while (++y < size)
-		mlx_put_pixel(data->wall, x, y, BLACK);
+	y = (size / 2) * -1 ;
+	while (++y < size / 2)
+		mlx_put_pixel(data->wall, x, y + (W_HEIGHT / 2), BLACK);
 }
 
 // Prototype of the loop that will shoot one ray per coordinate
@@ -28,8 +28,7 @@ void	ray_loop(t_data *data)
 	{
 		distance = wall_distance(data);
 		// printf("distance en width(%d) == %f, ang == %f\n", width, distance, data->p_a);
-		//W_HEIGHT - (size * W_HEIGHT / max_size);
-		ft_draw_walls(data, width, W_HEIGHT - (distance * 100));
+		ft_draw_walls(data, width, (distance * 100));
 		if (data->p_a + scale >= 2 * M_PI)
 			data->p_a = data->p_a - (2 * M_PI) + scale;
 		else
