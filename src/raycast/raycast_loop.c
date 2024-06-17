@@ -2,19 +2,12 @@
 
 void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 {
-	int	size;
 	int	y;
 
-	size = 400 / tools->distance_x;
-	if (tools->distance_x > tools->distance_y)
-		size = 400 / tools->distance_y;
-	y = ((W_HEIGHT - size) / 2);
-	while (y < ((W_HEIGHT + size) / 2))
+	y = ((W_HEIGHT - tools->wall_size) / 2);
+	while (y < ((W_HEIGHT + tools->wall_size) / 2))
 	{
-		if (tools->distance_x > tools->distance_y)
-			mlx_put_pixel(data->wall, x, y, BLACK);
-		else
-			mlx_put_pixel(data->wall, x, y, WHITE);
+		mlx_put_pixel(data->wall, x, y, tools->orientation);
 		y++;
 	}
 }
@@ -37,6 +30,7 @@ void	ray_loop(t_data *data)
 	while (width <= W_WIDTH)
 	{
 		tools = wall_distance(data);
+		define_orientation(tools);
 		// printf("distance en width(%d) == %f, ang == %f\n", width, distance, data->p_a);
 		ft_draw_walls(data, width, tools);
 		if (data->p_a + scale >= 2 * M_PI)
