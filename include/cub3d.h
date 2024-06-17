@@ -18,6 +18,7 @@
 # define PINK 0xF8A4A7ff
 # define LOCKED 0x3B3B3Bff
 # define UNLOCKED 0xA7A7A7ff
+# define TRANSPARENT 0x00000000
 
 typedef struct s_tex
 {

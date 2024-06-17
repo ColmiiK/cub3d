@@ -66,12 +66,31 @@ static void ft_move_camera(t_data *data)
 	mlx_set_mouse_pos(data->mlx, W_WIDTH / 2, W_HEIGHT / 2);
 }
 
+void ft_clean_walls(t_data *data)
+{
+	int y;
+	int x;
+
+	x = -1;
+	while (++x < W_HEIGHT)
+	{
+		y = -1;
+		while (++y < W_WIDTH)
+		{
+			mlx_put_pixel(data->wall, y, x, TRANSPARENT);
+		}
+	}
+}
+
 void	ft_hook(void *param)
 {
 	t_data	*data;
 
 	data = param;
 	data->frame++;
+	if (data->wall)
+		ft_clean_walls(data);
+	ray_loop(data);
 	if (data->shooting_gun == true)
 		ft_shoot_the_gun(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
