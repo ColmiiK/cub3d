@@ -101,7 +101,7 @@ t_coord	*first_step_y(t_data *data, t_tools *tools);
 //init_raycast
 t_coord	*x_wall_finder(t_data *data, t_tools *tools);
 t_coord	*y_wall_finder(t_data *data, t_tools *tools);
-double	wall_distance(t_data *data);
+t_tools	*wall_distance(t_data *data);
 
 //ray_defines
 double	x_distance(t_data *data);

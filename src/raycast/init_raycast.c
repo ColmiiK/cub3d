@@ -46,7 +46,7 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools)
 
 // This function will return the shortest distance to the closest
 // wall checking both collision coords from the wall_finders functions
-double	wall_distance(t_data *data)
+t_tools	*wall_distance(t_data *data)
 {
 	t_tools	*tools;
 
@@ -57,7 +57,5 @@ double	wall_distance(t_data *data)
 			+ pow(tools->x_cross->y - data->p_y, 2));
 	tools->distance_y = sqrt(pow(tools->y_cross->x - data->p_x, 2)
 			+ pow(tools->y_cross->y - data->p_y, 2));
-	if (tools->distance_x > tools->distance_y)
-		return (tools->distance_y);
-	return (tools->distance_x);
+	return (tools);
 }
