@@ -22,21 +22,20 @@ void	ray_loop(t_data *data)
 
 	width = 0;
 	scale = rad_convertor(0.09);
-	if (data->p_a - 45 < 0)
-		data->p_a = data->p_a + 315;
+	if (data->p_a - rad_convertor(45) < 0)
+		data->angle = data->p_a + rad_convertor(315);
 	else
-		data->p_a = data->p_a - 45;
-	data->p_a = rad_convertor(data->p_a);
+		data->angle = data->p_a - rad_convertor(45);
 	while (width <= W_WIDTH)
 	{
 		tools = wall_distance(data);
 		define_orientation(tools);
 		// printf("distance en width(%d) == %f, ang == %f\n", width, distance, data->p_a);
 		ft_draw_walls(data, width, tools);
-		if (data->p_a + scale >= 2 * M_PI)
-			data->p_a = data->p_a - (2 * M_PI) + scale;
+		if (data->angle + scale >= 2 * M_PI)
+			data->angle = data->angle - (2 * M_PI) + scale;
 		else
-			data->p_a = data->p_a + scale;
+			data->angle = data->angle + scale;
 		width++;
 	}
 }

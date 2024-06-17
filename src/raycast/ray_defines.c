@@ -26,11 +26,11 @@ double	x_distance(t_data *data)
 {
 	double	distance_x;
 
-	if ((fabs)(1 / tan(data->p_a)) == 0
-		|| (fabs)(1 / tan(data->p_a)) >= data->width)
+	if ((fabs)(1 / tan(data->angle)) == 0
+		|| (fabs)(1 / tan(data->angle)) >= data->width)
 		distance_x = 1;
 	else
-		distance_x = (fabs)(1 / tan(data->p_a));
+		distance_x = (fabs)(1 / tan(data->angle));
 	return (distance_x);
 }
 
@@ -39,11 +39,11 @@ double	y_distance(t_data *data)
 {
 	double	distance_y;
 
-	if ((fabs)(tan(data->p_a)) == 0
-		|| (fabs)(tan(data->p_a)) >= data->height)
+	if ((fabs)(tan(data->angle)) == 0
+		|| (fabs)(tan(data->angle)) >= data->height)
 		distance_y = 1;
 	else
-		distance_y = (fabs)(tan(data->p_a));
+		distance_y = (fabs)(tan(data->angle));
 	return (distance_y);
 }
 
@@ -59,10 +59,10 @@ t_tools	*vector_define(t_data *data)
 	tools->vector_y = 1;
 	tools->x_cross = NULL;
 	tools->y_cross = NULL;
-	if (!(data->p_a >= 0 && data->p_a <= M_PI))
+	if (!(data->angle >= 0 && data->angle <= M_PI))
 		tools->vector_y = -1;
-	if (data->p_a >= rad_convertor(90)
-		&& data->p_a <= rad_convertor(270))
+	if (data->angle >= rad_convertor(90)
+		&& data->angle <= rad_convertor(270))
 		tools->vector_x = -1;
 	return (tools);
 }

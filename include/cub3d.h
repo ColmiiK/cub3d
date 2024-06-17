@@ -45,6 +45,7 @@ typedef struct s_data
 	double		p_x;
 	double		p_y;
 	double		p_a;
+	double		angle;
 	int			m_x;
 	int			m_y;
 	int			width;
