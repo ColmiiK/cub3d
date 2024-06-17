@@ -59,12 +59,12 @@ static void	ft_player_movement(t_data *data)
 		data->p_a -= rad_convertor(360);
 }
 
-// static void ft_move_camera(t_data *data)
-// {
-// 	mlx_get_mouse_pos(data->mlx, &data->m_x, &data->m_y);
-// 	data->p_a += (data->m_x - (W_WIDTH / 2)) / 50;
-// 	mlx_set_mouse_pos(data->mlx, W_WIDTH / 2, W_HEIGHT / 2);
-// }
+static void ft_move_camera(t_data *data)
+{
+	mlx_get_mouse_pos(data->mlx, &data->m_x, &data->m_y);
+	data->p_a += rad_convertor((data->m_x - (W_WIDTH / 2)) / 50);
+	mlx_set_mouse_pos(data->mlx, W_WIDTH / 2, W_HEIGHT / 2);
+}
 
 void ft_clean_walls(t_data *data)
 {
@@ -88,14 +88,13 @@ void	ft_hook(void *param)
 
 	data = param;
 	data->frame++;
-	if (data->wall)
-		ft_clean_walls(data);
+	ft_clean_walls(data);
 	ray_loop(data);
 	if (data->shooting_gun == true)
 		ft_shoot_the_gun(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
 	ft_player_movement(data);
-	// ft_move_camera(data);
+	ft_move_camera(data);
 	debug_print_mlx(data); // Debug print of player data
 }
