@@ -61,6 +61,8 @@ typedef struct s_coord
 
 typedef struct s_tools
 {
+	int		orientation;
+	int		wall_size;
 	int		vector_x;
 	int		vector_y;
 	t_coord	*x_cross;
@@ -104,6 +106,7 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools);
 t_tools	*wall_distance(t_data *data);
 
 //ray_defines
+void	define_orientation(t_tools *tools);
 double	x_distance(t_data *data);
 double	y_distance(t_data *data);
 t_tools	*vector_define(t_data *data);
