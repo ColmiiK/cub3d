@@ -29,13 +29,13 @@ static int	ft_copy_ppos(t_data *data, int i, int j)
 		data->p_x = j + 0.5;
 		data->p_y = i + 0.5;
 		if (data->map[i][j] == 'N')
-			data->p_a = 270;
+			data->p_a = rad_convertor(270);
 		if (data->map[i][j] == 'S')
-			data->p_a = 90;
+			data->p_a = rad_convertor(90);
 		if (data->map[i][j] == 'E')
-			data->p_a = 0;
+			data->p_a = rad_convertor(0);
 		if (data->map[i][j] == 'W')
-			data->p_a = 180;
+			data->p_a = rad_convertor(180);
 		return (0);
 	}
 	return (1);

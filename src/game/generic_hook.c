@@ -5,7 +5,7 @@ static void	debug_print_mlx(t_data *data)
 	char				buffer[250];
 	static mlx_image_t	*img;
 
-	sprintf(buffer, "p_x: %.1f\np_y: %.1f\np_a: %03.0f\nm_x: %04d\nm_y: %04d\nfps: %.1f\n",
+	sprintf(buffer, "p_x: %.1f\np_y: %.2f\np_a: %.2f\nm_x: %04d\nm_y: %04d\nfps: %.1f\n",
 		data->p_x, data->p_y, data->p_a, data->m_x, data->m_y, 1 / data->mlx->delta_time);
 	if (img)
 		mlx_delete_image(data->mlx, img);
@@ -40,7 +40,7 @@ static void	ft_player_movement(t_data *data)
 {
 	double	rad;
 
-	rad = data->p_a * M_PI / 180.0;
+	rad = data->p_a;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
 		ft_move_minimap(data, cos(rad), sin(rad));
 	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
@@ -50,21 +50,21 @@ static void	ft_player_movement(t_data *data)
 	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
 		ft_move_minimap(data, cos(rad + M_PI / 2), sin(rad + M_PI / 2));
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-		data->p_a += 1.0;
+		data->p_a += rad_convertor(1.0);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
-		data->p_a -= 1.0;
-	if (data->p_a < 0)
-		data->p_a += 360;
-	if (data->p_a >= 360)
-		data->p_a -= 360;
+		data->p_a -= rad_convertor(1.0);
+	if (data->p_a < rad_convertor(0))
+		data->p_a += rad_convertor(360);
+	if (data->p_a >= rad_convertor(360))
+		data->p_a -= rad_convertor(360);
 }
 
-static void ft_move_camera(t_data *data)
-{
-	mlx_get_mouse_pos(data->mlx, &data->m_x, &data->m_y);
-	data->p_a += (data->m_x - (W_WIDTH / 2)) / 50;
-	mlx_set_mouse_pos(data->mlx, W_WIDTH / 2, W_HEIGHT / 2);
-}
+// static void ft_move_camera(t_data *data)
+// {
+// 	mlx_get_mouse_pos(data->mlx, &data->m_x, &data->m_y);
+// 	data->p_a += (data->m_x - (W_WIDTH / 2)) / 50;
+// 	mlx_set_mouse_pos(data->mlx, W_WIDTH / 2, W_HEIGHT / 2);
+// }
 
 void ft_clean_walls(t_data *data)
 {
@@ -96,6 +96,6 @@ void	ft_hook(void *param)
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
 	ft_player_movement(data);
-	ft_move_camera(data);
+	// ft_move_camera(data);
 	debug_print_mlx(data); // Debug print of player data
 }
