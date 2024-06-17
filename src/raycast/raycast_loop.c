@@ -1,19 +1,29 @@
 #include <cub3d.h>
 
-void ft_draw_walls(t_data *data, int x, int size)
+void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 {
-	int y;
+	int	size;
+	int	y;
 
-	y = (size / 2) * -1 ;
-	while (++y < size / 2)
-		mlx_put_pixel(data->wall, x, y + (W_HEIGHT / 2), BLACK);
+	size = 400 / tools->distance_x;
+	if (tools->distance_x > tools->distance_y)
+		size = 400 / tools->distance_y;
+	y = ((W_HEIGHT - size) / 2);
+	while (y < ((W_HEIGHT + size) / 2))
+	{
+		if (tools->distance_x > tools->distance_y)
+			mlx_put_pixel(data->wall, x, y, BLACK);
+		else
+			mlx_put_pixel(data->wall, x, y, WHITE);
+		y++;
+	}
 }
 
 // Prototype of the loop that will shoot one ray per coordinate
 // and draw the needed line
 void	ray_loop(t_data *data)
 {
-	double	distance;
+	t_tools	*tools;
 	double	scale;
 	int		width;
 
@@ -26,9 +36,9 @@ void	ray_loop(t_data *data)
 	data->p_a = rad_convertor(data->p_a);
 	while (width <= W_WIDTH)
 	{
-		distance = wall_distance(data);
+		tools = wall_distance(data);
 		// printf("distance en width(%d) == %f, ang == %f\n", width, distance, data->p_a);
-		ft_draw_walls(data, width, (distance * 100));
+		ft_draw_walls(data, width, tools);
 		if (data->p_a + scale >= 2 * M_PI)
 			data->p_a = data->p_a - (2 * M_PI) + scale;
 		else
