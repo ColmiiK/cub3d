@@ -5,8 +5,8 @@
 # include <libft.h>
 # include <math.h>
 
-# define W_WIDTH 1500
-# define W_HEIGHT 1500
+# define W_WIDTH 1000
+# define W_HEIGHT 1000
 
 # define VISION 90
 
@@ -38,6 +38,7 @@ typedef struct s_data
 	mlx_image_t	*minimap;
 	mlx_image_t	*player;
 	mlx_image_t	*game_img;
+	mlx_image_t *wall;
 	char		**map;
 	char		**cub;
 	double		p_x;

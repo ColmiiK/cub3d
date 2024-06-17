@@ -61,6 +61,7 @@ void	ft_draw_game(t_data *data)
 	ft_draw_border(data);
 	ft_draw_minimap(data);
 	mlx_image_to_window(data->mlx, data->game_img, 0, 0);
-	data->p_a = 210;
+	mlx_image_to_window(data->mlx, data->wall, 0, 0);
+	// data->p_a = 210;
 	ray_loop(data);	
 }
