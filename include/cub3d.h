@@ -94,7 +94,7 @@ void	ft_move_minimap(t_data *data, double x, double y);
 void	ft_draw_minimap(t_data *data);
 void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y);
 
-int		ft_cleanup(t_data data);
+void	ft_cleanup(t_data data);
 
 void	ft_draw_background(t_data *data);
 void	ft_draw_game(t_data *data);
