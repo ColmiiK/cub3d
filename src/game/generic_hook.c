@@ -73,7 +73,10 @@ static void	ft_clean_walls(t_data *data)
 	{
 		y = -1;
 		while (++y < W_WIDTH)
+		{
 			mlx_put_pixel(data->wall, y, x, TRANSPARENT);
+			mlx_put_pixel(data->line, y, x, TRANSPARENT);
+		}
 	}
 }
 
