@@ -1,12 +1,9 @@
 #include <cub3d.h>
 
 // Converts degrees to radians
-double	rad_convertor(double deg)
+inline double	rad_convertor(double deg)
 {
-	double	rad;
-
-	rad = deg * (M_PI / 180);
-	return (rad);
+	return (deg * (M_PI / 180));
 }
 
 // Checks if the calculated valued is out of the correct range
