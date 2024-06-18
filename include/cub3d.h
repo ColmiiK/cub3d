@@ -40,6 +40,7 @@ typedef struct s_data
 	mlx_image_t	*player;
 	mlx_image_t	*game_img;
 	mlx_image_t *wall;
+	mlx_image_t *debug_info;
 	char		**map;
 	char		**cub;
 	double		p_x;
@@ -52,6 +53,7 @@ typedef struct s_data
 	int			height;
 	int			frame;
 	bool		shooting_gun;
+	bool		debug_flag;
 
 }	t_data;
 

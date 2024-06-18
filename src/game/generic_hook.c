@@ -1,18 +1,15 @@
 #include <cub3d.h>
 
-static void	debug_print_mlx(t_data *data)
+static void	ft_debug_print_mlx(t_data *data)
 {
-	char				buffer[250];
-	static mlx_image_t	*img;
+	char	buffer[250];
 
 	sprintf(buffer, "p_x: %.1f\np_y: %.2f\np_a: %.2f\nm_x: %04d\nm_y: %04d\nfps: %.1f\n",
 		data->p_x, data->p_y, data->p_a, data->m_x, data->m_y, 1 / data->mlx->delta_time);
-	if (img)
-		mlx_delete_image(data->mlx, img);
-	img = mlx_put_string(data->mlx, buffer, 5, 5);
+	data->debug_info = mlx_put_string(data->mlx, buffer, 5, 0);
 }
 
-static void	ft_shoot_the_gun(t_data *data)
+static void	ft_shoot_the_gun(t_data *data) 
 {
 	static int	anim_counter = 0;
 
@@ -59,26 +56,24 @@ static void	ft_player_movement(t_data *data)
 		data->p_a -= rad_convertor(360);
 }
 
-static void ft_move_camera(t_data *data)
+static void	ft_move_camera(t_data *data)
 {
 	mlx_get_mouse_pos(data->mlx, &data->m_x, &data->m_y);
 	data->p_a += rad_convertor((data->m_x - (W_WIDTH / 2)) / 50);
 	mlx_set_mouse_pos(data->mlx, W_WIDTH / 2, W_HEIGHT / 2);
 }
 
-void ft_clean_walls(t_data *data)
+static void	ft_clean_walls(t_data *data)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	x = -1;
 	while (++x < W_HEIGHT)
 	{
 		y = -1;
 		while (++y < W_WIDTH)
-		{
 			mlx_put_pixel(data->wall, y, x, TRANSPARENT);
-		}
 	}
 }
 
@@ -96,5 +91,8 @@ void	ft_hook(void *param)
 		mlx_close_window(data->mlx);
 	ft_player_movement(data);
 	ft_move_camera(data);
-	debug_print_mlx(data); // Debug print of player data
+	if (data->debug_info)
+		mlx_delete_image(data->mlx, data->debug_info);
+	if (data->debug_flag)
+		ft_debug_print_mlx(data);
 }

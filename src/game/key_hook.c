@@ -38,4 +38,6 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 			|| (data->p_a >= 360 - 45 && data->p_a < 360))
 			ft_open_door(data, y, x + 1);
 	}
+	if (keydata.key == MLX_KEY_Q && keydata.action == MLX_PRESS)
+		data->debug_flag = !data->debug_flag; 
 }

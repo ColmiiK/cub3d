@@ -24,6 +24,7 @@ static int	ft_setup_struct(t_data *data)
 	data->m_y = 0;
 	data->frame = 0;
 	data->shooting_gun = false;
+	data->debug_flag = true;
 	if (!data->texture)
 		return (1);
 	return (0);
