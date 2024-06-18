@@ -11,7 +11,7 @@ static void	ft_draw_player(t_data *data, int x, int y)
 	{
 		x = len_x - (W_WIDTH / 50 / 2);
 		while (++x < len_x)
-			mlx_put_pixel(data->player, x, y, RED);
+			mlx_put_pixel(data->player, x, y, TRANSPARENT);
 	}
 }
 

@@ -40,6 +40,7 @@ typedef struct s_data
 	mlx_image_t	*player;
 	mlx_image_t	*game_img;
 	mlx_image_t *wall;
+	mlx_image_t *line;
 	mlx_image_t *debug_info;
 	char		**map;
 	char		**cub;

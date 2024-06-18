@@ -11,6 +11,45 @@ void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 		y++;
 	}
 }
+void ft_draw_line(t_data *data, t_tools *tools)
+{
+    // Calculate the end point of the line
+    int x0 = 90;
+    int y0 = 90;
+	int x1;
+	int y1;
+	if (tools->distance_x < tools->distance_y)
+	{
+		x1 = x0 + (int)(tools->distance_x * 20 * cos(data->p_a));
+		y1 = y0 + (int)(tools->distance_x * 20 * sin(data->p_a));
+		printf("x -> %f\n", tools->distance_x);
+	} else {
+		x1 = x0 + (int)(tools->distance_y * 20 * cos(data->p_a));
+		y1 = y0 + (int)(tools->distance_y * 20 * sin(data->p_a));
+		printf("y -> %f\n", tools->distance_y);
+
+	}
+
+    // printf("End Point: (%d, %d)\n", x1, y1);
+
+    // Bresenham's line algorithm to draw the line
+    int dx = abs(x1 - x0);
+    int dy = abs(y1 - y0);
+    int sx = x0 < x1 ? 1 : -1;
+    int sy = y0 < y1 ? 1 : -1;
+    int err = (dx > dy ? dx : -dy) / 2;
+    int e2;
+
+    while (1)
+    {
+		mlx_put_pixel(data->line, abs(x0), abs(y0), RED);
+		
+        if (x0 == x1 && y0 == y1) break;
+        e2 = err;
+        if (e2 > -dx) { err -= dy; x0 += sx; }
+        if (e2 < dy) { err += dx; y0 += sy; }
+    }
+}
 
 // Prototype of the loop that will shoot one ray per coordinate
 // and draw the needed line
@@ -38,4 +77,6 @@ void	ray_loop(t_data *data)
 			data->angle = data->angle + scale;
 		width++;
 	}
+	ft_draw_line(data, tools);
+		
 }
