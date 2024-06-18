@@ -30,8 +30,8 @@ void	ray_loop(t_data *data)
 	{
 		tools = wall_distance(data);
 		define_orientation(tools);
-		if (width == 500)
-			printf("distance en width(%d) == %d, ang == %f\n", width, tools->wall_size, data->p_a);
+		// if (width == 500)
+		// 	printf("distance en width(%d) == %d, ang == %f\n", width, tools->wall_size, data->p_a);
 		ft_draw_walls(data, width, tools);
 		if (data->angle + scale >= 2 * M_PI)
 			data->angle = data->angle - (2 * M_PI) + scale;
