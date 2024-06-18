@@ -71,12 +71,13 @@ void	ray_loop(t_data *data)
 		define_orientation(tools);
 		// printf("distance en width(%d) == %f, ang == %f\n", width, distance, data->p_a);
 		ft_draw_walls(data, width, tools);
+		if (width == 500)
+			ft_draw_line(data, tools);
 		if (data->angle + scale >= 2 * M_PI)
 			data->angle = data->angle - (2 * M_PI) + scale;
 		else
 			data->angle = data->angle + scale;
 		width++;
 	}
-	ft_draw_line(data, tools);
 		
 }
