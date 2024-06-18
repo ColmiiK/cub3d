@@ -87,4 +87,7 @@ re:			fclean all
 norm:
 			@norminette $(SRC) $(INCLUDE) $(LIBFT)
 
+run:		$(NAME)
+			./$(NAME) maps/3.cub
+
 .PHONY: all clean fclean re norm

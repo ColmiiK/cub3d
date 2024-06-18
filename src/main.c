@@ -24,6 +24,7 @@ static int	ft_setup_struct(t_data *data)
 	data->m_y = 0;
 	data->frame = 0;
 	data->shooting_gun = false;
+	data->debug_flag = true;
 	if (!data->texture)
 		return (1);
 	return (0);
@@ -38,8 +39,9 @@ int	main(int ac, char **av)
 	if (ft_setup_struct(&data))
 		return (ft_error("Unable to set up main structure"));
 	if (ft_parse_map(&data, av[1]))
-		return (ft_cleanup(data));
+		return (ft_cleanup(data), 1);
 	// ft_debug_print(data);
 	ft_initialize_mlx(&data);
 	ft_cleanup(data);
+	return (0);
 }

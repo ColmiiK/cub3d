@@ -40,6 +40,7 @@ typedef struct s_data
 	mlx_image_t	*player;
 	mlx_image_t	*game_img;
 	mlx_image_t *wall;
+	mlx_image_t *debug_info;
 	char		**map;
 	char		**cub;
 	double		p_x;
@@ -52,6 +53,7 @@ typedef struct s_data
 	int			height;
 	int			frame;
 	bool		shooting_gun;
+	bool		debug_flag;
 
 }	t_data;
 
@@ -92,7 +94,7 @@ void	ft_move_minimap(t_data *data, double x, double y);
 void	ft_draw_minimap(t_data *data);
 void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y);
 
-int		ft_cleanup(t_data data);
+void	ft_cleanup(t_data data);
 
 void	ft_draw_background(t_data *data);
 void	ft_draw_game(t_data *data);

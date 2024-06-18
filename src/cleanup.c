@@ -1,6 +1,6 @@
 #include <cub3d.h>
 
-int	ft_cleanup(t_data data)
+void	ft_cleanup(t_data data)
 {
 	if (data.texture->north)
 		mlx_delete_texture(data.texture->north);
@@ -25,5 +25,4 @@ int	ft_cleanup(t_data data)
 		ft_clean_double_ptr(data.cub);
 	if (data.map)
 		ft_clean_double_ptr(data.map);
-	return (1);
 }
