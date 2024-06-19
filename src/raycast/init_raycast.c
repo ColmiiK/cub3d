@@ -8,10 +8,10 @@ t_coord	*x_wall_finder(t_data *data, t_tools *tools)
 
 	x_cross = first_step_x(data, tools);
 	tools->distance_x = x_distance(data);
-	// if (tools->vector_y == -1)
+	// if (tools->vector_x == -1)
 	// {
-	// 	x_cross->y -= 1;
-	// 	x_cross->x += 1;
+	// 	// x_cross->x -= 1;
+	// 	x_cross->y -= 1.5;
 	// }
 	while (data->map[(int)x_cross->y][(int)x_cross->x] != '1'
 		&& ft_delimiter(data, x_cross) != 1)
@@ -35,10 +35,10 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools)
 
 	y_cross = first_step_y(data, tools);
 	tools->distance_y = y_distance(data);
-	// if (tools->vector_x == -1)
+	// if (tools->vector_y == -1)
 	// {
-	// 	y_cross->x -= 1;
-	// 	// y_cross->y += 1;
+	// 	// y_cross->y -= 1;
+	// 	y_cross->x -= 1.5;
 	// }
 	while (data->map[(int)y_cross->x][(int)y_cross->y] != '1'
 		&& ft_delimiter(data, y_cross) != 1)

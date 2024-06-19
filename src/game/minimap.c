@@ -85,6 +85,8 @@ void	ft_move_minimap(t_data *data, double dx, double dy)
 	int				ix;
 	int				iy;
 
+	if (data->map[(int)(data->p_y + (dy / 2))][(int)(data->p_x + (dx / 2))] == '1')
+		return ;
 	fx += dx;
 	fy += dy;
 	ix = (int)fx;
