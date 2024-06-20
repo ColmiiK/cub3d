@@ -23,6 +23,8 @@ t_coord	*x_wall_finder(t_data *data, t_tools *tools)
 		}
 		else
 			x_cross->x += tools->vector_x;
+		if (x_cross->x < 0 || x_cross->y < 0 || x_cross->x > data->height || x_cross->y > data->width)
+			break;
 	}
 	return (x_cross);
 }
@@ -50,6 +52,8 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools)
 		}
 		else
 			y_cross->y += tools->vector_y;
+		if (y_cross->x < 0 || y_cross->y < 0 || y_cross->x > data->height || y_cross->y > data->width)
+			break;
 	}
 	return (y_cross);
 }

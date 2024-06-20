@@ -21,8 +21,8 @@ t_coord	*first_step_x(t_data *data, t_tools *tools)
 	first_x->x = distance / tan(data->angle);
 	first_x->x = data->p_x + (first_x->x * tools->vector_y);
 	if (ft_delimiter(data, first_x) == 1)
-		return (init);
-	return (first_x);
+		return (free(first_x), init);
+	return (free(init), first_x);
 }
 
 // Depending on the angle we're going to calculate the
@@ -47,6 +47,6 @@ t_coord	*first_step_y(t_data *data, t_tools *tools)
 	first_y->y = distance * tan(data->angle);
 	first_y->y = data->p_y + (first_y->y * tools->vector_x);
 	if (ft_delimiter(data, first_y) == 1)
-		return (init);
-	return (first_y);
+		return (free(first_y), init);
+	return (free(init), first_y);
 }
