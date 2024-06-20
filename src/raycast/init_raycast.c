@@ -8,26 +8,21 @@ t_coord	*x_wall_finder(t_data *data, t_tools *tools)
 
 	x_cross = first_step_x(data, tools);
 	tools->distance_x = x_distance(data);
-	// if (tools->vector_x == -1)
-	// {
-	// 	// x_cross->x -= 1;
-	// 	x_cross->y -= 1.5;
-	// }
-	while (data->map[(int)x_cross->y][(int)x_cross->x] != '1'
-		&& ft_delimiter(data, x_cross) != 1)
+	while (x_cross->x >= 0 && x_cross->x <= data->width
+		&& x_cross->y >= 0 && x_cross->y <= data->height)
 	{
-		if (tools->distance_x != 1)
-		{
-			x_cross->y += tools->vector_y;
-			x_cross->x += (tools->distance_x * tools->vector_x);
-		}
+		if (data->map[(int)x_cross->y][(int)x_cross->x] == '1')
+			break ;
 		else
-			x_cross->x += tools->vector_x;
-		if (x_cross->x < 0 || x_cross->y < 0 || x_cross->x > data->height || x_cross->y > data->width)
-			break;
+		{
+			if (tools->distance_x != 1)
+				x_cross->x += (tools->distance_x * tools->vector_x);
+			x_cross->y += tools->vector_y;
+		}
 	}
 	return (x_cross);
 }
+
 
 // We're starting a loop in which we'll check, based in y, if the matrix 
 // square where we are is a wall, returning the coordinates
@@ -37,23 +32,17 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools)
 
 	y_cross = first_step_y(data, tools);
 	tools->distance_y = y_distance(data);
-	// if (tools->vector_y == -1)
-	// {
-	// 	// y_cross->y -= 1;
-	// 	y_cross->x -= 1.5;
-	// }
-	while (data->map[(int)y_cross->x][(int)y_cross->y] != '1'
-		&& ft_delimiter(data, y_cross) != 1)
+	while ((y_cross->y >= 0 && y_cross->y <= data->height)
+		&& (y_cross->x >= 0 && y_cross->x <= data->width))
 	{
-		if (tools->distance_y != 1)
+		if (data->map[(int)y_cross->y][(int)y_cross->x] == '1')
+			break ;
+		else
 		{
-			y_cross->y += (tools->distance_y * tools->vector_y);
+			if (tools->distance_y != 1)
+				y_cross->y += (tools->distance_y * tools->vector_y);
 			y_cross->x += tools->vector_x;
 		}
-		else
-			y_cross->y += tools->vector_y;
-		if (y_cross->x < 0 || y_cross->y < 0 || y_cross->x > data->height || y_cross->y > data->width)
-			break;
 	}
 	return (y_cross);
 }
