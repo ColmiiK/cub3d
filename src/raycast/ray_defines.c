@@ -3,7 +3,8 @@
 // Defines the orientation of the wall we're seeing
 void	define_orientation(t_tools *tools)
 {
-	if (tools->distance_y > 0 && tools->distance_x > tools->distance_y)
+	if ((tools->distance_y > 0 && tools->distance_x > tools->distance_y)
+		|| tools->distance_x <= 0)
 	{
 		tools->wall_size = (int)(400 / tools->distance_y);
 		if (tools->vector_x < 0) // WEST
@@ -11,7 +12,7 @@ void	define_orientation(t_tools *tools)
 		else // EAST
 			tools->orientation = WHITE;
 	}
-	else if (tools->distance_x > 0)
+	else
 	{
 		tools->wall_size = (int)(400 / tools->distance_x);
 		if (tools->vector_y < 0) // NORTH
