@@ -11,11 +11,14 @@ t_coord	*x_wall_finder(t_data *data, t_tools *tools)
 	while (x_cross->x >= 0 && x_cross->x <= data->width
 		&& x_cross->y >= 0 && x_cross->y <= data->height)
 	{
-		if (data->map[(int)x_cross->y][(int)x_cross->x] == '1')
+		if (x_cross->y > 0 && data->map[(int)x_cross->y - 1][(int)x_cross->x] == '1'
+			&& tools->vector_y == -1)
 			break ;
+		else if (data->map[(int)x_cross->y][(int)x_cross->x] == '1')
+			break ; 
 		else
 		{
-			if (tools->distance_x != 1)
+			if (tools->distance_x != -1)
 				x_cross->x += (tools->distance_x * tools->vector_x);
 			x_cross->y += tools->vector_y;
 		}
@@ -35,11 +38,14 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools)
 	while ((y_cross->y >= 0 && y_cross->y <= data->height)
 		&& (y_cross->x >= 0 && y_cross->x <= data->width))
 	{
-		if (data->map[(int)y_cross->y][(int)y_cross->x] == '1')
+		if (y_cross->x > 0 && data->map[(int)y_cross->y][(int)y_cross->x - 1] == '1'
+			&& tools->vector_x == -1)
+			break ;
+		else if (data->map[(int)y_cross->y][(int)y_cross->x] == '1')
 			break ;
 		else
 		{
-			if (tools->distance_y != 1)
+			if (tools->distance_y != -1)
 				y_cross->y += (tools->distance_y * tools->vector_y);
 			y_cross->x += tools->vector_x;
 		}
