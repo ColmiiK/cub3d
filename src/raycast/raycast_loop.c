@@ -79,5 +79,4 @@ void	ray_loop(t_data *data)
 		width++;
 	}
 	ft_draw_line(data, tools);
-		
 }
