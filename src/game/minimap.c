@@ -11,7 +11,7 @@ static void	ft_draw_player(t_data *data, int x, int y)
 	{
 		x = len_x - (W_WIDTH / 50 / 2);
 		while (++x < len_x)
-			mlx_put_pixel(data->player, x, y, TRANSPARENT);
+			mlx_put_pixel(data->player, x, y, RED);
 	}
 }
 
@@ -65,10 +65,10 @@ static void	ft_center_minimap(mlx_image_t *minimap, mlx_image_t *player)
 
 void	ft_draw_minimap(t_data *data)
 {
-	data->player = mlx_new_image(data->mlx,
-			W_WIDTH / 50 * 2, W_HEIGHT / 50 * 2);
 	data->minimap = mlx_new_image(data->mlx,
 			data->width * W_WIDTH / 50, data->height * W_HEIGHT / 50);
+	data->player = mlx_new_image(data->mlx,
+			W_WIDTH / 50 * 2, W_HEIGHT / 50 * 2);
 	ft_fill_minimap(data, data->minimap);
 	ft_draw_player(data, W_WIDTH / 50 - (W_WIDTH / 50 / 4),
 		W_HEIGHT / 50 - (W_HEIGHT / 50 / 4));
