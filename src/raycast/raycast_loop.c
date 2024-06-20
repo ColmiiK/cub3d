@@ -22,11 +22,11 @@ void ft_draw_line(t_data *data, t_tools *tools)
 	{
 		x1 = x0 + (int)(tools->distance_x * 20 * cos(data->p_a));
 		y1 = y0 + (int)(tools->distance_x * 20 * sin(data->p_a));
-		printf("x -> %f\n", tools->distance_x);
+		// printf("x -> %f\n", tools->distance_x);
 	} else {
 		x1 = x0 + (int)(tools->distance_y * 20 * cos(data->p_a));
 		y1 = y0 + (int)(tools->distance_y * 20 * sin(data->p_a));
-		printf("y -> %f\n", tools->distance_y);
+		// printf("y -> %f\n", tools->distance_y);
 
 	}
 
