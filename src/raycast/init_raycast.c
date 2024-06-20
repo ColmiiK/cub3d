@@ -68,18 +68,10 @@ t_tools	*wall_distance(t_data *data)
 		tools->distance_x = sqrt(pow(tools->x_cross->x - data->p_x, 2)
 				+ pow(tools->x_cross->y - data->p_y, 2));
 	}
-	// else
-	// {
-	// 	tools->distance_y = 1;
-	// }
 	if (tools->distance_y != -1)
 	{
 		tools->distance_y = sqrt(pow(tools->y_cross->x - data->p_x, 2)
 				+ pow(tools->y_cross->y - data->p_y, 2));
 	}
-	// else
-	// {
-	// 	tools->distance_x = 1;	
-	// }
 	return (tools);
 }
