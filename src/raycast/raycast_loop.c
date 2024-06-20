@@ -7,9 +7,8 @@ void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 	y = ((W_HEIGHT - tools->wall_size) / 2);
 	while (y < ((W_HEIGHT + tools->wall_size) / 2))
 	{
-		if (y >= W_HEIGHT || y < 0)
-			return ;
-		mlx_put_pixel(data->wall, x, y, tools->orientation);
+		if (y < W_HEIGHT && y > 0)
+			mlx_put_pixel(data->wall, x, y, tools->orientation);
 		y++;
 	}
 }
@@ -76,5 +75,4 @@ void	ray_loop(t_data *data)
 		free(tools->y_cross);
 		free(tools);
 	}
-		
 }
