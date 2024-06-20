@@ -56,14 +56,13 @@ static void	ft_draw_border(t_data *data)
 
 void	ft_draw_game(t_data *data)
 {
-
 	// ft_draw_background(data);
+	data->game_img = mlx_new_image(data->mlx, W_WIDTH, W_HEIGHT);
+	data->wall = mlx_new_image(data->mlx, W_WIDTH, W_HEIGHT);
 	data->line = mlx_new_image(data->mlx, W_WIDTH, W_HEIGHT);
 	ft_draw_border(data);
 	ft_draw_minimap(data);
 	mlx_image_to_window(data->mlx, data->game_img, 0, 0);
 	mlx_image_to_window(data->mlx, data->wall, 0, 0);
 	mlx_image_to_window(data->mlx, data->line, 0, 0);
-	// data->p_a = 210;
-
 }
