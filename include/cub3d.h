@@ -117,6 +117,7 @@ double	y_distance(t_data *data);
 t_tools	*vector_define(t_data *data);
 
 //ray_utils
+int		ft_isanint(double nbr);
 double	rad_convertor(double deg);
 int		ft_delimiter(t_data *data, t_coord *cross);
 

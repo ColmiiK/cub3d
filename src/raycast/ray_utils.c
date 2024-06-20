@@ -1,5 +1,12 @@
 #include <cub3d.h>
 
+int	ft_isanint(double nbr)
+{
+	if (nbr - (int)nbr == 0.0000)
+		return (0);
+	return (1);
+}
+
 // Converts degrees to radians
 inline double	rad_convertor(double deg)
 {

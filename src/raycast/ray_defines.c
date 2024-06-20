@@ -5,7 +5,7 @@ void	define_orientation(t_tools *tools)
 {
 	if (tools->distance_x > tools->distance_y)
 	{
-		tools->wall_size = 400 / tools->distance_y;
+		tools->wall_size = (int)(400 / tools->distance_y);
 		if (tools->vector_x < 0) // WEST
 			tools->orientation = BLACK;
 		else // EAST
@@ -13,7 +13,7 @@ void	define_orientation(t_tools *tools)
 	}
 	else
 	{
-		tools->wall_size = 400 / tools->distance_x;
+		tools->wall_size = (int)(400 / tools->distance_x);
 		if (tools->vector_y < 0) // NORTH
 			tools->orientation = PINK;
 		else // SOUTH
