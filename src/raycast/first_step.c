@@ -21,10 +21,10 @@ t_coord	*first_step_x(t_data *data, t_tools *tools)
 	first_x->x = distance / (fabs)(tan(data->angle));
 	first_x->x = data->p_x + (first_x->x * tools->vector_x);
 	if (ft_delimiter(data, first_x) == 1 || distance == 0)
-		return (init);
+		return (free(first_x), init);
 	if (first_x->y < 0 || first_x->x < 0)
 		printf("first_x->x == %f && first_x->y == %f\n", first_x->x, first_x->y);
-	return (first_x);
+	return (free(init), first_x);
 }
 
 // Depending on the angle we're going to calculate the
@@ -50,8 +50,8 @@ t_coord	*first_step_y(t_data *data, t_tools *tools)
 	first_y->y = distance * (fabs)(tan(data->angle));
 	first_y->y = data->p_y + (first_y->y * tools->vector_y);
 	if (ft_delimiter(data, first_y) == 1 || distance == 0)
-		return (init);
+		return (free(first_y), init);
 	if (first_y->x < 0 || first_y->y < 0)
 		printf("first_y->x == %f && first_y->y == %f\n", first_y->x, first_y->y);
-	return (first_y);
+	return (free(init), first_y);
 }
