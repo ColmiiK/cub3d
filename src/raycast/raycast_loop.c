@@ -7,7 +7,10 @@ void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 	y = ((W_HEIGHT - tools->wall_size) / 2);
 	while (y < ((W_HEIGHT + tools->wall_size) / 2))
 	{
-		if (y < W_HEIGHT && y > 0)
+		if (y > W_HEIGHT / 50 * 1.2 && x > W_WIDTH / 50 * 1.2
+			&& y < W_HEIGHT / 50 * 8.2 && x < W_WIDTH / 50 * 8.2)
+			;
+		else if (y < W_HEIGHT && y > 0)
 			mlx_put_pixel(data->wall, x, y, tools->orientation);
 		y++;
 	}
@@ -16,8 +19,8 @@ void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 // Draws a line on the minimap in the angle of the player
 void ft_draw_line(t_data *data, t_tools *tools)
 {
-    int x0 = 90;
-    int y0 = 90;
+    int x0 = W_WIDTH / 11;
+    int y0 = W_HEIGHT / 11;
 	int x1;
 	int y1;
 	if (tools->distance_x < tools->distance_y)
@@ -66,7 +69,7 @@ void	ray_loop(t_data *data)
 		// if (width == 500)
 		// 	printf("distance en width(%d) == %d, ang == %f\n", width, tools->wall_size, data->p_a);
 		ft_draw_walls(data, width, tools);
-		if (width == 500)
+		if (width == 500 && data->debug_flag)
 			ft_draw_line(data, tools);
 		if (data->angle + scale >= 2 * M_PI)
 			data->angle = data->angle - (2 * M_PI) + scale;
