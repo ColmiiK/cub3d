@@ -5,8 +5,8 @@
 # include <libft.h>
 # include <math.h>
 
-# define W_WIDTH 1000
-# define W_HEIGHT 1000
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
 
 # define VISION 90
 
@@ -84,6 +84,7 @@ int		ft_read_cub_file(t_data *data, char *str);
 int		ft_check_map(char **map);
 int		ft_check_longest_line(char **map);
 int		ft_inject_space(char **map);
+int		ft_extract_sprites(t_data *data);
 
 int		ft_initialize_mlx(t_data *data);
 void	ft_load_sprites(t_data *data);
