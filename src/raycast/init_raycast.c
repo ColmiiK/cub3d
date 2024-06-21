@@ -8,13 +8,14 @@ t_coord	*x_wall_finder(t_data *data, t_tools *tools)
 
 	x_cross = first_step_x(data, tools);
 	tools->distance_x = x_distance(data);
-	while (x_cross->x >= 0 && x_cross->x <= data->width
-		&& x_cross->y >= 0 && x_cross->y <= data->height)
+	// printf("height == %d\twidth == %d\n", data->height, data->width);
+	while (x_cross->x >= 0 && x_cross->x < data->width && x_cross->y >= 0 && x_cross->y < data->height)
 	{
-		if (x_cross->y > 0 && data->map[(int)x_cross->y - 1][(int)x_cross->x] == '1'
+		// printf("map[%d][%d] == %c\n", (int)x_cross->y, (int)x_cross->x, data->map[(int)x_cross->y][(int)x_cross->x]);
+		if (x_cross->y > 0 && (data->map[(int)x_cross->y - 1][(int)x_cross->x] == '1' || data->map[(int)x_cross->y - 1][(int)x_cross->x] == ' ')
 			&& tools->vector_y == -1)
 			break ;
-		else if (data->map[(int)x_cross->y][(int)x_cross->x] == '1')
+		else if (data->map[(int)x_cross->y][(int)x_cross->x] == '1' || data->map[(int)x_cross->y][(int)x_cross->x] == ' ')
 			break ; 
 		else
 		{
@@ -25,7 +26,6 @@ t_coord	*x_wall_finder(t_data *data, t_tools *tools)
 	}
 	return (x_cross);
 }
-
 
 // We're starting a loop in which we'll check, based in y, if the matrix 
 // square where we are is a wall, returning the coordinates

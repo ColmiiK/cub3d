@@ -1,5 +1,25 @@
 #include <cub3d.h>
 
+int	ft_extract_sprites(t_data *data)
+{
+	data->texture->sprite[0] = mlx_load_png("./textures/gun/f0.png");
+	if (!data->texture->sprite[0])
+		return (1);
+	data->texture->sprite[1] = mlx_load_png("./textures/gun/f1.png");
+	if (!data->texture->sprite[1])
+		return (1);
+	data->texture->sprite[2] = mlx_load_png("./textures/gun/f2.png");
+	if (!data->texture->sprite[2])
+		return (1);
+	data->texture->sprite[3] = mlx_load_png("./textures/gun/f3.png");
+	if (!data->texture->sprite[3])
+		return (1);
+	data->texture->sprite[4] = mlx_load_png("./textures/gun/f4.png");
+	if (!data->texture->sprite[4])
+		return (1);
+	return (0);
+}
+
 void	ft_load_sprites(t_data *data)
 {
 	data->texture->i_sprite[0] = mlx_texture_to_image(data->mlx,

@@ -58,23 +58,24 @@ static void	ft_obtain_ppos(t_data *data, char **map)
 	}
 }
 
-static int	ft_extract_sprites(t_data *data)
+int ft_pad_map(t_data *data)
 {
-	data->texture->sprite[0] = mlx_load_png("./textures/gun/f0.png");
-	if (!data->texture->sprite[0])
-		return (1);
-	data->texture->sprite[1] = mlx_load_png("./textures/gun/f1.png");
-	if (!data->texture->sprite[1])
-		return (1);
-	data->texture->sprite[2] = mlx_load_png("./textures/gun/f2.png");
-	if (!data->texture->sprite[2])
-		return (1);
-	data->texture->sprite[3] = mlx_load_png("./textures/gun/f3.png");
-	if (!data->texture->sprite[3])
-		return (1);
-	data->texture->sprite[4] = mlx_load_png("./textures/gun/f4.png");
-	if (!data->texture->sprite[4])
-		return (1);
+	char	*temp;
+	int		i;
+
+	i = -1;
+	while (data->map[++i])
+	{
+		if (ft_strlen(data->map[i]) != (unsigned int)data->width)
+		{
+			temp = (char *)malloc(sizeof(char) * (data->width - ft_strlen(data->map[i]) + 1));
+			if (!temp)
+				return (1);
+			temp = ft_memset(temp, ' ', ft_strlen(temp) - 1);
+			temp[ft_strlen(temp) - 1] = 0;
+			data->map[i] = ft_strjoin_ex(data->map[i], temp, 3);
+		}
+	}
 	return (0);
 }
 
@@ -92,6 +93,8 @@ int	ft_parse_map(t_data *data, char *str)
 	data->height = ft_double_ptr_amount(data->map);
 	data->width = ft_check_longest_line(data->map);
 	if (ft_check_map(data->map))
+		return (1);
+	if (ft_pad_map(data))
 		return (1);
 	return (0);
 }
