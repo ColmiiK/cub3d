@@ -5,8 +5,8 @@
 # include <libft.h>
 # include <math.h>
 
-# define W_WIDTH 1920
-# define W_HEIGHT 1080
+# define W_WIDTH 640 * 3
+# define W_HEIGHT 480 * 3
 
 # define VISION 90
 

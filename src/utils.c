@@ -23,11 +23,11 @@ void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y)
 
 	len_x = x + W_HEIGHT / 50;
 	len_y = y + W_HEIGHT / 50;
-	while (y < len_y)
+	while (y <= len_y)
 	{
 		x = len_x - W_HEIGHT / 50;
-		while (++x < len_x)
-			mlx_put_pixel(minimap, x, y, color);
+		while (x <= len_x)
+			mlx_put_pixel(minimap, x++, y, color);
 		y++;
 	}
 }
