@@ -92,7 +92,7 @@ void	ft_hook(void *param);
 void	ft_mousehook(mouse_key_t button, action_t action,
 			modifier_key_t mods, void *param);
 void	ft_keyhook(mlx_key_data_t keydata, void *param);
-void	ft_move_minimap(t_data *data, double x, double y);
+void	ft_player_movement(t_data *data);
 void	ft_draw_minimap(t_data *data);
 void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y);
 

@@ -38,6 +38,7 @@ SRC_FILES = main cleanup utils \
 			game/mouse_hook \
 			game/key_hook \
 			game/minimap \
+			game/movement \
 			game/draw \
 			raycast/first_step \
 			raycast/init_raycast \

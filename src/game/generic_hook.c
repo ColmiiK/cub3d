@@ -33,29 +33,6 @@ static void	ft_shoot_the_gun(t_data *data)
 	}
 }
 
-static void	ft_player_movement(t_data *data)
-{
-	double	rad;
-
-	rad = data->p_a;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
-		ft_move_minimap(data, cos(rad), sin(rad));
-	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
-		ft_move_minimap(data, -cos(rad), -sin(rad));
-	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
-		ft_move_minimap(data, cos(rad - M_PI / 2), sin(rad - M_PI / 2));
-	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
-		ft_move_minimap(data, cos(rad + M_PI / 2), sin(rad + M_PI / 2));
-	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-		data->p_a += rad_convertor(1.0);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
-		data->p_a -= rad_convertor(1.0);
-	if (data->p_a < rad_convertor(0))
-		data->p_a += rad_convertor(360);
-	if (data->p_a >= rad_convertor(360))
-		data->p_a -= rad_convertor(360);
-}
-
 static void	ft_move_camera(t_data *data)
 {
 	mlx_get_mouse_pos(data->mlx, &data->m_x, &data->m_y);
