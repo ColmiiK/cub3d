@@ -2,14 +2,20 @@
 
 static void	ft_debug_print_mlx(t_data *data)
 {
-	char	buffer[250];
+	char	buffer1[150];
+	char	buffer2[150];
+	char	*temp;
 
-	sprintf(buffer, "p_x: %.1f\np_y: %.2f\np_a: %.2f\nm_x: %04d\nm_y: %04d\nfps: %.1f\n",
-		data->p_x, data->p_y, data->p_a, data->m_x, data->m_y, 1 / data->mlx->delta_time);
-	data->debug_info = mlx_put_string(data->mlx, buffer, 5, 0);
+	sprintf(buffer1, "p_x: %.1f p_y: %.2f p_a: %.2f ",
+		data->p_x, data->p_y, data->p_a);
+	sprintf(buffer2, "m_x: %04d m_y: %04d fps: %.1f",
+		data->m_x, data->m_y, 1 / data->mlx->delta_time);
+	temp = ft_strjoin(buffer1, buffer2);
+	data->debug_info = mlx_put_string(data->mlx, temp, 5, 0);
+	free(temp);
 }
 
-static void	ft_shoot_the_gun(t_data *data) 
+static void	ft_shoot_the_gun(t_data *data)
 {
 	static int	anim_counter = 0;
 
@@ -31,29 +37,6 @@ static void	ft_shoot_the_gun(t_data *data)
 		}
 		anim_counter = anim_counter + 1;
 	}
-}
-
-static void	ft_player_movement(t_data *data)
-{
-	double	rad;
-
-	rad = data->p_a;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
-		ft_move_minimap(data, cos(rad), sin(rad));
-	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
-		ft_move_minimap(data, -cos(rad), -sin(rad));
-	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
-		ft_move_minimap(data, cos(rad - M_PI / 2), sin(rad - M_PI / 2));
-	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
-		ft_move_minimap(data, cos(rad + M_PI / 2), sin(rad + M_PI / 2));
-	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-		data->p_a += rad_convertor(1.0);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
-		data->p_a -= rad_convertor(1.0);
-	if (data->p_a < rad_convertor(0))
-		data->p_a += rad_convertor(360);
-	if (data->p_a >= rad_convertor(360))
-		data->p_a -= rad_convertor(360);
 }
 
 static void	ft_move_camera(t_data *data)

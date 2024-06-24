@@ -9,7 +9,7 @@ MLX42 = lib/MLX42
 SRC_DIR = src/
 OBJ_DIR = obj/
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 AR = ar rcs
 
 # Colors
@@ -38,6 +38,7 @@ SRC_FILES = main cleanup utils \
 			game/mouse_hook \
 			game/key_hook \
 			game/minimap \
+			game/movement \
 			game/draw \
 			raycast/first_step \
 			raycast/init_raycast \

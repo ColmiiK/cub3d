@@ -3,13 +3,13 @@
 void	ft_cleanup(t_data data)
 {
 	if (data.texture->north)
-		mlx_delete_texture(data.texture->north);
+		mlx_delete_xpm42(data.texture->north);
 	if (data.texture->south)
-		mlx_delete_texture(data.texture->south);
+		mlx_delete_xpm42(data.texture->south);
 	if (data.texture->east)
-		mlx_delete_texture(data.texture->east);
+		mlx_delete_xpm42(data.texture->east);
 	if (data.texture->west)
-		mlx_delete_texture(data.texture->west);
+		mlx_delete_xpm42(data.texture->west);
 	if (data.texture->sprite[0])
 		mlx_delete_texture(data.texture->sprite[0]);
 	if (data.texture->sprite[1])

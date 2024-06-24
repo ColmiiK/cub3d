@@ -5,8 +5,8 @@
 # include <libft.h>
 # include <math.h>
 
-# define W_WIDTH 1920
-# define W_HEIGHT 1080
+# define W_WIDTH 640 * 3
+# define W_HEIGHT 480 * 3
 
 # define VISION 90
 
@@ -24,10 +24,10 @@ typedef struct s_tex
 {
 	mlx_texture_t	*sprite[5];
 	mlx_image_t		*i_sprite[5];
-	mlx_texture_t	*north;
-	mlx_texture_t	*south;
-	mlx_texture_t	*east;
-	mlx_texture_t	*west;
+	xpm_t			*north;
+	xpm_t			*south;
+	xpm_t			*east;
+	xpm_t			*west;
 	int				floor;
 	int				ceiling;
 }	t_tex;
@@ -92,7 +92,7 @@ void	ft_hook(void *param);
 void	ft_mousehook(mouse_key_t button, action_t action,
 			modifier_key_t mods, void *param);
 void	ft_keyhook(mlx_key_data_t keydata, void *param);
-void	ft_move_minimap(t_data *data, double x, double y);
+void	ft_player_movement(t_data *data);
 void	ft_draw_minimap(t_data *data);
 void	ft_fill_square(int color, mlx_image_t *minimap, int x, int y);
 
