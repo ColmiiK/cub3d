@@ -65,7 +65,7 @@ void	ray_loop(t_data *data)
 	while (width <= W_WIDTH)
 	{
 		tools = wall_distance(data);
-		define_orientation(tools);
+		define_orientation(tools, data);
 		ft_draw_walls(data, width, tools);
 		if (width == 500 && data->debug_flag)
 			ft_draw_line(data, tools);
