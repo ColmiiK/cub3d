@@ -30,7 +30,7 @@ void	ray_loop(t_data *data)
 		data->angle = data->p_a + rad_convertor(315);
 	else
 		data->angle = data->p_a - rad_convertor(45);
-	while (width <= W_WIDTH)
+	while (width < W_WIDTH)
 	{
 		tools = wall_distance(data);
 		define_orientation(tools);
