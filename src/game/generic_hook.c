@@ -2,14 +2,20 @@
 
 static void	ft_debug_print_mlx(t_data *data)
 {
-	char	buffer[250];
+	char	buffer1[150];
+	char	buffer2[150];
+	char	*temp;
 
-	sprintf(buffer, "p_x: %.1f\np_y: %.2f\np_a: %.2f\nm_x: %04d\nm_y: %04d\nfps: %.1f\n",
-		data->p_x, data->p_y, data->p_a, data->m_x, data->m_y, 1 / data->mlx->delta_time);
-	data->debug_info = mlx_put_string(data->mlx, buffer, 5, 0);
+	sprintf(buffer1, "p_x: %.1f p_y: %.2f p_a: %.2f ",
+		data->p_x, data->p_y, data->p_a);
+	sprintf(buffer2, "m_x: %04d m_y: %04d fps: %.1f",
+		data->m_x, data->m_y, 1 / data->mlx->delta_time);
+	temp = ft_strjoin(buffer1, buffer2);
+	data->debug_info = mlx_put_string(data->mlx, temp, 5, 0);
+	free(temp);
 }
 
-static void	ft_shoot_the_gun(t_data *data) 
+static void	ft_shoot_the_gun(t_data *data)
 {
 	static int	anim_counter = 0;
 

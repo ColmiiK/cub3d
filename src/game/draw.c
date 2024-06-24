@@ -28,29 +28,29 @@ void	ft_draw_background(t_data *data)
 
 static void	ft_draw_border(t_data *data)
 {
-	int	coord_x;
-	int	coord_y;
+	int	x;
+	int	y;
 
-	coord_x = W_HEIGHT / 50;
-	while (coord_x < W_HEIGHT)
+	x = W_HEIGHT / 50;
+	while (x < W_HEIGHT)
 	{
-		coord_y = W_HEIGHT / 50;
-		while (coord_y < W_HEIGHT)
+		y = W_HEIGHT / 50;
+		while (y < W_HEIGHT)
 		{
-			if ((coord_y < W_HEIGHT / 50 * 1.2 && coord_x <= W_HEIGHT / 50 * 8.2)
-				|| (coord_x < W_HEIGHT / 50 * 1.2
-					&& coord_y <= W_HEIGHT / 50 * 8.2))
-				mlx_put_pixel(data->game_img, coord_x, coord_y,
+			if ((y < W_HEIGHT / 50 * 1.2 && x <= W_HEIGHT / 50 * 8.2)
+				|| (x < W_HEIGHT / 50 * 1.2
+					&& y <= W_HEIGHT / 50 * 8.2))
+				mlx_put_pixel(data->game_img, x, y,
 					BLACK);
-			if ((coord_y > W_HEIGHT / 50 && coord_x > W_HEIGHT / 50)
-				&& (coord_y >= W_HEIGHT / 50 * 8 || coord_x >= W_HEIGHT / 50 * 8)
-				&& (coord_y <= W_HEIGHT / 50 * 8.2
-					&& coord_x <= W_HEIGHT / 50 * 8.2))
-				mlx_put_pixel(data->game_img, coord_x, coord_y,
+			if ((y > W_HEIGHT / 50 && x > W_HEIGHT / 50)
+				&& (y >= W_HEIGHT / 50 * 8 || x >= W_HEIGHT / 50 * 8)
+				&& (y <= W_HEIGHT / 50 * 8.2
+					&& x <= W_HEIGHT / 50 * 8.2))
+				mlx_put_pixel(data->game_img, x, y,
 					BLACK);
-			coord_y++;
+			y++;
 		}
-		coord_x++;
+		x++;
 	}
 }
 
