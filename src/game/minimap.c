@@ -70,9 +70,7 @@ void	ft_draw_minimap(t_data *data)
 	ft_draw_player(data, W_HEIGHT / 50 - (W_HEIGHT / 50 / 4),
 		W_HEIGHT / 50 - (W_HEIGHT / 50 / 4));
 	mlx_image_to_window(data->mlx, data->minimap, 0, 0);
-	mlx_image_to_window(data->mlx, data->player, (data->p_x - 1) * W_HEIGHT / 50,
-		(data->p_y - 1) * W_HEIGHT / 50);
+	mlx_image_to_window(data->mlx, data->player,
+		(data->p_x - 1) * W_HEIGHT / 50, (data->p_y - 1) * W_HEIGHT / 50);
 	ft_center_minimap(data->minimap, data->player);
 }
-
-

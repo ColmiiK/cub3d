@@ -24,10 +24,10 @@ typedef struct s_tex
 {
 	mlx_texture_t	*sprite[5];
 	mlx_image_t		*i_sprite[5];
-	mlx_texture_t	*north;
-	mlx_texture_t	*south;
-	mlx_texture_t	*east;
-	mlx_texture_t	*west;
+	xpm_t			*north;
+	xpm_t			*south;
+	xpm_t			*east;
+	xpm_t			*west;
 	int				floor;
 	int				ceiling;
 }	t_tex;

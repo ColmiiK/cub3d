@@ -58,7 +58,7 @@ static void	ft_obtain_ppos(t_data *data, char **map)
 	}
 }
 
-int ft_pad_map(t_data *data)
+int	ft_pad_map(t_data *data)
 {
 	char	*temp;
 	int		i;
@@ -68,7 +68,8 @@ int ft_pad_map(t_data *data)
 	{
 		if (ft_strlen(data->map[i]) != (unsigned int)data->width)
 		{
-			temp = (char *)malloc(sizeof(char) * (data->width - ft_strlen(data->map[i]) + 1));
+			temp = (char *)malloc(sizeof(char)
+					* (data->width - ft_strlen(data->map[i]) + 1));
 			if (!temp)
 				return (1);
 			temp = ft_memset(temp, ' ', ft_strlen(temp) - 1);

@@ -1,18 +1,28 @@
 #include <cub3d.h>
 
-static int ft_check_collisions(t_data *data, double *fx, double *fy)
+static int	ft_fix_collisions(t_data *data, double ix, double iy)
 {
-	if (data->map[(int)(data->p_y + (*fy / 3))][(int)data->p_x] == '1'
-		|| data->map[(int)(data->p_y + (*fy / 3))][(int)data->p_x] == ' ')
+	if (data->map[(int)data->p_y][(int)(data->p_x + 0.2)] == '1'
+		|| data->map[(int)data->p_y][(int)(data->p_x - 0.2)] == '1')
 	{
-		*fy = 0.0;
-		return (1);
+		data->p_x -= ix / (W_HEIGHT / 50 + 0.0);
+		data->minimap->instances[0].x += ix;
 	}
-	if (data->map[(int)data->p_y][(int)(data->p_x + (*fx / 3))] == '1'
-		|| data->map[(int)data->p_y][(int)(data->p_x + (*fx / 3))] == ' ')
+	if (data->map[(int)(data->p_y + 0.2)][(int)(data->p_x)] == '1'
+		|| data->map[(int)(data->p_y - 0.2)][(int)(data->p_x)] == '1')
 	{
-		*fx = 0.0;
-		return (1);
+		data->p_y -= iy / (W_HEIGHT / 50 + 0.0);
+		data->minimap->instances[0].y += iy;
+	}
+	if (data->map[(int)(data->p_y + 0.2)][(int)(data->p_x + 0.2)] == '1'
+		|| data->map[(int)(data->p_y - 0.2)][(int)(data->p_x - 0.2)] == '1'
+		|| data->map[(int)(data->p_y + 0.2)][(int)(data->p_x - 0.2)] == '1'
+		|| data->map[(int)(data->p_y - 0.2)][(int)(data->p_x + 0.2)] == '1')
+	{
+		data->p_x -= ix / (W_HEIGHT / 50 + 0.0);
+		data->p_y -= iy / (W_HEIGHT / 50 + 0.0);
+		data->minimap->instances[0].x += ix;
+		data->minimap->instances[0].y += iy;
 	}
 	return (0);
 }
@@ -24,7 +34,7 @@ static void	ft_move_minimap(t_data *data, double dx, double dy)
 	int				ix;
 	int				iy;
 
-	if (ft_check_collisions(data, &fx, &fy))
+	if ((dx == 0 && dy == 0))
 		return ;
 	fx += dx;
 	fy += dy;
@@ -42,6 +52,7 @@ static void	ft_move_minimap(t_data *data, double dx, double dy)
 		data->minimap->instances[0].y -= iy;
 		fy -= iy;
 	}
+	ft_fix_collisions(data, ix, iy);
 }
 
 void	ft_player_movement(t_data *data)
