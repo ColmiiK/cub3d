@@ -1,18 +1,24 @@
 #include <cub3d.h>
 
-static int ft_check_collisions(t_data *data, double *fx, double *fy)
+static int ft_check_collisions(t_data *data, double *dx, double *dy)
 {
-	if (data->map[(int)(data->p_y + (*fy / 3))][(int)data->p_x] == '1'
-		|| data->map[(int)(data->p_y + (*fy / 3))][(int)data->p_x] == ' ')
+	// if (data->map[(int)(data->p_y + (*dy / 3))][(int)(data->p_x + (*dx / 3))] == '1' || data->map[(int)(data->p_y + (*dy / 3))][(int)(data->p_x + (*dx / 3))] == ' ')
+	// {
+	// 	*dx = 0.0;
+	// 	*dy = 0.0;
+	// 	return (1);
+	// }
+	if (data->map[(int)(data->p_y + (*dy / 5))][(int)data->p_x] == '1'
+		|| data->map[(int)(data->p_y + (*dy / 5))][(int)data->p_x] == ' ')
 	{
-		*fy = 0.0;
-		return (1);
+		*dy = 0.0;
+		// return (1);
 	}
-	if (data->map[(int)data->p_y][(int)(data->p_x + (*fx / 3))] == '1'
-		|| data->map[(int)data->p_y][(int)(data->p_x + (*fx / 3))] == ' ')
+	if (data->map[(int)data->p_y][(int)(data->p_x + (*dx / 5))] == '1'
+		|| data->map[(int)data->p_y][(int)(data->p_x + (*dx / 5))] == ' ')
 	{
-		*fx = 0.0;
-		return (1);
+		*dx = 0.0;
+		// return (1);
 	}
 	return (0);
 }
@@ -24,8 +30,9 @@ static void	ft_move_minimap(t_data *data, double dx, double dy)
 	int				ix;
 	int				iy;
 
-	if (ft_check_collisions(data, &fx, &fy))
+	if (dx == 0 && dy == 0)
 		return ;
+	ft_check_collisions(data, &dx, &dy);
 	fx += dx;
 	fy += dy;
 	ix = (int)fx;
