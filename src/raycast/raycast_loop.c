@@ -3,6 +3,7 @@
 void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 {
 	int	y;
+	int	color;
 
 	y = ((W_HEIGHT - tools->wall_size) / 2);
 	while (y < ((W_HEIGHT + tools->wall_size) / 2))
@@ -11,7 +12,10 @@ void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 			&& y < W_HEIGHT / 50 * 8.2 && x < W_HEIGHT / 50 * 8.2)
 			;
 		else if (y < W_HEIGHT && y > 0)
-			mlx_put_pixel(data->wall, x, y, tools->orientation);
+		{
+			color = ft_paint_txt(tools, tools->orientation, tools->draw_cross, y - ((W_HEIGHT - tools->wall_size) / 2));
+			mlx_put_pixel(data->wall, x, y, color);
+		}
 		y++;
 	}
 }

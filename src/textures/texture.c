@@ -1,19 +1,28 @@
 #include <cub3d.h>
 
-int	ft_paint_txt(mlx_texture_t *orientation, t_coord *cross, int flag)
+int	ft_paint_txt(t_tools *tools, mlx_texture_t *tex, double draw_cross, int y)
 {
-	static int	i = 0;
-	static int	prev_flag = -1;
+	//draw_cross == 1.34567890
+	//x == 0.66
+	(void)tools;
+	double x;
+	double x_pos;
 
-	(void)cross;
-	i = 5;
-	if (flag == prev_flag
-		&& i <= (int)(orientation->height * orientation->width))
-		i += orientation->width * orientation->bytes_per_pixel;
-	else
-	{
-		i = 0;
-		prev_flag = flag;
-	}
-	return (orientation->pixels[i]);
+
+	x = (int)draw_cross + 1 - draw_cross;
+
+	// printf("x %f\n", x);
+	// printf("x * width == %f\n", x * tex->width);
+	// printf("y == %d\n", y);
+	x_pos = (x * tex->width) + (y * tex->width);
+	// printf("-> %f\n", x_pos);
+
+	// printf("-> %d\n", tex->texture.width * tex->texture.height);
+	// return (r << 24 | g << 16 | b << 8 | a)
+
+	// printf("%d\n", tex->width * tex->height);
+	// printf("%f\n", x_pos);
+	return (tex->pixels[(int)x_pos] << 24 | tex->pixels[(int)x_pos + 1] << 16 | tex->pixels[(int)x_pos + 2] << 8 | tex->pixels[(int)x_pos + 3]);
+
+
 }

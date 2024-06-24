@@ -24,10 +24,10 @@ typedef struct s_tex
 {
 	mlx_texture_t	*sprite[5];
 	mlx_image_t		*i_sprite[5];
-	xpm_t			*north;
-	xpm_t			*south;
-	xpm_t			*east;
-	xpm_t			*west;
+	mlx_texture_t			*north;
+	mlx_texture_t			*south;
+	mlx_texture_t			*east;
+	mlx_texture_t			*west;
 	int				floor;
 	int				ceiling;
 }	t_tex;
@@ -66,7 +66,7 @@ typedef struct s_coord
 
 typedef struct s_tools
 {
-	int		orientation;
+	mlx_texture_t	*orientation;
 	int		wall_size;
 	int		vector_x;
 	int		vector_y;
@@ -76,6 +76,7 @@ typedef struct s_tools
 	double	distance_y;
 	double	ray_angle;
 	double	plyer_angle;
+	double	draw_cross;
 }	t_tools;
 
 int		ft_parse_map(t_data *data, char *str);
@@ -126,6 +127,5 @@ int		ft_delimiter(t_data *data, t_coord *cross);
 void	ray_loop(t_data *data);
 
 //texture.c
-int		ft_paint_txt(mlx_texture_t *orientation, t_coord *cross, int flag);
-
+int	ft_paint_txt(t_tools *tools, mlx_texture_t *tex, double draw_cross, int y);
 #endif

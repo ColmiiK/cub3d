@@ -8,17 +8,19 @@ void	define_orientation(t_tools *tools, t_data *data)
 	{
 		tools->wall_size = (int)(400 / tools->distance_y);
 		if (tools->vector_x < 0)
-			tools->orientation = ft_paint_txt(data->texture->west, tools->y_cross, 1);
+			tools->orientation = data->texture->west;
 		else
-			tools->orientation = ft_paint_txt(data->texture->east, tools->y_cross, 2);
+			tools->orientation = data->texture->east;
+		tools->draw_cross = tools->y_cross->y;
 	}
 	else
 	{
 		tools->wall_size = (int)(400 / tools->distance_x);
 		if (tools->vector_y < 0)
-			tools->orientation = ft_paint_txt(data->texture->north, tools->x_cross, 3);
+			tools->orientation = data->texture->north;
 		else
-			tools->orientation = ft_paint_txt(data->texture->south, tools->x_cross, 4);
+			tools->orientation = data->texture->south;
+		tools->draw_cross = tools->x_cross->x;
 	}
 }
 
