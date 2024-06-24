@@ -112,7 +112,7 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools);
 t_tools	*wall_distance(t_data *data);
 
 //ray_defines
-void	define_orientation(t_tools *tools);
+void	define_orientation(t_tools *tools, t_data *data);
 double	x_distance(t_data *data);
 double	y_distance(t_data *data);
 t_tools	*vector_define(t_data *data);
@@ -124,5 +124,8 @@ int		ft_delimiter(t_data *data, t_coord *cross);
 
 //raycast_loop
 void	ray_loop(t_data *data);
+
+//texture.c
+int		ft_paint_txt(mlx_texture_t *orientation, t_coord *cross, int flag);
 
 #endif

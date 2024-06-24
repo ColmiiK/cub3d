@@ -45,6 +45,7 @@ SRC_FILES = main cleanup utils \
 			raycast/ray_defines \
 			raycast/ray_utils \
 			raycast/raycast_loop \
+			textures/texture \
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

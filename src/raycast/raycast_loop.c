@@ -33,7 +33,7 @@ void	ray_loop(t_data *data)
 	while (width < W_WIDTH)
 	{
 		tools = wall_distance(data);
-		define_orientation(tools);
+		define_orientation(tools, data);
 		ft_draw_walls(data, width, tools);
 		if (data->angle + scale >= 2 * M_PI)
 			data->angle = data->angle - (2 * M_PI) + scale;

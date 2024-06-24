@@ -1,24 +1,24 @@
 #include <cub3d.h>
 
 // Defines the orientation of the wall we're seeing
-void	define_orientation(t_tools *tools)
+void	define_orientation(t_tools *tools, t_data *data)
 {
 	if ((tools->distance_y > 0 && tools->distance_x > tools->distance_y)
 		|| tools->distance_x <= 0)
 	{
 		tools->wall_size = (int)(400 / tools->distance_y);
-		if (tools->vector_x < 0) // WEST
-			tools->orientation = BLACK;
-		else // EAST
-			tools->orientation = WHITE;
+		if (tools->vector_x < 0)
+			tools->orientation = ft_paint_txt(data->texture->west, tools->y_cross, 1);
+		else
+			tools->orientation = ft_paint_txt(data->texture->east, tools->y_cross, 2);
 	}
 	else
 	{
 		tools->wall_size = (int)(400 / tools->distance_x);
-		if (tools->vector_y < 0) // NORTH
-			tools->orientation = PINK;
-		else // SOUTH
-			tools->orientation = BLUE;
+		if (tools->vector_y < 0)
+			tools->orientation = ft_paint_txt(data->texture->north, tools->x_cross, 3);
+		else
+			tools->orientation = ft_paint_txt(data->texture->south, tools->x_cross, 4);
 	}
 }
 
