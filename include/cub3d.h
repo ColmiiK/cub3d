@@ -74,8 +74,6 @@ typedef struct s_tools
 	t_coord	*y_cross;
 	double	distance_x;
 	double	distance_y;
-	double	ray_angle;
-	double	plyer_angle;
 	double	draw_cross;
 }	t_tools;
 
@@ -119,10 +117,8 @@ double	y_distance(t_data *data);
 t_tools	*vector_define(t_data *data);
 
 //ray_utils
-int		ft_isanint(double nbr);
 double	rad_convertor(double deg);
 int		ft_delimiter(t_data *data, t_coord *cross);
-int		cardinal_angles(double angle);
 
 //raycast_loop
 void	ray_loop(t_data *data);
