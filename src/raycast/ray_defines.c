@@ -29,8 +29,7 @@ double	x_distance(t_data *data)
 {
 	double	distance_x;
 
-	if ((fabs)(1 / tan(data->angle)) == 0
-		|| (fabs)(1 / tan(data->angle)) >= data->width)
+	if ((fabs)(1 / tan(data->angle)) == 0)
 		distance_x = -1;
 	else
 		distance_x = (fabs)(1 / tan(data->angle));
@@ -42,8 +41,7 @@ double	y_distance(t_data *data)
 {
 	double	distance_y;
 
-	if ((fabs)(tan(data->angle)) == 0
-		|| (fabs)(tan(data->angle)) >= data->height)
+	if ((fabs)(tan(data->angle)) == 0)
 		distance_y = -1;
 	else
 		distance_y = (fabs)(tan(data->angle));

@@ -122,10 +122,11 @@ t_tools	*vector_define(t_data *data);
 int		ft_isanint(double nbr);
 double	rad_convertor(double deg);
 int		ft_delimiter(t_data *data, t_coord *cross);
+int		cardinal_angles(double angle);
 
 //raycast_loop
 void	ray_loop(t_data *data);
 
 //texture.c
-int	ft_paint_txt(t_tools *tools, mlx_texture_t *tex, double draw_cross, int y);
+int	ft_paint_txt(mlx_texture_t *tex, double draw_cross, int y, int wall_size);
 #endif
