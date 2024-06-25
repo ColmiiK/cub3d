@@ -1,9 +1,9 @@
-SO        ./textures/south.xpm42
-NO   ./textures/north.xpm42
-EA                                                ./textures/east.xpm42
-WE              ./textures/west.xpm42
+SO ./textures/flower1_1.png
+NO ./textures/flower2.png
+EA ./textures/flower3.png
+WE ./textures/flower4.png
 C   225,30,0
-F220,100,0
+F 66,220,120
 
 
 111
