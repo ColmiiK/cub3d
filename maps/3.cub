@@ -1,9 +1,10 @@
-SO ./textures/matrix.png
-NO ./textures/matrix.png
-EA ./textures/matrix.png
-WE ./textures/matrix.png
-C 200,200,200
-F 100,100,100
+SO ./textures/flower1_1.png
+NO ./textures/flower2.png
+EA ./textures/flower3.png
+WE ./textures/flower4.png
+C   16,203,212
+F   24,175,76
+
 
 
 
