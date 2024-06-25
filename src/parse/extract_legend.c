@@ -1,10 +1,10 @@
 #include <cub3d.h>
 
-static xpm_t	*ft_save_texture(char *route)
+static mlx_texture_t	*ft_save_texture(char *route)
 {
 	while (*route == ' ')
 		route++;
-	return (mlx_load_xpm42(route));
+	return (mlx_load_png(route));
 }
 
 static int	ft_check_textures(t_tex *textures)

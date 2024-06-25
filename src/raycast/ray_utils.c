@@ -21,3 +21,18 @@ int	ft_delimiter(t_data *data, t_coord *cross)
 		return (1);
 	return (0);
 }
+
+int	cardinal_angles(double angle)
+{
+	if (angle >= rad_convertor(270 - 20) && angle <= rad_convertor(270 + 20))
+		return (1);
+	if (angle >= rad_convertor(180 - 20) && angle <= rad_convertor(180 + 20))
+		return (1);
+	if (angle >= rad_convertor(90 - 20) && angle <= rad_convertor(90 + 20))
+		return (1);
+	if (angle <= rad_convertor(20) && angle >= rad_convertor(0))
+		return (1);
+	if (angle >= rad_convertor(360 - 20) && angle <= rad_convertor(360))
+		return (1);
+	return (0);
+}

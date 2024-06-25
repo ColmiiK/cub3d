@@ -6,19 +6,21 @@ void	define_orientation(t_tools *tools, t_data *data)
 	if ((tools->distance_y > 0 && tools->distance_x > tools->distance_y)
 		|| tools->distance_x <= 0)
 	{
-		tools->wall_size = (int)(400 / tools->distance_y);
+		tools->wall_size = (int)(600 / tools->distance_y);
 		if (tools->vector_x < 0)
-			tools->orientation = ft_paint_txt(data->texture->west, tools->y_cross, 1);
+			tools->orientation = data->texture->west;
 		else
-			tools->orientation = ft_paint_txt(data->texture->east, tools->y_cross, 2);
+			tools->orientation = data->texture->east;
+		tools->draw_cross = tools->y_cross->y;
 	}
 	else
 	{
-		tools->wall_size = (int)(400 / tools->distance_x);
+		tools->wall_size = (int)(600 / tools->distance_x);
 		if (tools->vector_y < 0)
-			tools->orientation = ft_paint_txt(data->texture->north, tools->x_cross, 3);
+			tools->orientation = data->texture->north;
 		else
-			tools->orientation = ft_paint_txt(data->texture->south, tools->x_cross, 4);
+			tools->orientation = data->texture->south;
+		tools->draw_cross = tools->x_cross->x;
 	}
 }
 
@@ -27,8 +29,7 @@ double	x_distance(t_data *data)
 {
 	double	distance_x;
 
-	if ((fabs)(1 / tan(data->angle)) == 0
-		|| (fabs)(1 / tan(data->angle)) >= data->width)
+	if ((fabs)(1 / tan(data->angle)) == 0)
 		distance_x = -1;
 	else
 		distance_x = (fabs)(1 / tan(data->angle));
@@ -40,8 +41,7 @@ double	y_distance(t_data *data)
 {
 	double	distance_y;
 
-	if ((fabs)(tan(data->angle)) == 0
-		|| (fabs)(tan(data->angle)) >= data->height)
+	if ((fabs)(tan(data->angle)) == 0)
 		distance_y = -1;
 	else
 		distance_y = (fabs)(tan(data->angle));
