@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/25 17:20:53 by alvega-g          #+#    #+#             */
+/*   Updated: 2024/06/25 17:22:24 by alvega-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -5,8 +17,8 @@
 # include <libft.h>
 # include <math.h>
 
-# define W_WIDTH 640 * 3
-# define W_HEIGHT 480 * 3
+# define W_WIDTH 1280
+# define W_HEIGHT 960
 
 # define VISION 90
 
@@ -16,67 +28,65 @@
 # define GRAY 0x808080ff
 # define BLUE 0x0000ffff
 # define PINK 0xF8A4A7ff
-# define LOCKED 0x3B3B3Bff
-# define UNLOCKED 0xA7A7A7ff
 # define TRANSPARENT 0x00000000
 
 typedef struct s_tex
 {
 	mlx_texture_t	*sprite[5];
 	mlx_image_t		*i_sprite[5];
-	mlx_texture_t			*north;
-	mlx_texture_t			*south;
-	mlx_texture_t			*east;
-	mlx_texture_t			*west;
+	mlx_texture_t	*north;
+	mlx_texture_t	*south;
+	mlx_texture_t	*east;
+	mlx_texture_t	*west;
 	int				floor;
 	int				ceiling;
 }	t_tex;
 
 typedef struct s_data
 {
-	mlx_t		*mlx;
-	t_tex		*texture;
-	mlx_image_t	*minimap;
-	mlx_image_t	*player;
-	mlx_image_t	*game_img;
-	mlx_image_t *wall;
-	mlx_image_t *line;
-	mlx_image_t *debug_info;
-	char		**map;
-	char		**cub;
-	double		p_x;
-	double		p_y;
-	double		p_a;
-	double		angle;
-	int			m_x;
-	int			m_y;
-	int			width;
-	int			height;
-	int			frame;
-	bool		shooting_gun;
-	bool		debug_flag;
+	mlx_t			*mlx;
+	t_tex			*texture;
+	mlx_image_t		*minimap;
+	mlx_image_t		*player;
+	mlx_image_t		*game_img;
+	mlx_image_t		*wall;
+	mlx_image_t		*line;
+	mlx_image_t		*debug_info;
+	char			**map;
+	char			**cub;
+	double			p_x;
+	double			p_y;
+	double			p_a;
+	double			angle;
+	int				m_x;
+	int				m_y;
+	int				width;
+	int				height;
+	int				frame;
+	bool			shooting_gun;
+	bool			debug_flag;
 
 }	t_data;
 
 typedef struct s_coord
 {
-	double	x;
-	double	y;
+	double			x;
+	double			y;
 }	t_coord;
 
 typedef struct s_tools
 {
 	mlx_texture_t	*orientation;
-	int		wall_size;
-	int		vector_x;
-	int		vector_y;
-	t_coord	*x_cross;
-	t_coord	*y_cross;
-	double	distance_x;
-	double	distance_y;
-	double	ray_angle;
-	double	plyer_angle;
-	double	draw_cross;
+	int				wall_size;
+	int				vector_x;
+	int				vector_y;
+	t_coord			*x_cross;
+	t_coord			*y_cross;
+	double			distance_x;
+	double			distance_y;
+	double			ray_angle;
+	double			plyer_angle;
+	double			draw_cross;
 }	t_tools;
 
 int		ft_parse_map(t_data *data, char *str);
@@ -128,5 +138,6 @@ int		cardinal_angles(double angle);
 void	ray_loop(t_data *data);
 
 //texture.c
-int	ft_paint_txt(mlx_texture_t *tex, double draw_cross, int y, int wall_size);
+int		ft_paint_txt(mlx_texture_t *tex, double draw_cross,
+			int y, int wall_size);
 #endif
