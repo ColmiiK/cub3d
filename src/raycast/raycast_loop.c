@@ -4,9 +4,11 @@ void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 {
 	int	y;
 	int	color;
+	int max;
 	
 	y = ((W_HEIGHT - tools->wall_size) / 2);
-	while (y < ((W_HEIGHT + tools->wall_size) / 2))
+	max = (W_HEIGHT + tools->wall_size) / 2;
+	while (y < max)
 	{
 		if (y > W_HEIGHT / 50 && x > W_HEIGHT / 50
 			&& y < W_HEIGHT / 50 * 8.2 && x < W_HEIGHT / 50 * 8.2)

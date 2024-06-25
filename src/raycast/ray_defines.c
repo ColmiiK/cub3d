@@ -6,7 +6,7 @@ void	define_orientation(t_tools *tools, t_data *data)
 	if ((tools->distance_y > 0 && tools->distance_x > tools->distance_y)
 		|| tools->distance_x <= 0)
 	{
-		tools->wall_size = (int)(400 / tools->distance_y);
+		tools->wall_size = (int)(600 / tools->distance_y);
 		if (tools->vector_x < 0)
 			tools->orientation = data->texture->west;
 		else
@@ -15,7 +15,7 @@ void	define_orientation(t_tools *tools, t_data *data)
 	}
 	else
 	{
-		tools->wall_size = (int)(400 / tools->distance_x);
+		tools->wall_size = (int)(600 / tools->distance_x);
 		if (tools->vector_y < 0)
 			tools->orientation = data->texture->north;
 		else
