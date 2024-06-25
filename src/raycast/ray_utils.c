@@ -1,11 +1,16 @@
-#include <cub3d.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/25 17:21:12 by albagar4          #+#    #+#             */
+/*   Updated: 2024/06/25 17:21:14 by albagar4         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_isanint(double nbr)
-{
-	if (nbr - (int)nbr == 0.0000)
-		return (0);
-	return (1);
-}
+#include <cub3d.h>
 
 // Converts degrees to radians
 inline double	rad_convertor(double deg)
@@ -18,21 +23,6 @@ int	ft_delimiter(t_data *data, t_coord *cross)
 {
 	if (cross->x <= 0 || cross->x >= data->width
 		|| cross->y <= 0 || cross->y >= data->height)
-		return (1);
-	return (0);
-}
-
-int	cardinal_angles(double angle)
-{
-	if (angle >= rad_convertor(270 - 20) && angle <= rad_convertor(270 + 20))
-		return (1);
-	if (angle >= rad_convertor(180 - 20) && angle <= rad_convertor(180 + 20))
-		return (1);
-	if (angle >= rad_convertor(90 - 20) && angle <= rad_convertor(90 + 20))
-		return (1);
-	if (angle <= rad_convertor(20) && angle >= rad_convertor(0))
-		return (1);
-	if (angle >= rad_convertor(360 - 20) && angle <= rad_convertor(360))
 		return (1);
 	return (0);
 }

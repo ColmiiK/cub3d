@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_defines.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/25 17:20:23 by albagar4          #+#    #+#             */
+/*   Updated: 2024/06/25 17:20:46 by albagar4         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
-// Defines the orientation of the wall we're seeing
 void	define_orientation(t_tools *tools, t_data *data)
 {
 	if ((tools->distance_y > 0 && tools->distance_x > tools->distance_y)
@@ -24,7 +35,6 @@ void	define_orientation(t_tools *tools, t_data *data)
 	}
 }
 
-// Calculates the distance that separates de 'x' crosses
 double	x_distance(t_data *data)
 {
 	double	distance_x;
@@ -36,7 +46,6 @@ double	x_distance(t_data *data)
 	return (distance_x);
 }
 
-// Calculates the distance that separates the 'y' crosses
 double	y_distance(t_data *data)
 {
 	double	distance_y;
@@ -48,7 +57,6 @@ double	y_distance(t_data *data)
 	return (distance_y);
 }
 
-// Defines a unit vector depending where we're looking at
 t_tools	*vector_define(t_data *data)
 {
 	t_tools	*tools;

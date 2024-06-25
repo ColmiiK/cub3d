@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycast_loop.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/25 17:21:30 by albagar4          #+#    #+#             */
+/*   Updated: 2024/06/25 17:25:27 by albagar4         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
 void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 {
 	int	y;
 	int	color;
-	int max;
-	
+	int	max;
+
 	y = ((W_HEIGHT - tools->wall_size) / 2);
 	max = (W_HEIGHT + tools->wall_size) / 2;
 	while (y < max)
@@ -15,15 +27,14 @@ void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 			;
 		else if (y < W_HEIGHT && y > 0)
 		{
-			color = ft_paint_txt(tools->orientation, tools->draw_cross, y - ((W_HEIGHT - tools->wall_size) / 2), tools->wall_size);
+			color = ft_paint_txt(tools->orientation, tools->draw_cross,
+					y - ((W_HEIGHT - tools->wall_size) / 2), tools->wall_size);
 			mlx_put_pixel(data->wall, x, y, color);
 		}
 		y++;
 	}
 }
 
-// Prototype of the loop that will shoot one ray per coordinate
-// and draw the needed line
 void	ray_loop(t_data *data)
 {
 	t_tools	*tools;
