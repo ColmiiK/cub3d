@@ -1,21 +1,16 @@
-#include <cub3d.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/25 17:20:04 by alvega-g          #+#    #+#             */
+/*   Updated: 2024/06/25 17:20:07 by alvega-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// static void ft_debug_print(t_data data)
-// {
-// 	printf("\n\t---> .cub file <---\n");
-// 	for (int i = 0; data.cub[i]; i++)
-// 		printf("%s\n", data.cub[i]);
-// 	printf("\nCeiling color: \t%d\nFloor color: \t%d\n", data.texture->ceiling, data.texture->floor);
-// 	printf("\nNorth texture: \t%p\n", data.texture->north);
-// 	printf("South texture: \t%p\n", data.texture->south);
-// 	printf("East texture: \t%p\n", data.texture->east);
-// 	printf("West texture: \t%p\n", data.texture->west);
-// 	printf("\nPlayer x: \t%f\n", data.p_x);
-// 	printf("Player y: \t%f\n", data.p_y);
-// 	printf("Player angle: \t%f\n", data.p_a);
-// 	printf("\nWidth: \t\t%d\n", data.width);
-// 	printf("Height: \t%d\n", data.height);
-// }
+#include <cub3d.h>
 
 static int	ft_setup_struct(t_data *data)
 {
@@ -41,7 +36,6 @@ int	main(int ac, char **av)
 		return (ft_error("Unable to set up main structure"));
 	if (ft_parse_map(&data, av[1]))
 		return (ft_cleanup(data), 1);
-	// ft_debug_print(data);
 	ft_initialize_mlx(&data);
 	ft_cleanup(data);
 	return (0);

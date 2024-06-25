@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/25 17:18:47 by alvega-g          #+#    #+#             */
+/*   Updated: 2024/06/25 17:19:50 by alvega-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
 static void	ft_draw_player(t_data *data, int x, int y)
@@ -62,10 +74,10 @@ static void	ft_center_minimap(mlx_image_t *minimap, mlx_image_t *player)
 
 void	ft_draw_minimap(t_data *data)
 {
-	data->minimap = mlx_new_image(data->mlx,
-			data->width * W_HEIGHT / 50, data->height * W_HEIGHT / 50);
-	data->player = mlx_new_image(data->mlx,
-			W_HEIGHT / 50 * 2, W_HEIGHT / 50 * 2);
+	data->minimap = mlx_new_image(data->mlx, data->width * W_HEIGHT / 25,
+			data->height * W_HEIGHT / 25);
+	data->player = mlx_new_image(data->mlx, W_HEIGHT / 50 * 2,
+			W_HEIGHT / 50 * 2);
 	ft_fill_minimap(data, data->minimap);
 	ft_draw_player(data, W_HEIGHT / 50 - (W_HEIGHT / 50 / 4),
 		W_HEIGHT / 50 - (W_HEIGHT / 50 / 4));
