@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:20:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/25 17:22:24 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:53:25 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 
 typedef struct s_tex
 {
-	mlx_texture_t	*sprite[5];
-	mlx_image_t		*i_sprite[5];
+	mlx_texture_t	*sprite[12];
+	mlx_image_t		*i_sprite[12];
 	mlx_texture_t	*north;
 	mlx_texture_t	*south;
 	mlx_texture_t	*east;

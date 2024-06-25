@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:18:37 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/25 17:18:38 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/25 18:15:20 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	ft_shoot_the_gun(t_data *data)
 {
 	static int	anim_counter = 0;
 
-	if (data->frame % 5 == 0)
+	if (data->frame % 9 == 0)
 	{
-		if (anim_counter == 5)
+		if (anim_counter == 12)
 		{
 			data->texture->i_sprite[anim_counter - 1]->enabled = false;
 			data->texture->i_sprite[0]->enabled = true;
