@@ -9,7 +9,7 @@ MLX42 = lib/MLX42
 SRC_DIR = src/
 OBJ_DIR = obj/
 CC = clang
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 AR = ar rcs
 
 # Colors

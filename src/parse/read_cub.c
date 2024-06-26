@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:18:07 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/25 17:18:08 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:44:49 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,24 @@
 static int	ft_check_empty_lines(t_data *data, char **str)
 {
 	int		i;
+	int		j;
 	char	*temp;
 
 	temp = *str;
 	i = ft_strlen(temp);
-	while (--i >= 2)
+	j = i;
+	if (i == 0)
+	{
+		data->cub = ft_split(" ", ' ');
+		data->map = ft_split(" ", ' ');
+		free(*str);
+		return (1);
+	}
+	while (ft_strchr("01NSEW \n", temp[j]))
+		j--;
+	while (temp[j] != '\n')
+		j++;
+	while (--i >= j + 2)
 	{
 		if (temp[i] == '\n' && temp[i - 1] == '\n' && temp[i - 2] == '1')
 		{

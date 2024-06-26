@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:20:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/25 17:53:25 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:24:32 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define W_WIDTH 1280
 # define W_HEIGHT 960
 
-# define VISION 90
+# define VISION 60
 
 # define BLACK 0x000000ff
 # define WHITE 0xffffffff
