@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_utils.c                                        :+:      :+:    :+:   */
+/*   key_hook_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 17:21:12 by albagar4          #+#    #+#             */
-/*   Updated: 2024/06/26 16:10:04 by alvega-g         ###   ########.fr       */
+/*   Created: 2024/06/25 17:18:40 by alvega-g          #+#    #+#             */
+/*   Updated: 2024/06/26 16:01:51 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3d_bonus.h>
 
-// Converts degrees to radians
-inline double	rad_convertor(double deg)
+void	ft_keyhook(mlx_key_data_t keydata, void *param)
 {
-	return (deg * (M_PI / 180));
-}
+	t_data	*data;
+	int		x;
+	int		y;
 
-// Checks if the calculated valued is out of the correct range
-int	ft_delimiter(t_data *data, t_coord *cross)
-{
-	if (cross->x <= 0 || cross->x >= data->width
-		|| cross->y <= 0 || cross->y >= data->height)
-		return (1);
-	return (0);
+	data = param;
+	x = (int)data->p_x;
+	y = (int)data->p_y;
+	if (keydata.key == MLX_KEY_Q && keydata.action == MLX_PRESS)
+		data->debug_flag = !data->debug_flag;
 }

@@ -1,16 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement.c                                         :+:      :+:    :+:   */
+/*   movement_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:18:52 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 16:12:09 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:01:51 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3d_bonus.h>
+
+static int	ft_fix_collisions(t_data *data, double ix, double iy)
+{
+	if (data->map[(int)data->p_y][(int)(data->p_x + 0.2)] == '1'
+		|| data->map[(int)data->p_y][(int)(data->p_x - 0.2)] == '1')
+	{
+		data->p_x -= ix / (W_HEIGHT / 50 + 0.0);
+		data->minimap->instances[0].x += ix;
+	}
+	if (data->map[(int)(data->p_y + 0.2)][(int)(data->p_x)] == '1'
+		|| data->map[(int)(data->p_y - 0.2)][(int)(data->p_x)] == '1')
+	{
+		data->p_y -= iy / (W_HEIGHT / 50 + 0.0);
+		data->minimap->instances[0].y += iy;
+	}
+	if (data->map[(int)(data->p_y + 0.2)][(int)(data->p_x + 0.2)] == '1'
+		|| data->map[(int)(data->p_y - 0.2)][(int)(data->p_x - 0.2)] == '1'
+		|| data->map[(int)(data->p_y + 0.2)][(int)(data->p_x - 0.2)] == '1'
+		|| data->map[(int)(data->p_y - 0.2)][(int)(data->p_x + 0.2)] == '1')
+	{
+		data->p_x -= ix / (W_HEIGHT / 50 + 0.0);
+		data->p_y -= iy / (W_HEIGHT / 50 + 0.0);
+		data->minimap->instances[0].x += ix;
+		data->minimap->instances[0].y += iy;
+	}
+	return (0);
+}
 
 static void	ft_move_minimap(t_data *data, double dx, double dy)
 {
@@ -37,6 +64,7 @@ static void	ft_move_minimap(t_data *data, double dx, double dy)
 		data->minimap->instances[0].y -= iy;
 		fy -= iy;
 	}
+	ft_fix_collisions(data, ix, iy);
 }
 
 void	ft_player_movement(t_data *data)

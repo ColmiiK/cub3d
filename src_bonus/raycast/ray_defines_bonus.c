@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_defines.c                                      :+:      :+:    :+:   */
+/*   ray_defines_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2024/06/26 16:11:54 by albagar4         ###   ########.fr       */
+/*   Created: 2024/06/25 17:20:23 by albagar4          #+#    #+#             */
+/*   Updated: 2024/06/26 16:01:51 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3d_bonus.h>
 
-void	define_orientation_2(t_tools *tools, t_data *data)
-{
-	double	beta;
-
-	beta = (data->angle - data->p_a);
-	tools->distance_x = (tools->distance_x * (fabs)(cos(beta)));
-	tools->wall_size = (int)(900 / tools->distance_x);
-	if (tools->vector_y < 0)
-		tools->orientation = data->texture->north;
-	else
-	{
-		tools->flag = 1;
-		tools->orientation = data->texture->south;
-	}
-	tools->draw_cross = tools->x_cross->x;
-}
-
-void	define_orientation_1(t_tools *tools, t_data *data)
+void	define_orientation(t_tools *tools, t_data *data)
 {
 	double	beta;
 
@@ -39,16 +23,21 @@ void	define_orientation_1(t_tools *tools, t_data *data)
 		tools->distance_y = (tools->distance_y * (fabs)(cos(beta)));
 		tools->wall_size = (int)(900 / tools->distance_y);
 		if (tools->vector_x < 0)
-		{
-			tools->flag = 1;
 			tools->orientation = data->texture->west;
-		}
 		else
 			tools->orientation = data->texture->east;
 		tools->draw_cross = tools->y_cross->y;
 	}
 	else
-		define_orientation_2(tools, data);
+	{
+		tools->distance_x = (tools->distance_x * (fabs)(cos(beta)));
+		tools->wall_size = (int)(900 / tools->distance_x);
+		if (tools->vector_y < 0)
+			tools->orientation = data->texture->north;
+		else
+			tools->orientation = data->texture->south;
+		tools->draw_cross = tools->x_cross->x;
+	}
 }
 
 double	x_distance(t_data *data)
@@ -84,7 +73,6 @@ t_tools	*vector_define(t_data *data)
 	tools->vector_y = 1;
 	tools->x_cross = NULL;
 	tools->y_cross = NULL;
-	tools->flag = 0;
 	if (!(data->angle >= 0 && data->angle <= M_PI))
 		tools->vector_y = -1;
 	if (data->angle >= rad_convertor(90)

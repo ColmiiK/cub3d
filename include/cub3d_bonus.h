@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:20:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 15:52:04 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:19:14 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <libft.h>
@@ -32,6 +32,8 @@
 
 typedef struct s_tex
 {
+	mlx_texture_t	*sprite[12];
+	mlx_image_t		*i_sprite[12];
 	mlx_texture_t	*north;
 	mlx_texture_t	*south;
 	mlx_texture_t	*east;
@@ -60,6 +62,8 @@ typedef struct s_data
 	int				m_y;
 	int				width;
 	int				height;
+	int				frame;
+	bool			shooting_gun;
 	bool			debug_flag;
 
 }	t_data;
@@ -73,7 +77,6 @@ typedef struct s_coord
 typedef struct s_tools
 {
 	mlx_texture_t	*orientation;
-	int				flag;
 	int				wall_size;
 	int				vector_x;
 	int				vector_y;
@@ -118,8 +121,7 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools);
 t_tools	*wall_distance(t_data *data);
 
 //ray_defines
-void	define_orientation_2(t_tools *tools, t_data *data);
-void	define_orientation_1(t_tools *tools, t_data *data);
+void	define_orientation(t_tools *tools, t_data *data);
 double	x_distance(t_data *data);
 double	y_distance(t_data *data);
 t_tools	*vector_define(t_data *data);
@@ -133,5 +135,5 @@ void	ray_loop(t_data *data);
 
 //texture.c
 int		ft_paint_txt(mlx_texture_t *tex, double draw_cross,
-			int y, t_tools *tools);
+			int y, int wall_size);
 #endif

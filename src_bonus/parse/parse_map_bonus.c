@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:18:02 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 16:17:49 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:01:51 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3d_bonus.h>
 
 static int	ft_extract_map(t_data *data, char **cub)
 {
@@ -99,6 +99,8 @@ int	ft_parse_map(t_data *data, char *str)
 		return (ft_error("Unable to read .cub file"));
 	if (ft_extract_info(data, data->cub))
 		return (ft_error("Unable to extract information from .cub file"));
+	if (ft_extract_sprites(data))
+		return (ft_error("Unable to load sprites"));
 	if (ft_extract_map(data, data->cub))
 		return (ft_error("Unable to extract map information from .cub file"));
 	ft_obtain_ppos(data, data->map);

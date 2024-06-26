@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_hook.c                                       :+:      :+:    :+:   */
+/*   ray_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 17:18:21 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/25 17:18:22 by alvega-g         ###   ########.fr       */
+/*   Created: 2024/06/25 17:21:12 by albagar4          #+#    #+#             */
+/*   Updated: 2024/06/26 16:01:51 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3d_bonus.h>
 
-void	ft_mousehook(mouse_key_t button, action_t action,
-	modifier_key_t mods, void *param)
+// Converts degrees to radians
+inline double	rad_convertor(double deg)
 {
-	t_data	*data;
+	return (deg * (M_PI / 180));
+}
 
-	(void)mods;
-	data = param;
-	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
-		data->shooting_gun = true;
+// Checks if the calculated valued is out of the correct range
+int	ft_delimiter(t_data *data, t_coord *cross)
+{
+	if (cross->x <= 0 || cross->x >= data->width
+		|| cross->y <= 0 || cross->y >= data->height)
+		return (1);
+	return (0);
 }
