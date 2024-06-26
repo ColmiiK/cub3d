@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:18:07 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 13:44:49 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:55:20 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+static int	ft_cleanup_empty_utils(t_data *data, char **str)
+{
+	data->cub = ft_split(" ", ' ');
+	data->map = ft_split(" ", ' ');
+	free(*str);
+	return (1);
+}
 
 static int	ft_check_empty_lines(t_data *data, char **str)
 {
@@ -22,25 +30,15 @@ static int	ft_check_empty_lines(t_data *data, char **str)
 	i = ft_strlen(temp);
 	j = i;
 	if (i == 0)
-	{
-		data->cub = ft_split(" ", ' ');
-		data->map = ft_split(" ", ' ');
-		free(*str);
-		return (1);
-	}
+		return (ft_cleanup_empty_utils(data, str));
 	while (ft_strchr("01NSEW \n", temp[j]))
 		j--;
-	while (temp[j] != '\n')
+	while (j > 0 && j < i && temp[j] != '\n')
 		j++;
 	while (--i >= j + 2)
 	{
 		if (temp[i] == '\n' && temp[i - 1] == '\n' && temp[i - 2] == '1')
-		{
-			data->cub = ft_split(" ", ' ');
-			data->map = ft_split(" ", ' ');
-			free(*str);
-			return (1);
-		}
+			return (ft_cleanup_empty_utils(data, str));
 	}
 	return (0);
 }
