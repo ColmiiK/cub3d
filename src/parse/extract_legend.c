@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:17:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/25 17:17:55 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:07:08 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,26 @@ static int	ft_check_textures(t_tex *textures)
 	return (0);
 }
 
+static int ft_check_c_f(int *rgb, char **str)
+{
+	int		i;
+	char	*temp;
+
+	i = -1;
+	while (++i < 3)
+	{
+		temp = ft_itoa(rgb[i]);
+		if (ft_strcmp(temp, str[i]))
+			return (free(temp), 1);
+		free(temp);
+	}
+	if (!(rgb[0] >= 0 && rgb[0] < 256)
+		|| !(rgb[1] >= 0 && rgb[1] < 256)
+		|| !(rgb[2] >= 0 && rgb[2] < 256))
+		return (1);
+	return (0);
+}
+
 static int	ft_save_c_f(char *colors)
 {
 	char	**temp;
@@ -48,6 +68,8 @@ static int	ft_save_c_f(char *colors)
 	rgb[0] = ft_atoi(temp[0]);
 	rgb[1] = ft_atoi(temp[1]);
 	rgb[2] = ft_atoi(temp[2]);
+	if (ft_check_c_f(rgb, temp))
+		return (0);
 	ft_clean_double_ptr(temp);
 	return (rgb[0] << 24 | rgb[1] << 16 | rgb[2] << 8 | 255);
 }

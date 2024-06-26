@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:18:02 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/25 17:18:03 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:23:07 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ int	ft_pad_map(t_data *data)
 					* (data->width - ft_strlen(data->map[i]) + 1));
 			if (!temp)
 				return (1);
-			temp = ft_memset(temp, ' ', ft_strlen(temp) - 1);
-			temp[ft_strlen(temp) - 1] = 0;
+			temp = ft_memset(temp, ' ',
+					(data->width - ft_strlen(data->map[i])));
+			temp[(data->width - ft_strlen(data->map[i]))] = 0;
 			data->map[i] = ft_strjoin_ex(data->map[i], temp, 3);
 		}
 	}

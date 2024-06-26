@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:21:30 by albagar4          #+#    #+#             */
-/*   Updated: 2024/06/25 17:25:27 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:52:20 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ray_loop(t_data *data)
 	t_tools	*tools;
 	double	scale;
 	int		width;
+	// int corrected_angle;
 
 	width = 0;
 	scale = rad_convertor((VISION + 0.0) / (W_WIDTH + 0.0));

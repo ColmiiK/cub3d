@@ -1,7 +1,7 @@
-SO ./textures/south.png
-NO ./textures/north.png
-EA ./textures/east.png
-WE ./textures/west.png
+SO ./textures/matrix.png
+NO ./textures/matrix.png
+EA ./textures/matrix.png
+WE ./textures/matrix.png
 C 225,30,0
 F ,0,100
 
