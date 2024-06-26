@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_legend.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:17:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 12:07:08 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:42:43 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_check_textures(t_tex *textures)
 	return (0);
 }
 
-static int ft_check_c_f(int *rgb, char **str)
+static int	ft_check_c_f(int *rgb, char **str)
 {
 	int		i;
 	char	*temp;
@@ -65,6 +65,9 @@ static int	ft_save_c_f(char *colors)
 		ft_clean_double_ptr(temp);
 		return (0);
 	}
+	temp[0] = ft_pop(temp[0], ' ', true);
+	temp[1] = ft_pop(temp[1], ' ', true);
+	temp[2] = ft_pop(temp[2], ' ', true);
 	rgb[0] = ft_atoi(temp[0]);
 	rgb[1] = ft_atoi(temp[1]);
 	rgb[2] = ft_atoi(temp[2]);

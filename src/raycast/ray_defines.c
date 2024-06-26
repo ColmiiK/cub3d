@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:20:23 by albagar4          #+#    #+#             */
-/*   Updated: 2024/06/25 17:20:46 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:48:33 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 void	define_orientation(t_tools *tools, t_data *data)
 {
+	double	beta;
+
+	beta = (data->angle - data->p_a);
 	if ((tools->distance_y > 0 && tools->distance_x > tools->distance_y)
 		|| tools->distance_x <= 0)
 	{
-		tools->wall_size = (int)(600 / tools->distance_y);
+		tools->distance_y = (tools->distance_y * (fabs)(cos(beta)));
+		tools->wall_size = (int)(900 / tools->distance_y);
 		if (tools->vector_x < 0)
 			tools->orientation = data->texture->west;
 		else
@@ -26,7 +30,8 @@ void	define_orientation(t_tools *tools, t_data *data)
 	}
 	else
 	{
-		tools->wall_size = (int)(600 / tools->distance_x);
+		tools->distance_x = (tools->distance_x * (fabs)(cos(beta)));
+		tools->wall_size = (int)(900 / tools->distance_x);
 		if (tools->vector_y < 0)
 			tools->orientation = data->texture->north;
 		else

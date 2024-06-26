@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:21:30 by albagar4          #+#    #+#             */
-/*   Updated: 2024/06/26 11:52:20 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:47:49 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,13 @@ void	ray_loop(t_data *data)
 	t_tools	*tools;
 	double	scale;
 	int		width;
-	// int corrected_angle;
 
 	width = 0;
 	scale = rad_convertor((VISION + 0.0) / (W_WIDTH + 0.0));
-	if (data->p_a - rad_convertor(45) < 0)
-		data->angle = data->p_a + rad_convertor(315);
+	if (data->p_a - rad_convertor(30) < 0)
+		data->angle = data->p_a + rad_convertor(330);
 	else
-		data->angle = data->p_a - rad_convertor(45);
+		data->angle = data->p_a - rad_convertor(30);
 	while (width < W_WIDTH)
 	{
 		tools = wall_distance(data);
