@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:20:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 16:19:14 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:10:23 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_BONUS_H
-# define CUB3D_BONUS_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <libft.h>
@@ -32,8 +32,6 @@
 
 typedef struct s_tex
 {
-	mlx_texture_t	*sprite[12];
-	mlx_image_t		*i_sprite[12];
 	mlx_texture_t	*north;
 	mlx_texture_t	*south;
 	mlx_texture_t	*east;
@@ -62,8 +60,6 @@ typedef struct s_data
 	int				m_y;
 	int				width;
 	int				height;
-	int				frame;
-	bool			shooting_gun;
 	bool			debug_flag;
 
 }	t_data;

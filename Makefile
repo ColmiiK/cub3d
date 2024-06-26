@@ -30,26 +30,24 @@ WHITE = $(shell tput setaf 7)
 
 #Sources
 	
-# SRC_FILES = main cleanup utils \
-# 			parse/parse_map \
-# 			parse/read_cub \
-# 			parse/extract_legend \
-# 			parse/check_map \
-# 			parse/floodfill_map \
-# 			game/game_loop \
-# 			game/load_sprites \
-# 			game/generic_hook \
-# 			game/mouse_hook \
-# 			game/key_hook \
-# 			game/minimap \
-# 			game/movement \
-# 			game/draw \
-# 			raycast/first_step \
-# 			raycast/init_raycast \
-# 			raycast/ray_defines \
-# 			raycast/ray_utils \
-# 			raycast/raycast_loop \
-# 			textures/texture \
+SRC_FILES = main cleanup utils \
+			parse/parse_map \
+			parse/read_cub \
+			parse/extract_legend \
+			parse/check_map \
+			parse/floodfill_map \
+			game/game_loop \
+			game/generic_hook \
+			game/key_hook \
+			game/minimap \
+			game/movement \
+			game/draw \
+			raycast/first_step \
+			raycast/init_raycast \
+			raycast/ray_defines \
+			raycast/ray_utils \
+			raycast/raycast_loop \
+			textures/texture \
 
 SRC_FILES_B = main_bonus cleanup_bonus utils_bonus \
 			parse/parse_map_bonus \
@@ -72,6 +70,8 @@ SRC_FILES_B = main_bonus cleanup_bonus utils_bonus \
 			raycast/raycast_loop_bonus \
 			textures/texture_bonus \
 
+SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 SRC_B = $(addprefix $(SRC_DIR_B), $(addsuffix .c, $(SRC_FILES_B)))
 OBJ_B = $(addprefix $(OBJ_DIR_B), $(addsuffix .o, $(SRC_FILES_B)))
 OBJF = .cache_exists
@@ -100,13 +100,16 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER) | $(OBJF)
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) -I./$(INCLUDE) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR_B)%.o: $(SRC_DIR_B)%.c $(HEADER_B) | $(OBJF)
+$(OBJ_DIR_B)%.o: $(SRC_DIR_B)%.c $(HEADER_B) | $(OBJF_B)
 			@mkdir -p $(dir $@)
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) -I./$(INCLUDE) $(CFLAGS) -c $< -o $@ 
 
 $(OBJF):
-			@mkdir -p $(OBJ_DIR_B)
+			@mkdir -p $(OBJ_DIR)
+
+$(OBJF_B):
+			@mkdir -p $(OBJ_DIR_B
 
 clean:
 			@rm -rf $(OBJ_DIR)
