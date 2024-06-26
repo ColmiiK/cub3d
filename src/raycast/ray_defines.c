@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:20:23 by albagar4          #+#    #+#             */
-/*   Updated: 2024/06/26 15:51:16 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:11:54 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_tools	*vector_define(t_data *data)
 	tools->vector_y = 1;
 	tools->x_cross = NULL;
 	tools->y_cross = NULL;
-	tools->flag = 1;
+	tools->flag = 0;
 	if (!(data->angle >= 0 && data->angle <= M_PI))
 		tools->vector_y = -1;
 	if (data->angle >= rad_convertor(90)
