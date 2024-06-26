@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:18:37 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 16:01:51 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:37:52 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	ft_debug_print_mlx(t_data *data)
 
 	sprintf(buffer1, "p_x: %.1f p_y: %.2f p_a: %.2f ",
 		data->p_x, data->p_y, data->p_a);
-	sprintf(buffer2, "m_x: %04d m_y: %04d fps: %.1f",
-		data->m_x, data->m_y, 1 / data->mlx->delta_time);
+	sprintf(buffer2, "m_x: %04d m_y: %04d fps: %.1f minimap_x: %04d minimap_y: %04d",
+		data->m_x, data->m_y, 1 / data->mlx->delta_time, data->minimap->instances[0].x, data->minimap->instances[0].y);
 	temp = ft_strjoin(buffer1, buffer2);
 	data->debug_info = mlx_put_string(data->mlx, temp, 5, 0);
 	free(temp);

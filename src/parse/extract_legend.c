@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:17:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 16:10:04 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:46:20 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,22 +86,21 @@ int	ft_extract_info(t_data *data, char **cub)
 	{
 		if (!ft_strncmp(cub[i], "NO", 2))
 			data->texture->north = ft_save_texture(cub[i] + 2);
-		if (!ft_strncmp(cub[i], "SO", 2))
+		else if (!ft_strncmp(cub[i], "SO", 2))
 			data->texture->south = ft_save_texture(cub[i] + 2);
-		if (!ft_strncmp(cub[i], "WE", 2))
+		else if (!ft_strncmp(cub[i], "WE", 2))
 			data->texture->west = ft_save_texture(cub[i] + 2);
-		if (!ft_strncmp(cub[i], "EA", 2))
+		else if (!ft_strncmp(cub[i], "EA", 2))
 			data->texture->east = ft_save_texture(cub[i] + 2);
-		if (!ft_strncmp(cub[i], "F", 1))
+		else if (!ft_strncmp(cub[i], "F", 1))
 			data->texture->floor = ft_save_c_f(cub[i] + 1);
-		if (!ft_strncmp(cub[i], "C", 1))
+		else if (!ft_strncmp(cub[i], "C", 1))
 			data->texture->ceiling = ft_save_c_f(cub[i] + 1);
+		else if (ft_correct_division(i, cub, data))
+			return (1);
 	}
 	if (ft_check_textures(data->texture)
 		|| data->texture->floor == 0 || data->texture->ceiling == 0)
-	{
-		data->map = ft_split(" ", ' ');
-		return (1);
-	}
+		return (ft_return_split_one(data));
 	return (0);
 }

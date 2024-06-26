@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:20:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 15:52:04 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:18:37 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int		ft_check_map(char **map);
 int		ft_check_longest_line(char **map);
 int		ft_inject_space(char **map);
 int		ft_extract_sprites(t_data *data);
+int		ft_correct_division(int i, char **cub, t_data *data);
+int		ft_return_split_one(t_data *data);
 
 int		ft_initialize_mlx(t_data *data);
 void	ft_load_sprites(t_data *data);

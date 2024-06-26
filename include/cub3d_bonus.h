@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:20:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 16:19:14 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:18:27 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_tools
 	double			distance_x;
 	double			distance_y;
 	double			draw_cross;
+	int				flag;
 }	t_tools;
 
 int		ft_parse_map(t_data *data, char *str);
@@ -94,6 +95,8 @@ int		ft_check_map(char **map);
 int		ft_check_longest_line(char **map);
 int		ft_inject_space(char **map);
 int		ft_extract_sprites(t_data *data);
+int		ft_correct_division(int i, char **cub, t_data *data);
+int		ft_return_split_one(t_data *data);
 
 int		ft_initialize_mlx(t_data *data);
 void	ft_load_sprites(t_data *data);
@@ -121,7 +124,8 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools);
 t_tools	*wall_distance(t_data *data);
 
 //ray_defines
-void	define_orientation(t_tools *tools, t_data *data);
+void	define_orientation_1(t_tools *tools, t_data *data);
+void	define_orientation_2(t_tools *tools, t_data *data);
 double	x_distance(t_data *data);
 double	y_distance(t_data *data);
 t_tools	*vector_define(t_data *data);
@@ -135,5 +139,5 @@ void	ray_loop(t_data *data);
 
 //texture.c
 int		ft_paint_txt(mlx_texture_t *tex, double draw_cross,
-			int y, int wall_size);
+			int y, t_tools *tools);
 #endif

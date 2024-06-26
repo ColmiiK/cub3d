@@ -13,7 +13,7 @@ SRC_DIR = src/
 OBJ_DIR_B = obj_bonus/
 OBJ_DIR = obj/
 CC = clang
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 AR = ar rcs
 
 # Colors
@@ -34,6 +34,7 @@ SRC_FILES = main cleanup utils \
 			parse/parse_map \
 			parse/read_cub \
 			parse/extract_legend \
+			parse/extract_legend_utils \
 			parse/check_map \
 			parse/floodfill_map \
 			game/game_loop \
@@ -53,6 +54,7 @@ SRC_FILES_B = main_bonus cleanup_bonus utils_bonus \
 			parse/parse_map_bonus \
 			parse/read_cub_bonus \
 			parse/extract_legend_bonus \
+			parse/extract_legend_utils_bonus \
 			parse/check_map_bonus \
 			parse/floodfill_map_bonus \
 			game/game_loop_bonus \
@@ -134,7 +136,5 @@ re:			fclean all
 norm:
 			@norminette $(SRC) $(SRC_B) $(INCLUDE) $(LIBFT)
 
-run:		$(NAME)
-			./$(NAME) maps/3.cub
 
 .PHONY: all clean fclean re norm
