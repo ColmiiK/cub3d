@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:20:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 16:10:23 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:52:04 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_coord
 typedef struct s_tools
 {
 	mlx_texture_t	*orientation;
+	int				flag;
 	int				wall_size;
 	int				vector_x;
 	int				vector_y;
@@ -117,7 +118,8 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools);
 t_tools	*wall_distance(t_data *data);
 
 //ray_defines
-void	define_orientation(t_tools *tools, t_data *data);
+void	define_orientation_2(t_tools *tools, t_data *data);
+void	define_orientation_1(t_tools *tools, t_data *data);
 double	x_distance(t_data *data);
 double	y_distance(t_data *data);
 t_tools	*vector_define(t_data *data);
@@ -131,5 +133,5 @@ void	ray_loop(t_data *data);
 
 //texture.c
 int		ft_paint_txt(mlx_texture_t *tex, double draw_cross,
-			int y, int wall_size);
+			int y, t_tools *tools);
 #endif
