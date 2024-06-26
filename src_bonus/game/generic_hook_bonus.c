@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generic_hook.c                                     :+:      :+:    :+:   */
+/*   generic_hook_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:18:37 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/25 18:15:20 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:01:51 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3d_bonus.h>
 
 static void	ft_debug_print_mlx(t_data *data)
 {

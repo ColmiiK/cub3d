@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_cub.c                                         :+:      :+:    :+:   */
+/*   read_cub_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:18:07 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 13:55:20 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:01:51 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3d_bonus.h>
 
 static int	ft_cleanup_empty_utils(t_data *data, char **str)
 {
