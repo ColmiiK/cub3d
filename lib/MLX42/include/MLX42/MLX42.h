@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 00:33:01 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/05/28 11:32:38 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:41:59 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ typedef struct xpm
  */
 typedef struct mlx_instance
 {
-	int32_t	x;
-	int32_t	y;
+	double	x;
+	double	y;
 	int32_t	z;
 	bool	enabled;
 }	mlx_instance_t;
