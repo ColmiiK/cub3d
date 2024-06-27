@@ -13,7 +13,7 @@ SRC_DIR = src/
 OBJ_DIR_B = obj_bonus/
 OBJ_DIR = obj/
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 AR = ar rcs
 
 # Colors
