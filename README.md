@@ -16,7 +16,9 @@ This project is inspired by the world-famous Wolfenstein 3D game, which was the 
 	</table>    
     <img src="https://img.shields.io/badge/score- 120%20%2F%20100-success?color=%2312bab9&style=flat" />
     </a>
-
+<div>
+	<img src="https://gifyu.com/image/SroGH"/>
+</div>
 </div>
 
 ---
