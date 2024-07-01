@@ -43,7 +43,7 @@ This project is inspired by the world-famous Wolfenstein 3D game, which was the 
   <tr>
     <th>External functions</th>
     <td><code>open, close, read, write, printf, malloc, free, perror, strerror, exit</code><br>
-		All functions of the math library (-lm man man 3 math)<br>
+		All functions of the math library (<code>-lm man man 3 math</code>)<br>
 		All functions of the MLX42
 	</td>
   </tr>
@@ -59,18 +59,18 @@ This project is inspired by the world-famous Wolfenstein 3D game, which was the 
 
 The constraints are as follows:
 
-- You must use the MLX42. Either the version that is available on the operating system, or from its sources. If you choose to work with the sources, you will need to apply the same rules for your libft as those written above in Common Instructions part.
+- You __must__ use the __MLX42__. Either the version that is available on the operating system, or from its sources. If you choose to work with the sources, you will need to apply the same rules for your __libft__ as those written above in __Common Instructions__ part.
 - The management of your window must remain smooth: changing to another window, minimizing, etc.
 - Display different wall textures (the choice is yours) that vary depending on which side the wall is facing (North, South, East, West).
 - Your program must be able to set the floor and ceiling colors to two different ones.
 - The program displays the image in a window and respects the following rules:
 	- The left and right arrow keys of the keyboard must allow you to look left and right in the maze.
 	- The W, A, S, and D keys must allow you to move the point of view through the maze.
-	- Pressing ESC must close the window and quit the program cleanly.
+	- Pressing __ESC__ must close the window and quit the program cleanly.
 	- Clicking on the red cross on the window’s frame must close the window and quit the program cleanly.
-	- The use of images of the minilibX is strongly recommended.
-- Your program must take as a first argument a scene description file with the .cub extension.
-	- The map must be composed of only 6 possible characters: 0 for an empty space, 1 for a wall, and N,S,E or W for the player’s start position and spawning orientation.
+	- The use of __images__ of the __MLX42__ is strongly recommended.
+- Your program must take as a first argument a scene description file with the __.cub__ extension.
+	- The map must be composed of only 6 possible characters: __0__ for an empty space, __1__ for a wall, and __N__,__S__,__E__ or __W__ for the player’s start position and spawning orientation.
 	This is a simple valid map:
 ```bash
 111111
@@ -86,44 +86,44 @@ The constraints are as follows:
 - The map must be parsed as it looks in the file. Spaces are a valid part of the map and are up to you to handle. You must be able to parse any kind of map, as long as it respects the rules of the map.
 - Each element (except the map) firsts information is the type identifier (composed by one or two character(s)), followed by all specific informations for each object in a strict order such as :
 - North texture:
-	- identifier: NO
+	- identifier: __NO__
 	- path to the north texure
 ```bash
 NO ./path_to_the_north_texture
 ```
 
 - South texture:
-	- identifier: SO
+	- identifier: __SO__
 	- path to the south texure
 ```bash
 SO ./path_to_the_south_texture
 ```
 - West texture:
-	- identifier: WE
+	- identifier: __WE__
 	- path to the west texure
 ```bash
 WE ./path_to_the_west_texture
 ```
 - East texture:
-	- identifier: EA
+	- identifier: __EA__
 	- path to the east texure
 ```bash
 EA ./path_to_the_east_texture
 ```
 - Floor color:
-	- identifier: F
-	- R,G,B colors in range [0,255]: 0, 255, 255
+	- identifier: __F__
+	- R,G,B colors in range [0,255]: __0, 255, 255__
 ```bash
 F 220,100,0
 ```
 - Ceiling color:
-	- identifier: C
-	- R,G,B colors in range [0,255]: 0, 255, 255
+	- identifier: __C__
+	- R,G,B colors in range [0,255]: __0, 255, 255__
 ```bash
 C 225,30,0
 ```
 
-- Example of the mandatory part with a minimalist .cub scene:
+- Example of the mandatory part with a minimalist __.cub__ scene:
 ```bash
 NO ./path_to_the_north_texture
 SO ./path_to_the_south_texture
@@ -157,3 +157,19 @@ Bonus list:
 - Doors which can open and close.
 - animated sprite.
 - Rotate the point of view with the mouse.
+
+# How to run
+
+Clone this repository and execute it by running the following commands:
+
+```bash
+git clone https://github.com/ColmiiK/cub3d.git
+cd cub3d
+make bonus
+./cub3D_bonus maps/subject.cub
+```
+
+You can also compile the mandatory part only by running `make` instead of `make bonus`, but remember that the mandatory part doesn't have collisions, mouse movement, a minimap or animated sprites.
+
+You can change the window size by modifying `W_HEIGHT` and `W_WIDTH` in `include/cub3D_bonus.h`.
+### For instructions on how to build the dependencies needed, check out [Codam's MLX42](https://github.com/codam-coding-college/MLX42).
