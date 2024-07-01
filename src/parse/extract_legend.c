@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:17:53 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 17:46:20 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:50:28 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3D.h>
 
 static mlx_texture_t	*ft_save_texture(char *route)
 {

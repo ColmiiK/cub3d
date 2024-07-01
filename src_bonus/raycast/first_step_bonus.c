@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:17:28 by albagar4          #+#    #+#             */
-/*   Updated: 2024/06/26 16:01:51 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:50:38 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d_bonus.h>
+#include <cub3D_bonus.h>
 
 t_coord	*first_step_x(t_data *data, t_tools *tools)
 {

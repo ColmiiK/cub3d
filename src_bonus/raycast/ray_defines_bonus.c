@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:11:54 by albagar4          #+#    #+#             */
-/*   Updated: 2024/06/26 16:32:03 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:50:38 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d_bonus.h>
+#include <cub3D_bonus.h>
 
 void	define_orientation_2(t_tools *tools, t_data *data)
 {

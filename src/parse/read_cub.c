@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:18:07 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/06/26 16:56:28 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:50:28 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3D.h>
 
 static int	ft_cleanup_empty_utils(t_data *data, char **str)
 {

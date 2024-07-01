@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:21:30 by albagar4          #+#    #+#             */
-/*   Updated: 2024/06/26 15:51:56 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:50:28 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <cub3D.h>
 
 void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 {

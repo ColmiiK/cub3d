@@ -1,8 +1,8 @@
 #Variables
 
 USERNAME = $(shell whoami)
-NAME = cub3d
-NAME_B = cub3d_bonus
+NAME = cub3D
+NAME_B = cub3D_bonus
 INCLUDE = include
 HEADER = $(INCLUDE)/$(NAME).h
 HEADER_B = $(INCLUDE)/$(NAME)_bonus.h

@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:25:51 by albagar4          #+#    #+#             */
-/*   Updated: 2024/06/26 16:30:41 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:50:38 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d_bonus.h>
+#include <cub3D_bonus.h>
 
 int	ft_paint_txt(mlx_texture_t *tex, double draw_cross, int y, t_tools *tools)
 {
