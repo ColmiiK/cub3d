@@ -5,7 +5,7 @@
 This project is inspired by the world-famous Wolfenstein 3D game, which was the first FPS ever. It will enable you to explore ray-casting. Your goal will be to make a dynamic view inside a maze, in which you’ll have to find your way.
     <br>
 	<table>
-	<tr><th>Albagar4 (Raycaster)</th>
+	<tr><th>Albagar4 (Raycaster, textures)</th>
 		<td><a href='https://profile.intra.42.fr/users/albagar4' target="_blank">
         <img alt='42 (oscuro)' src='https://img.shields.io/badge/Málaga-black?style=flat&logo=42&logoColor=white'/></td>
 	</tr>
