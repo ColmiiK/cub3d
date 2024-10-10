@@ -35,30 +35,36 @@ void	ft_draw_walls(t_data *data, int x, t_tools *tools)
 	}
 }
 
-void	ray_loop(t_data *data)
+void	*ray_loop(void *param)
 {
+	t_thread_data *thread_data = param;
+	t_data* data = thread_data->data;
 	t_tools	*tools;
 	double	scale;
 	int		width;
 
-	width = 0;
+	double angle;
+	width = thread_data->start;
 	scale = rad_convertor((VISION + 0.0) / (W_WIDTH + 0.0));
 	if (data->p_a - rad_convertor(30) < 0)
-		data->angle = data->p_a + rad_convertor(330);
+		angle = data->p_a + rad_convertor(330);
 	else
-		data->angle = data->p_a - rad_convertor(30);
-	while (width < W_WIDTH)
+		angle = data->p_a - rad_convertor(30);
+	angle += scale * width;
+	while (width <= thread_data->end)
 	{
-		tools = wall_distance(data);
-		define_orientation_1(tools, data);
+		tools = wall_distance(data, &angle);
+		define_orientation_1(tools, data, &angle);
 		ft_draw_walls(data, width, tools);
-		if (data->angle + scale >= 2 * M_PI)
-			data->angle = data->angle - (2 * M_PI) + scale;
+		if (angle + scale >= 2 * M_PI)
+			angle = angle - (2 * M_PI) + scale;
 		else
-			data->angle = data->angle + scale;
+			angle = angle + scale;
 		width++;
 		free(tools->x_cross);
 		free(tools->y_cross);
 		free(tools);
 	}
+	return NULL;
 }
+

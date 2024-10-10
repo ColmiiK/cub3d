@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3D_bonus.h>
+#include "../../include/cub3D_bonus.h"
+#include <pthread.h>
 
 static void	ft_debug_print_mlx(t_data *data)
 {
@@ -75,6 +76,23 @@ static void	ft_clean_walls(t_data *data)
 	}
 }
 
+# define MAX_THREADS 12
+# define widthPerThread W_WIDTH / MAX_THREADS
+
+void threadCreation(t_data *data) {
+	pthread_t threads[MAX_THREADS];
+	t_thread_data thread_data[MAX_THREADS];
+	for (int i = 0; i < MAX_THREADS; i++) {
+		thread_data[i].data = data;
+		thread_data[i].start = i * widthPerThread;
+		thread_data[i].end = (i + 1) * widthPerThread;
+		pthread_create(&threads[i], NULL, ray_loop, (void *)&thread_data[i]);
+	}
+	for (int i = 0; i < MAX_THREADS; i++) {
+		pthread_join(threads[i], NULL);
+	}
+}
+
 void	ft_hook(void *param)
 {
 	t_data	*data;
@@ -82,7 +100,8 @@ void	ft_hook(void *param)
 	data = param;
 	data->frame++;
 	ft_clean_walls(data);
-	ray_loop(data);
+	//ray_loop(data);
+	threadCreation(data);
 	if (data->shooting_gun == true)
 		ft_shoot_the_gun(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))

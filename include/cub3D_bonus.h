@@ -16,9 +16,10 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <libft.h>
 # include <math.h>
+# include <pthread.h>
 
-# define W_WIDTH 1280
-# define W_HEIGHT 960
+# define W_WIDTH 1000
+# define W_HEIGHT 1000
 
 # define VISION 60
 
@@ -68,6 +69,12 @@ typedef struct s_data
 
 }	t_data;
 
+typedef struct s_thread_data {
+	t_data *data;
+	int start;
+	int end;
+} t_thread_data;
+
 typedef struct s_coord
 {
 	double			x;
@@ -115,28 +122,27 @@ void	ft_draw_game(t_data *data);
 
 //				RAYCASTING
 //first_step
-t_coord	*first_step_x(t_data *data, t_tools *tools);
-t_coord	*first_step_y(t_data *data, t_tools *tools);
+t_coord	*first_step_x(t_data *data, t_tools *tools, double *angle);
+t_coord	*first_step_y(t_data *data, t_tools *tools, double *angle);
 
 //init_raycast
-t_coord	*x_wall_finder(t_data *data, t_tools *tools);
-t_coord	*y_wall_finder(t_data *data, t_tools *tools);
-t_tools	*wall_distance(t_data *data);
+t_coord	*x_wall_finder(t_data *data, t_tools *tools, double *angle);
+t_coord	*y_wall_finder(t_data *data, t_tools *tools, double *angle);
+t_tools	*wall_distance(t_data *data, double *angle);
 
 //ray_defines
-void	define_orientation_1(t_tools *tools, t_data *data);
-void	define_orientation_2(t_tools *tools, t_data *data);
-double	x_distance(t_data *data);
-double	y_distance(t_data *data);
-t_tools	*vector_define(t_data *data);
+void	define_orientation_1(t_tools *tools, t_data *data, double *angle);
+void	define_orientation_2(t_tools *tools, t_data *data, double *angle);
+double	x_distance(t_data *data, double *angle);
+double	y_distance(t_data *data, double *angle);
+t_tools	*vector_define(t_data *data, double *angle);
 
 //ray_utils
 double	rad_convertor(double deg);
 int		ft_delimiter(t_data *data, t_coord *cross);
 
 //raycast_loop
-void	ray_loop(t_data *data);
-
+void	*ray_loop(void *param);
 //texture.c
 int		ft_paint_txt(mlx_texture_t *tex, double draw_cross,
 			int y, t_tools *tools);

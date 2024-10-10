@@ -12,12 +12,12 @@
 
 #include <cub3D_bonus.h>
 
-t_coord	*x_wall_finder(t_data *data, t_tools *tools)
+t_coord	*x_wall_finder(t_data *data, t_tools *tools, double *angle)
 {
 	t_coord	*x_cross;
 
-	x_cross = first_step_x(data, tools);
-	tools->distance_x = x_distance(data);
+	x_cross = first_step_x(data, tools, angle);
+	tools->distance_x = x_distance(data, angle);
 	while (x_cross->x >= 0 && x_cross->x < data->width && x_cross->y >= 0
 		&& x_cross->y < data->height)
 	{
@@ -39,12 +39,12 @@ t_coord	*x_wall_finder(t_data *data, t_tools *tools)
 	return (x_cross);
 }
 
-t_coord	*y_wall_finder(t_data *data, t_tools *tools)
+t_coord	*y_wall_finder(t_data *data, t_tools *tools, double *angle)
 {
 	t_coord	*y_cross;
 
-	y_cross = first_step_y(data, tools);
-	tools->distance_y = y_distance(data);
+	y_cross = first_step_y(data, tools, angle);
+	tools->distance_y = y_distance(data, angle);
 	while ((y_cross->y >= 0 && y_cross->y <= data->height)
 		&& (y_cross->x >= 0 && y_cross->x <= data->width))
 	{
@@ -64,13 +64,13 @@ t_coord	*y_wall_finder(t_data *data, t_tools *tools)
 	return (y_cross);
 }
 
-t_tools	*wall_distance(t_data *data)
+t_tools	*wall_distance(t_data *data, double *angle)
 {
 	t_tools	*tools;
 
-	tools = vector_define(data);
-	tools->x_cross = x_wall_finder(data, tools);
-	tools->y_cross = y_wall_finder(data, tools);
+	tools = vector_define(data, angle);
+	tools->x_cross = x_wall_finder(data, tools, angle);
+	tools->y_cross = y_wall_finder(data, tools, angle);
 	if (tools->distance_x != -1)
 	{
 		tools->distance_x = sqrt(pow(tools->x_cross->x - data->p_x, 2)

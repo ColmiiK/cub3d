@@ -12,11 +12,11 @@
 
 #include <cub3D_bonus.h>
 
-void	define_orientation_2(t_tools *tools, t_data *data)
+void	define_orientation_2(t_tools *tools, t_data *data, double *angle)
 {
 	double	beta;
 
-	beta = (data->angle - data->p_a);
+	beta = (*angle - data->p_a);
 	tools->distance_x = (tools->distance_x * (fabs)(cos(beta)));
 	tools->wall_size = (int)(900 / tools->distance_x);
 	if (tools->vector_y < 0)
@@ -29,11 +29,11 @@ void	define_orientation_2(t_tools *tools, t_data *data)
 	tools->draw_cross = tools->x_cross->x;
 }
 
-void	define_orientation_1(t_tools *tools, t_data *data)
+void	define_orientation_1(t_tools *tools, t_data *data, double *angle)
 {
 	double	beta;
 
-	beta = (data->angle - data->p_a);
+	beta = (*angle - data->p_a);
 	if ((tools->distance_y > 0 && tools->distance_x > tools->distance_y)
 		|| tools->distance_x <= 0)
 	{
@@ -49,33 +49,36 @@ void	define_orientation_1(t_tools *tools, t_data *data)
 		tools->draw_cross = tools->y_cross->y;
 	}
 	else
-		define_orientation_2(tools, data);
+		define_orientation_2(tools, data, angle);
 }
 
-double	x_distance(t_data *data)
+double	x_distance(t_data *data, double *angle)
 {
+	(void)data;
 	double	distance_x;
 
-	if ((fabs)(1 / tan(data->angle)) == 0)
+	if ((fabs)(1 / tan(*angle)) == 0)
 		distance_x = -1;
 	else
-		distance_x = (fabs)(1 / tan(data->angle));
+		distance_x = (fabs)(1 / tan(*angle));
 	return (distance_x);
 }
 
-double	y_distance(t_data *data)
+double	y_distance(t_data *data, double *angle)
 {
+	(void)data;
 	double	distance_y;
 
-	if ((fabs)(tan(data->angle)) == 0)
+	if ((fabs)(tan(*angle)) == 0)
 		distance_y = -1;
 	else
-		distance_y = (fabs)(tan(data->angle));
+		distance_y = (fabs)(tan(*angle));
 	return (distance_y);
 }
 
-t_tools	*vector_define(t_data *data)
+t_tools	*vector_define(t_data *data, double *angle)
 {
+	(void)data;
 	t_tools	*tools;
 
 	tools = malloc(sizeof(t_tools));
@@ -86,10 +89,10 @@ t_tools	*vector_define(t_data *data)
 	tools->x_cross = NULL;
 	tools->y_cross = NULL;
 	tools->flag = 0;
-	if (!(data->angle >= 0 && data->angle <= M_PI))
+	if (!(*angle >= 0 && *angle <= M_PI))
 		tools->vector_y = -1;
-	if (data->angle >= rad_convertor(90)
-		&& data->angle <= rad_convertor(270))
+	if (*angle >= rad_convertor(90)
+		&& *angle <= rad_convertor(270))
 		tools->vector_x = -1;
 	return (tools);
 }

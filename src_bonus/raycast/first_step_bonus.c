@@ -12,7 +12,7 @@
 
 #include <cub3D_bonus.h>
 
-t_coord	*first_step_x(t_data *data, t_tools *tools)
+t_coord	*first_step_x(t_data *data, t_tools *tools, double *angle)
 {
 	t_coord	*first_x;
 	t_coord	*init;
@@ -28,14 +28,14 @@ t_coord	*first_step_x(t_data *data, t_tools *tools)
 	if (tools->vector_y == 1)
 		first_x->y += 1;
 	distance = (fabs)(data->p_y - first_x->y);
-	first_x->x = distance / (fabs)(tan(data->angle));
+	first_x->x = distance / (fabs)(tan(*angle));
 	first_x->x = data->p_x + (first_x->x * tools->vector_x);
 	if (ft_delimiter(data, first_x) == 1 || distance == 0)
 		return (free(first_x), init);
 	return (free(init), first_x);
 }
 
-t_coord	*first_step_y(t_data *data, t_tools *tools)
+t_coord	*first_step_y(t_data *data, t_tools *tools, double *angle)
 {
 	t_coord	*first_y;
 	t_coord	*init;
@@ -53,7 +53,7 @@ t_coord	*first_step_y(t_data *data, t_tools *tools)
 	distance = (fabs)(data->p_x - first_y->x);
 	if (distance == 0)
 		return (init);
-	first_y->y = distance * (fabs)(tan(data->angle));
+	first_y->y = distance * (fabs)(tan(*angle));
 	first_y->y = data->p_y + (first_y->y * tools->vector_y);
 	if (ft_delimiter(data, first_y) == 1 || distance == 0)
 		return (free(first_y), init);
